@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import {
+ StyleSheet,
+ Text,
+ View,
+ TextInput,
+ Image,
+ TouchableNativeFeedback, 
+} from 'react-native';
 import {Font} from 'expo';
 
 class LogIn extends Component {
@@ -8,23 +15,35 @@ class LogIn extends Component {
 
     this.state = {
       fontLoaded: false,
+      imageLoaded: false,
       pin: "",
     }
   }
   async componentDidMount(){
     await Font.loadAsync({
       'montserrat-light': require('./Assets/Fonts/Montserrat-Light.ttf'),
-      'montserrat-black': require('./Assets/Fonts/Montserrat-Black.ttf'),
+      'satisfy-reg': require('./Assets/Fonts/Satisfy-Regular.ttf'),
     });
-
-    this.setState({fontLoaded: true});
+    
+    this.setState({
+      fontLoaded: true,
+      imageLoaded: true,
+    });
   }
   render(){
     let font_fam = {};
+    let image = {};
+    
+    if(this.state.imageLoaded){
+      image = require('./Assets/Images/finger.png');
+    }
 
     if(this.state.fontLoaded){
-      font_fam.title = 'montserrat-black';
+      font_fam.title = 'satisfy-reg';
       font_fam.pinForm = 'montserrat-light';
+    }else{
+      font_fam.title = 'sans-serif';
+      font_fam.pinForm = 'sans-serif';
     }
 
     return(
@@ -38,7 +57,7 @@ class LogIn extends Component {
           <TextInput 
             style={styles.passCodeTextField} 
             placeholder="Enter Pin"
-            maxLength={4}
+            maxLength={8}
             keyboardType="numeric"
             secureTextEntry={true}
             underlineColorAndroid="black"
@@ -48,6 +67,10 @@ class LogIn extends Component {
           <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>
             or
           </Text>
+            <Image 
+              source={image} 
+              style={{height: 200, width: 150}}
+            />
         </View>
       </View>
     );
@@ -69,23 +92,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    borderBottomLeftRadius: 400,
-    borderBottomRightRadius: 400,
-    height: 250,
-    width: 500,
+    height: 230,
+    width: 370,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#24D101',
   },
   titleText: {
-    fontSize: 85,
+    fontSize: 90,
     color: 'white',
-    fontWeight: 'bold',
   },
   passCodeForm:{
     flex: 1,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 30,
   },
   passCodeText:{
     fontSize: 25,
