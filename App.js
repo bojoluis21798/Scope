@@ -8,8 +8,11 @@ class LogIn extends Component {
       <View style={styles.container}>
         <View style={styles.title}>
           <Text style={styles.titleText}>
-            WELCOME
+            Scope
           </Text>
+        </View>
+        <View style={styles.passCodeForm}>
+          <Text>PassCode</Text>
         </View>
       </View>
     );
@@ -49,16 +52,19 @@ const styles = StyleSheet.create({
   title: {
     borderBottomLeftRadius: 400,
     borderBottomRightRadius: 400,
-    height: 300,
+    height: 250,
     width: 500,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'green',
+    backgroundColor: '#24D101',
   },
   titleText: {
     fontFamily: 'montserrat-extra-bold',
     fontWeight: 'bold',
     fontSize: 50,
-    color: 'white',
+    color: 'black',
+  },
+  passCodeForm:{
+    
   }
 });
