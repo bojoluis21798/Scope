@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import {Font} from 'expo';
 
 class LogIn extends Component {
@@ -8,12 +8,13 @@ class LogIn extends Component {
 
     this.state = {
       fontLoaded: false,
+      pin: "",
     }
   }
   async componentDidMount(){
     await Font.loadAsync({
-      'montserrat-light': require('./Fonts/Montserrat-Light.ttf'),
-      'montserrat-black': require('./Fonts/Montserrat-Black.ttf'),
+      'montserrat-light': require('./Assets/Fonts/Montserrat-Light.ttf'),
+      'montserrat-black': require('./Assets/Fonts/Montserrat-Black.ttf'),
     });
 
     this.setState({fontLoaded: true});
@@ -34,7 +35,19 @@ class LogIn extends Component {
           </Text>
         </View>
         <View style={styles.passCodeForm}>
-          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>PIN</Text>
+          <TextInput 
+            style={styles.passCodeTextField} 
+            placeholder="Enter Pin"
+            maxLength={4}
+            keyboardType="numeric"
+            secureTextEntry={true}
+            underlineColorAndroid="black"
+            onChangeText={(pin)=>this.setState({pin})}
+            textAlign="center"
+          />
+          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>
+            or
+          </Text>
         </View>
       </View>
     );
@@ -70,9 +83,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   passCodeForm:{
-    marginTop: 50,
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 10,
   },
   passCodeText:{
-    fontSize: 30,
+    fontSize: 25,
+  },
+  passCodeTextField:{
+    width: 200,
+    height: 70,
+    padding: 5,
+    paddingTop: 0,
+    fontSize: 20,
   }
 });
