@@ -3,16 +3,38 @@ import { StyleSheet, Text, View } from 'react-native';
 import {Font} from 'expo';
 
 class LogIn extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      fontLoaded: false,
+    }
+  }
+  async componentDidMount(){
+    await Font.loadAsync({
+      'montserrat-light': require('./Fonts/Montserrat-Light.ttf'),
+      'montserrat-black': require('./Fonts/Montserrat-Black.ttf'),
+    });
+
+    this.setState({fontLoaded: true});
+  }
   render(){
+    let font_fam = {};
+
+    if(this.state.fontLoaded){
+      font_fam.title = 'montserrat-black';
+      font_fam.pinForm = 'montserrat-light';
+    }
+
     return(
       <View style={styles.container}>
         <View style={styles.title}>
-          <Text style={styles.titleText}>
+          <Text style={[styles.titleText, {fontFamily: font_fam.title}]}>
             Scope
           </Text>
         </View>
         <View style={styles.passCodeForm}>
-          <Text>PassCode</Text>
+          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>PIN</Text>
         </View>
       </View>
     );
@@ -20,28 +42,12 @@ class LogIn extends Component {
 }
 
 export default class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      fontLoaded: false,
-    }
-  }
-
-  async componentDidMount(){
-    await Font.loadAsync({
-      'montserrat-reg': require('./Fonts/Montserrat-Regular.ttf'),
-      'montserrat-extra-bold': require('./Fonts/Montserrat-ExtraBold.ttf'),
-    });
-
-    this.setState({fontLoaded: true});
-  }
   render() {
     return (
       <LogIn />
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -59,12 +65,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#24D101',
   },
   titleText: {
-    fontFamily: 'montserrat-extra-bold',
+    fontSize: 85,
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 50,
-    color: 'black',
   },
   passCodeForm:{
-    
+    marginTop: 50,
+  },
+  passCodeText:{
+    fontSize: 30,
   }
 });
