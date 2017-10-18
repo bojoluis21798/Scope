@@ -4,4 +4,3 @@
 
 Dependencies:
 *	Create-react-native-app
-*	Webfonts
