@@ -57,6 +57,24 @@ export const styles = StyleSheet.create({
   },
   standardText: {
     fontSize: 25,
-    color: 'white',
+    color: 'black',
   },
+  smallerText: {
+    fontSize: 20,
+    color: 'black',
+  },
+  body: {
+    flex:1,
+    padding: 5,
+  },
+  contentBar: {
+    padding: 7,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
+    borderColor: '#D5D5D5',
+    width: 348,
+    marginBottom: 10,
+  }
 });

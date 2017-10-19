@@ -4,10 +4,30 @@ import {
   TouchableWithoutFeedback,
   Image,
   Text,
+  Picker,
+  ScrollView,
 } from 'react-native';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
+
+var font = "";
+var image = {};
+
+class ContentBar extends Component {
+  render(){
+    return(
+      <View style={styles.contentBar}>
+        <Text style={[styles.standardText, {fontFamily: font}]}> 
+          {this.props.barTitle}
+        </Text>
+        <Text style={[styles.smallerText, {fontFamily: font}]}> 
+          ₱ {this.props.barValue}
+        </Text>
+      </View>
+    );
+  }
+}
 
 export class Home extends Component{
   constructor(props){
@@ -16,6 +36,7 @@ export class Home extends Component{
     this.state = {
       imageLoaded: false,
       fontLoaded: false,
+      timePeriod: "",
     };
   }
 
@@ -33,8 +54,6 @@ export class Home extends Component{
   };
 
   render(){
-    let font= '';
-    let image = {};
 
     if(this.state.imageLoaded){
       image = require('../Images/menu.png');
@@ -56,10 +75,39 @@ export class Home extends Component{
               style={styles.menuIcon}
             />
           </TouchableWithoutFeedback>  
-          <Text style={[styles.standardText, {fontFamily: font, fontSize: 24}]}>
+          <Text style={
+            [styles.standardText,
+            {
+              fontFamily: font, 
+              fontSize: 24, 
+              color: 'white'
+            }]
+          }>
             Summary Report 
           </Text>
         </View>
+        <ScrollView style={styles.body}>
+          <Picker
+            onValueChange={
+              (itemValue, itemIndex) => 
+                this.setState({timePeriod: itemValue})
+            }
+            selectedValue={this.state.timePeriod}
+            style={{width: 150}}
+          >
+            <Picker.Item label="Week" value="Week" />
+            <Picker.Item label="Month" value="Month" />
+            <Picker.Item label="Year" value="Year" />
+          </Picker>
+
+          <View style={{marginTop: 10}}>
+            <ContentBar barTitle="Total Expenses" barValue="500" />
+            <ContentBar barTitle="Total Profit" barValue="500" />
+            <ContentBar barTitle="Net Profit" barValue="500" />
+            <ContentBar barTitle="Gross Profit" barValue="500" />
+            <ContentBar barTitle="Total Goods Sold" barValue="500" />
+          </View>
+        </ScrollView>
       </View>
     );
   }
