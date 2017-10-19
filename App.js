@@ -7,10 +7,10 @@ import {
  Image,
  TouchableNativeFeedback, 
 } from 'react-native';
-import {Font} from 'expo';
-import {StackNavigator} from 'react-navigation';
+import {Font, Constants} from 'expo';
+import {StackNavigator, DrawerNavigator} from 'react-navigation';
 
-class Status extends Component {
+class Status extends Component{
   render(){
     return(
       <View style={styles.statusBar}>
@@ -28,6 +28,7 @@ class LogIn extends Component {
       imageLoaded: false,
       pin: "",
       error: false,
+      submitted: false,
     }
   }
   async componentDidMount(){
@@ -63,7 +64,6 @@ class LogIn extends Component {
       font_fam.title = 'sans-serif';
       font_fam.pinForm = 'sans-serif';
     }
-
     return(
       <View style={styles.container}>
         <Status />
@@ -84,11 +84,19 @@ class LogIn extends Component {
             secureTextEntry={true}
             underlineColorAndroid={errorLine}
             onChangeText={(pin) => this.setState({pin: pin})}
-            onFocus={() => this.setState({error: false})}
+            onFocus={() => this.setState({error: false, submitted: false})}
             textAlign="center"
             multiline={false}
-            value={(this.state.error) ? "" : null}
-            onSubmitEditing={() => (this.state.pin == tryPin) ? navigate('Home') : this.setState({error: true})}
+            value={(this.state.error || this.state.submitted) ? "" : null}
+            onSubmitEditing={() => {
+                if(this.state.pin == tryPin){ 
+                  this.setState({submitted: true});
+                  navigate('Home'); 
+                }else{ 
+                  this.setState({error: true})
+                } 
+              }
+            } 
           />
           <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>
             or
@@ -107,15 +115,40 @@ class LogIn extends Component {
 }
 
 class Home extends Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      imageLoaded: false,
+    };
+  }
+
+  async componentDidMount(){
+    this.setState({imageLoaded: true});
+  }
+
   static navigationOptions = {
     header: null,
+    drawerLabel: 'Home',
   };
 
   render(){
+
+    let image = {};
+
+    if(this.state.imageLoaded){
+      image = require('./Assets/Images/menu.png');
+    }
+
     return(
       <View style={styles.container}>
         <Status/>
+        <FinanceDrawer />
         <View style={styles.topBar}>
+          <Image 
+            source={image}
+            style={styles.menuIcon}
+          />
         </View>
       </View>
     );
@@ -127,6 +160,15 @@ const FinanceApp = StackNavigator({
   Home: {screen: Home},
 }, {headerMode: 'screen'});
 
+const FinanceDrawer = DrawerNavigator({
+  Home: {screen: Home},
+  Lock: {screen: LogIn}, 
+}, {
+  useNativeAnimations: true,
+
+});
+
+
 export default class App extends Component {
   render() {
     return (
@@ -135,8 +177,8 @@ export default class App extends Component {
   }
 }
 
+const statHeight = Constants.statusBarHeight;
 const tryPin = "12345678";
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -144,7 +186,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statusBar: {
-    height: 24,
+    height: statHeight,
     width: 400,
     backgroundColor: 'black',
   },
@@ -176,8 +218,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   topBar: {
+    flexDirection: 'row',
     width: 370,
     backgroundColor: '#24D101',
-    height: 50,
+    height: 60,
+  },
+  menuIcon: {
+    height: 24,
+    width: 24,
+    justifyContent: 'flex-start',
+    padding: 5,
   }
 });
