@@ -34,7 +34,7 @@ class LogIn extends Component {
   async componentDidMount(){
     await Font.loadAsync({
       'montserrat-light': require('./Assets/Fonts/Montserrat-Light.ttf'),
-      'oneDay-reg': require('./Assets/Fonts/ONEDAY.ttf'),
+      'raleway-black': require('./Assets/Fonts/Raleway-Black.ttf'),
     });
     
     this.setState({
@@ -58,7 +58,7 @@ class LogIn extends Component {
     }
 
     if(this.state.fontLoaded){
-      font_fam.title = 'oneDay-reg';
+      font_fam.title = 'raleway-black';
       font_fam.pinForm = 'montserrat-light';
     }else{
       font_fam.title = 'sans-serif';
