@@ -18,6 +18,7 @@ class LogIn extends Component {
       fontLoaded: false,
       imageLoaded: false,
       pin: "",
+      error: false,
     }
   }
   async componentDidMount(){
@@ -32,12 +33,16 @@ class LogIn extends Component {
     });
   }
 
-  handleChange()
+  static navigationOptions = {
+    header: null,
+  };
 
   render(){
     let font_fam = {};
     let image = {};
-    
+    const {navigate} = this.props.navigation;
+    let errorLine = (!this.state.error) ? "#24D101" : "red";
+
     if(this.state.imageLoaded){
       image = require('./Assets/Images/finger.png');
     }
@@ -58,25 +63,33 @@ class LogIn extends Component {
           </Text>
         </View>
         <View style={styles.passCodeForm}>
+          <Text style={[styles.passCodeText, {fontSize: 23,fontFamily: font_fam.pinForm, color: 'red'}]}>
+            {(this.state.error)?"Wrong Pin":""}
+          </Text>
           <TextInput 
             style={styles.passCodeTextField} 
             placeholder="Enter Pin"
             maxLength={8}
             keyboardType="numeric"
             secureTextEntry={true}
-            underlineColorAndroid="black"
-            onChangeText={(pin)=>this.setState({pin})}
+            underlineColorAndroid={errorLine}
+            onChangeText={(pin) => this.setState({pin: pin})}
+            onFocus={() => this.setState({error: false})}
             textAlign="center"
             multiline={false}
-            onSubmitEditing={() => (this.state.pin == "12345678") ? navigate('Home') : null}
+            value={(this.state.error) ? "" : null}
+            onSubmitEditing={() => (this.state.pin == tryPin) ? navigate('Home') : this.setState({error: true})}
           />
           <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>
             or
           </Text>
-            <Image 
-              source={image} 
-              style={{height: 200, width: 150}}
-            />
+          <Image 
+            source={image} 
+            style={{height: 150, width: 100, marginTop: 10}}
+          />
+          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm, fontSize: 15}]}>
+            Scan Fingerprint
+          </Text>
         </View>
       </View>
     );
@@ -84,10 +97,14 @@ class LogIn extends Component {
 }
 
 class Home extends Component{
+  static navigationOptions = {
+    header: null,
+  };
+
   render(){
     return(
-      <View styles={styles.container}>
-        <View styles={styles.topBar}>
+      <View style={styles.container}>
+        <View style={styles.topBar}>
         </View>
       </View>
     );
@@ -97,7 +114,7 @@ class Home extends Component{
 const FinanceApp = StackNavigator({
   LogIn: {screen: LogIn},
   Home: {screen: Home},
-});
+}, {headerMode: 'screen'});
 
 export default class App extends Component {
   render() {
@@ -106,6 +123,8 @@ export default class App extends Component {
     );
   }
 }
+
+const tryPin = "12345678";
 
 const styles = StyleSheet.create({
   container: {
@@ -127,10 +146,11 @@ const styles = StyleSheet.create({
   passCodeForm:{
     flex: 1,
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 5,
   },
   passCodeText:{
     fontSize: 25,
+    marginTop: 10,
   },
   passCodeTextField:{
     width: 200,
@@ -142,6 +162,6 @@ const styles = StyleSheet.create({
   topBar: {
     width: 370,
     backgroundColor: '#24D101',
-    heigth: 100,
+    height: 50,
   }
 });
