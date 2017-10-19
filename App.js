@@ -10,6 +10,15 @@ import {
 import {Font} from 'expo';
 import {StackNavigator} from 'react-navigation';
 
+class Status extends Component {
+  render(){
+    return(
+      <View style={styles.statusBar}>
+      </View>
+    );
+  }
+}
+
 class LogIn extends Component {
   constructor(props){
     super(props);
@@ -57,13 +66,14 @@ class LogIn extends Component {
 
     return(
       <View style={styles.container}>
+        <Status />
         <View style={styles.title}>
           <Text style={[styles.titleText, {fontFamily: font_fam.title}]}>
             Scope
           </Text>
         </View>
         <View style={styles.passCodeForm}>
-          <Text style={[styles.passCodeText, {fontSize: 23,fontFamily: font_fam.pinForm, color: 'red'}]}>
+          <Text style={[styles.passCodeText, {fontSize: 20,fontFamily: font_fam.pinForm, color: 'red'}]}>
             {(this.state.error)?"Wrong Pin":""}
           </Text>
           <TextInput 
@@ -104,6 +114,7 @@ class Home extends Component{
   render(){
     return(
       <View style={styles.container}>
+        <Status/>
         <View style={styles.topBar}>
         </View>
       </View>
@@ -132,8 +143,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
   },
+  statusBar: {
+    height: 24,
+    width: 400,
+    backgroundColor: 'black',
+  },
   title: {
-    height: 230,
+    height: 190,
     width: 370,
     alignItems: 'center',
     justifyContent: 'center',
