@@ -8,6 +8,7 @@ import {
  TouchableNativeFeedback, 
 } from 'react-native';
 import {Font} from 'expo';
+import {StackNavigator} from 'react-navigation';
 
 class LogIn extends Component {
   constructor(props){
@@ -22,7 +23,7 @@ class LogIn extends Component {
   async componentDidMount(){
     await Font.loadAsync({
       'montserrat-light': require('./Assets/Fonts/Montserrat-Light.ttf'),
-      'satisfy-reg': require('./Assets/Fonts/Satisfy-Regular.ttf'),
+      'oneDay-reg': require('./Assets/Fonts/ONEDAY.ttf'),
     });
     
     this.setState({
@@ -30,6 +31,9 @@ class LogIn extends Component {
       imageLoaded: true,
     });
   }
+
+  handleChange()
+
   render(){
     let font_fam = {};
     let image = {};
@@ -39,7 +43,7 @@ class LogIn extends Component {
     }
 
     if(this.state.fontLoaded){
-      font_fam.title = 'satisfy-reg';
+      font_fam.title = 'oneDay-reg';
       font_fam.pinForm = 'montserrat-light';
     }else{
       font_fam.title = 'sans-serif';
@@ -63,6 +67,8 @@ class LogIn extends Component {
             underlineColorAndroid="black"
             onChangeText={(pin)=>this.setState({pin})}
             textAlign="center"
+            multiline={false}
+            onSubmitEditing={() => (this.state.pin == "12345678") ? navigate('Home') : null}
           />
           <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>
             or
@@ -77,10 +83,26 @@ class LogIn extends Component {
   }
 }
 
+class Home extends Component{
+  render(){
+    return(
+      <View styles={styles.container}>
+        <View styles={styles.topBar}>
+        </View>
+      </View>
+    );
+  }
+}
+
+const FinanceApp = StackNavigator({
+  LogIn: {screen: LogIn},
+  Home: {screen: Home},
+});
+
 export default class App extends Component {
   render() {
     return (
-      <LogIn />
+      <FinanceApp />
     );
   }
 }
@@ -116,5 +138,10 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingTop: 0,
     fontSize: 20,
+  },
+  topBar: {
+    width: 370,
+    backgroundColor: '#24D101',
+    heigth: 100,
   }
 });
