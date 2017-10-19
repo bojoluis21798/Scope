@@ -2,5 +2,6 @@
 
 ### Built using react-native
 
-Dependencies:
+Dependencies (Check package.json):
 *	Create-react-native-app
+*	Stack Navigator
