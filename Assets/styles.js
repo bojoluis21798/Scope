@@ -65,16 +65,14 @@ export const styles = StyleSheet.create({
   },
   body: {
     flex:1,
-    padding: 5,
+    paddingTop: 5,
+    backgroundColor: '#E7E7E7',
   },
   contentBar: {
     padding: 7,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 0.5,
-    borderBottomWidth: 0.5,
     borderColor: '#D5D5D5',
-    width: 348,
+    backgroundColor: 'white',
+    width: 360,
     marginBottom: 10,
   }
 });
