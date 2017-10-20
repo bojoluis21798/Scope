@@ -15,13 +15,37 @@ var font = "";
 var image = {};
 
 class ContentBar extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      cardBackground : "",
+    };
+  }
+
   render(){
+      switch(this.props.status){
+        case "bad":
+          this.setState({cardBackground: "red"});
+          break;
+        case "good":
+          this.setState({cardBackground: "green"});
+          break;
+        case "neutral":
+          this.setState({cardBackground: "white"});
+          break;   
+      }
+
     return(
-      <View style={styles.contentBar}>
+      <View style={[styles.contentBar, {
+        backgroundColor: this.state.cardBackground,
+      }]}>
         <Text style={[styles.standardText, {fontFamily: font}]}> 
           {this.props.barTitle}
         </Text>
-        <Text style={[styles.smallerText, {fontFamily: font}]}> 
+        <Text style={[styles.standardText, {
+          fontFamily: font,
+        }]}> 
           ₱ {this.props.barValue}
         </Text>
       </View>
@@ -87,25 +111,49 @@ export class Home extends Component{
           </Text>
         </View>
         <ScrollView style={styles.body}>
-          <Picker
-            onValueChange={
-              (itemValue, itemIndex) => 
-                this.setState({timePeriod: itemValue})
-            }
-            selectedValue={this.state.timePeriod}
-            style={{width: 150}}
-          >
-            <Picker.Item label="Week" value="Week" />
-            <Picker.Item label="Month" value="Month" />
-            <Picker.Item label="Year" value="Year" />
-          </Picker>
+          <View style={[styles.contentBar, {
+            height: 70,
+          }]}>
+            <Picker
+              onValueChange={
+                (itemValue, itemIndex) => 
+                  this.setState({timePeriod: itemValue})
+              }
+              selectedValue={this.state.timePeriod}
+              style={{width: 150}}
+            >
+              <Picker.Item label="Week" value="Week" />
+              <Picker.Item label="Month" value="Month" />
+              <Picker.Item label="Year" value="Year" />
+            </Picker>
+          </View>
 
           <View style={{marginTop: 10}}>
-            <ContentBar barTitle="Total Expenses" barValue="500" />
-            <ContentBar barTitle="Total Profit" barValue="500" />
-            <ContentBar barTitle="Net Profit" barValue="500" />
-            <ContentBar barTitle="Gross Profit" barValue="500" />
-            <ContentBar barTitle="Total Goods Sold" barValue="500" />
+            <ContentBar 
+              barTitle="Total Expenses" 
+              barValue="500"
+              status="bad"
+            />
+            <ContentBar 
+              barTitle="Total Profit" 
+              barValue="500" 
+              status="good"
+            />
+            <ContentBar 
+              barTitle="Net Profit"
+              barValue="500" 
+              status="neutral"
+            />
+            <ContentBar 
+              barTitle="Gross Profit" 
+              barValue="500" 
+              status="good"
+            />
+            <ContentBar 
+              barTitle="Total Goods Sold"
+              barValue="500" 
+              status="bad"
+            />
           </View>
         </ScrollView>
       </View>

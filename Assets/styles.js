@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 370,
     backgroundColor: '#24D101',
-    height: 60,
+    height: 120,
     padding: 14,
     paddingBottom: 0,
   },
@@ -65,14 +65,17 @@ export const styles = StyleSheet.create({
   },
   body: {
     flex:1,
-    paddingTop: 5,
     backgroundColor: '#E7E7E7',
   },
   contentBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 7,
     borderColor: '#D5D5D5',
     backgroundColor: 'white',
     width: 360,
-    marginBottom: 10,
+    height: 100,
+    marginBottom: 15,
   }
 });
