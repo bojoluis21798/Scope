@@ -20,7 +20,6 @@ var arrow = {};
 class ContentBar extends Component {
   render(){
     let background = "";
-
     switch(this.props.status){
       case 'good':
         background = '#55B838';    
@@ -32,7 +31,6 @@ class ContentBar extends Component {
         background='#CDCF00';
         break;
     }
-
     return(
       <View style={[styles.contentBar, 
         {
@@ -92,7 +90,10 @@ export class Home extends Component{
       timePeriod: "",
       dateRange: "", 
       color: false,
+      folded: true,
     };
+
+    this.handleParent = this.handleParent.bind(this);
   }
 
   async componentDidMount(){
@@ -107,6 +108,10 @@ export class Home extends Component{
     header: null,
     drawerLabel: 'Home',
   };
+
+  handleParent(obj){
+    this.setState(obj);
+  }
 
   render(){
 
@@ -180,9 +185,10 @@ export class Home extends Component{
             </View>
             <View style={{flexDirection: 'row'}}>
               <CheckBox
-                leftText="Status"
+                leftText="Status Colors"
+                leftTextStyle={{fontFamily: font}}
                 style={{
-                  width: 100, 
+                  width: 125, 
                   margin: 10,
                   justifyContent: 'flex-end',          
                 }}
@@ -196,26 +202,31 @@ export class Home extends Component{
               barTitle="Total Expenses" 
               barValue="0.00" 
               status={(this.state.color) ? 'good' : 'good'}
+              parent={[this.state, this.handleParent]}
             />
             <ContentBar 
               barTitle="Total Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'bad' : 'good'}
+              parent={[this.state, this.handleParent]}
             />
             <ContentBar 
               barTitle="Net Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
+              parent={[this.state, this.handleParent]}
             />
             <ContentBar 
               barTitle="Gross Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
+              parent={[this.state, this.handleParent]}
             />
             <ContentBar 
               barTitle="Total Goods Sold" 
               barValue="0.00" 
               status={(this.state.color) ? 'good' : 'good'}
+              parent={[this.state, this.handleParent]}
             />
           </View>
         </ScrollView>
