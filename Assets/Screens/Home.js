@@ -96,6 +96,7 @@ export class Home extends Component{
     };
 
     this.handleParent = this.handleParent.bind(this);
+    this.setState = this.setState.bind(this);
   }
 
   async componentDidMount(){
