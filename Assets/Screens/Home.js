@@ -47,10 +47,10 @@ class ContentBar extends Component {
           });
           break;   
       }
-
+      console.log(this.state.cardBackground)
     return(
       <View style={[styles.contentBar, {
-        backgroundColor: this.state.cardBackground,
+        //backgroundColor: 'white',
       }]}>
         <View style={{
           width: 340,
