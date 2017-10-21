@@ -21,7 +21,7 @@ class ContentBar extends Component {
     super(props);
 
     this.state = {
-      cardBackground : "",
+      cardBackground : "white",
       color: "",
     };
   }
