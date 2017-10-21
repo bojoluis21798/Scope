@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   View,
   TouchableWithoutFeedback,
+  TouchableNativeFeedback,
   Image,
   Text,
   Picker,
@@ -60,20 +61,22 @@ class ContentBar extends Component {
             ₱ {this.props.barValue}
           </Text>
         </View>
-        <View style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderTopWidth: 3,
-          borderTopColor: '#E7E7E7',
-          marginTop: 10,
-          width: 340,
-          height: 30,
-        }}>
-        <Image 
-          source= {arrow}
-          style={{height: 20, width: 20}}
-        />
-        </View>
+        <TouchableNativeFeedback>
+          <View style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderTopWidth: 3,
+            borderTopColor: '#E7E7E7',
+            marginTop: 10,
+            width: 340,
+            height: 30,
+          }}>
+          <Image 
+            source= {arrow}
+            style={{height: 20, width: 20}}
+          />
+          </View>
+        </TouchableNativeFeedback>
       </View>
     );
   }
