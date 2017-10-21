@@ -19,7 +19,9 @@ var arrow = {};
 
 class ContentBar extends Component {
   render(){
+    let [state, handler] = this.props.parent;
     let background = "";
+
     switch(this.props.status){
       case 'good':
         background = '#55B838';    
@@ -63,7 +65,7 @@ class ContentBar extends Component {
           <View style={{
             alignItems: 'center',
             justifyContent: 'center',
-            borderTopWidth: 3,
+            borderTopWidth: 5,
             borderTopColor: '#E7E7E7',
             marginTop: 10,
             width: 340,
@@ -71,7 +73,7 @@ class ContentBar extends Component {
           }}>
           <Image 
             source= {arrow}
-            style={{height: 20, width: 20}}
+            style={{height: 12, width: 20}}
           />
           </View>
         </TouchableNativeFeedback>
