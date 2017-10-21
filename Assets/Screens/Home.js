@@ -16,25 +16,48 @@ var image = {};
 
 class ContentBar extends Component {
   render(){
+    let fontColor = "";
+    let background = "";
+
+    switch(this.props.status){
+      case 'good':
+        background = '#55B838';
+        fontColor = 'white';
+        break;
+      case 'bad': 
+        background = '#BB3D3D';
+        fontColor = 'white';
+        break;
+      case 'neutral':
+        background='white';
+        fontColor='black';
+        break;
+    }
+
     return(
       <View style={[styles.contentBar, 
         {
           width: 340,
           borderRadius: 5,
+          backgroundColor: background,
         }
       ]}>
         <View style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}>
-          <Text style={[styles.standardText, {fontFamily: font}]}> 
+          <Text style={[styles.standardText, {
+            fontFamily: font,
+            color: fontColor,
+          }]}> 
             {this.props.barTitle}
           </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={[styles.standardText, {fontFamily: font}]}> 
-              ₱ {this.props.barValue}
-            </Text>
-          </View>
+          <Text style={[styles.standardText, {
+            fontFamily: font,
+            color: fontColor,
+          }]}> 
+            ₱ {this.props.barValue}
+          </Text>
         </View>
       </View>
     );
@@ -117,11 +140,31 @@ export class Home extends Component{
           </View>
 
           <View style={{marginTop: 10, paddingLeft: 10}}>
-            <ContentBar barTitle="Total Expenses" barValue="500" />
-            <ContentBar barTitle="Total Profit" barValue="500" />
-            <ContentBar barTitle="Net Profit" barValue="500" />
-            <ContentBar barTitle="Gross Profit" barValue="500" />
-            <ContentBar barTitle="Total Goods Sold" barValue="500" />
+            <ContentBar 
+              barTitle="Total Expenses" 
+              barValue="500" 
+              status='good'
+            />
+            <ContentBar 
+              barTitle="Total Profit" 
+              barValue="500" 
+              status='bad'
+            />
+            <ContentBar 
+              barTitle="Net Profit" 
+              barValue="500" 
+              status='neutral'
+            />
+            <ContentBar 
+              barTitle="Gross Profit" 
+              barValue="500" 
+              status='good'
+            />
+            <ContentBar 
+              barTitle="Total Goods Sold" 
+              barValue="500" 
+              status='bad'
+            />
           </View>
         </ScrollView>
       </View>
