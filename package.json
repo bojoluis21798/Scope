@@ -23,6 +23,7 @@
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
     "react-native-dropdown": "0.0.6",
+    "react-native-foldview": "^1.1.1",
     "react-navigation": "^1.0.0-beta.15",
     "webfontloader": "^1.6.28"
   }
