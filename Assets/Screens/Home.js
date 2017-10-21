@@ -17,7 +17,12 @@ var image = {};
 class ContentBar extends Component {
   render(){
     return(
-      <View style={styles.contentBar}>
+      <View style={[styles.contentBar, 
+        {
+          width: 340,
+          borderRadius: 5,
+        }
+      ]}>
         <View style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
@@ -25,9 +30,11 @@ class ContentBar extends Component {
           <Text style={[styles.standardText, {fontFamily: font}]}> 
             {this.props.barTitle}
           </Text>
-          <Text style={[styles.standardText, {fontFamily: font}]}> 
-            ₱ {this.props.barValue}
-          </Text>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={[styles.standardText, {fontFamily: font}]}> 
+              ₱ {this.props.barValue}
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -109,7 +116,7 @@ export class Home extends Component{
             </Picker>
           </View>
 
-          <View style={{marginTop: 10}}>
+          <View style={{marginTop: 10, paddingLeft: 10}}>
             <ContentBar barTitle="Total Expenses" barValue="500" />
             <ContentBar barTitle="Total Profit" barValue="500" />
             <ContentBar barTitle="Net Profit" barValue="500" />

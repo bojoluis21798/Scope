@@ -68,12 +68,12 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E7E7E7',
   },
   contentBar: {
-    padding: 7,
+    padding: 15,
     borderColor: '#D5D5D5',
     backgroundColor: 'white',
     width: 360,
     height: 100,
-    marginBottom: 20,
+    marginBottom: 15,
     justifyContent: 'center',
   }
 });
