@@ -14,6 +14,7 @@ import {Font} from 'expo';
 
 var font = "";
 var image = {};
+var arrow = {};
 
 class ContentBar extends Component {
   constructor(props){
@@ -68,7 +69,7 @@ class ContentBar extends Component {
             borderColor: '#D5D5D5', 
           }}>
             <Image 
-              source={require('../Images/arrow.png')}
+              source={arrow}
               style= {{height: 24, width: 24}}
             />
           </View>
@@ -106,6 +107,7 @@ export class Home extends Component{
 
     if(this.state.imageLoaded){
       image = require('../Images/menu.png');
+      arrow = require('../Images/arrow.png');
     }
 
     if(this.state.fontLoaded){
