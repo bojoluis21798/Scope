@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   View,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   Image,
   Text,
   Picker,
@@ -20,19 +21,29 @@ class ContentBar extends Component {
 
     this.state = {
       cardBackground : "",
+      color: "",
     };
   }
 
   render(){
       switch(this.props.status){
         case "bad":
-          this.setState({cardBackground: "red"});
+          this.setState({
+            cardBackground: "#FF5353",
+            color: "white",
+          });
           break;
         case "good":
-          this.setState({cardBackground: "green"});
+          this.setState({
+            cardBackground: "#24D101",
+            color: "white",
+          });
           break;
         case "neutral":
-          this.setState({cardBackground: "white"});
+          this.setState({
+            cardBackground: "white",
+            color: 'black',
+          });
           break;   
       }
 
@@ -40,14 +51,28 @@ class ContentBar extends Component {
       <View style={[styles.contentBar, {
         backgroundColor: this.state.cardBackground,
       }]}>
-        <Text style={[styles.standardText, {fontFamily: font}]}> 
-          {this.props.barTitle}
-        </Text>
-        <Text style={[styles.standardText, {
-          fontFamily: font,
-        }]}> 
-          ₱ {this.props.barValue}
-        </Text>
+        <View style={{width: 340}}>
+          <Text style={[styles.standardText, {fontFamily: font}]}> 
+            {this.props.barTitle}
+          </Text>
+          <Text style={[styles.standardText, {
+            fontFamily: font,
+          }]}> 
+            ₱ {this.props.barValue}
+          </Text>
+        </View>
+        <TouchableOpacity>
+          <View style={{
+            width: 340,
+            borderTopWidth: 1,
+            borderColor: '#D5D5D5', 
+          }}>
+            <Image 
+              source={require('../Images/arrow.png')}
+              style= {{height: 24, width: 24}}
+            />
+          </View>
+        </TouchableOpacity> 
       </View>
     );
   }

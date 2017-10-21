@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
   topBar: {
     flexDirection: 'row',
     width: 370,
-    backgroundColor: '#24D101',
+    backgroundColor: '#24D101', //green
     height: 120,
     padding: 14,
     paddingBottom: 0,
@@ -68,13 +68,13 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E7E7E7',
   },
   contentBar: {
-    flexDirection: 'row',
+    borderRadius: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 7,
     borderColor: '#D5D5D5',
     backgroundColor: 'white',
-    width: 360,
+    width: 340,
     height: 100,
     marginBottom: 15,
   }
