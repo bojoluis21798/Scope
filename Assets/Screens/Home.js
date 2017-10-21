@@ -52,7 +52,10 @@ class ContentBar extends Component {
       <View style={[styles.contentBar, {
         backgroundColor: this.state.cardBackground,
       }]}>
-        <View style={{width: 340}}>
+        <View style={{
+          width: 340,
+          flexDirection: 'row',
+        }}>
           <Text style={[styles.standardText, {fontFamily: font}]}> 
             {this.props.barTitle}
           </Text>
@@ -68,10 +71,10 @@ class ContentBar extends Component {
             borderTopWidth: 1,
             borderColor: '#D5D5D5', 
           }}>
-            <Image 
+            {/*<Image 
               source={arrow}
               style= {{height: 24, width: 24}}
-            />
+            />*/}
           </View>
         </TouchableOpacity> 
       </View>
@@ -107,7 +110,7 @@ export class Home extends Component{
 
     if(this.state.imageLoaded){
       image = require('../Images/menu.png');
-      arrow = require('../Images/arrow.png');
+      //arrow = require('../Images/arrow.png');
     }
 
     if(this.state.fontLoaded){
