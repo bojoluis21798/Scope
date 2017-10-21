@@ -10,6 +10,7 @@ import {
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
+import CheckBox from 'react-native-check-box';
 
 var font = "";
 var image = {};
@@ -21,13 +22,13 @@ class ContentBar extends Component {
 
     switch(this.props.status){
       case 'good':
-        background = '#55B838';      
+        background = '#55B838';    
         break;
       case 'bad': 
         background = '#BB3D3D';
         break;
       case 'neutral':
-        background='#D6D826';
+        background='#CDCF00';
         break;
     }
 
@@ -37,11 +38,14 @@ class ContentBar extends Component {
           width: 340,
           borderRadius: 5,
           backgroundColor: background,
+          justifyContent: 'space-between',
         }
       ]}>
         <View style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
+          margin: 10,
+          marginBottom: 0,
         }}>
           <Text style={[styles.standardText, {
             fontFamily: font,
@@ -57,21 +61,18 @@ class ContentBar extends Component {
           </Text>
         </View>
         <View style={{
-          marginTop: 5,
-          borderWidth: 1,
-          borderColor: 'white',
-          width: 310,
-        }}>
-        </View>
-        <View style={{
           alignItems: 'center',
+          justifyContent: 'center',
+          borderTopWidth: 3,
+          borderTopColor: '#E7E7E7',
           marginTop: 10,
-          borderWidth: 1,
-          borderColor: 'white',
-          width: 310,
+          width: 340,
           height: 30,
         }}>
-        <Image source= {arrow}/>
+        <Image 
+          source= {arrow}
+          style={{height: 20, width: 20}}
+        />
         </View>
       </View>
     );
@@ -86,6 +87,8 @@ export class Home extends Component{
       imageLoaded: false,
       fontLoaded: false,
       timePeriod: "",
+      dateRange: "", 
+      color: false,
     };
   }
 
@@ -138,47 +141,78 @@ export class Home extends Component{
         </View>
         <ScrollView style={styles.body}>
           <View style={[styles.contentBar,
-            {height: 50}
+            {
+              height: 100,
+              padding: 10,
+            }
           ]}>
-            <Picker
-              onValueChange={
-                (itemValue, itemIndex) => 
-                  this.setState({timePeriod: itemValue})
-              }
-              selectedValue={this.state.timePeriod}
-              style={{width: 150}}
-            >
-              <Picker.Item label="Week" value="Week" />
-              <Picker.Item label="Month" value="Month" />
-              <Picker.Item label="Year" value="Year" />
-            </Picker>
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+              <Picker
+                onValueChange={
+                  (itemValue, itemIndex) => 
+                    this.setState({timePeriod: itemValue})
+                }
+                selectedValue={this.state.timePeriod}
+                style={{width: 150}}
+              >
+                <Picker.Item label="Weekly" value="Weekly" />
+                <Picker.Item label="Monthly" value="Monthly" />
+                <Picker.Item label="Yearly" value="Yearly" />
+              </Picker>
+              <Picker
+                onValueChange={
+                  (itemValue, itemIndex) => 
+                    this.setState({timePeriod: itemValue})
+                }
+                selectedValue={this.state.timePeriod}
+                style={{width: 200}}
+              >
+                <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
+                <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
+                <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
+              </Picker>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <CheckBox
+                leftText="Status"
+                style={{
+                  width: 100, 
+                  margin: 10,
+                  justifyContent: 'flex-end',          
+                }}
+                onClick={() => this.setState({color: !this.state.color})}
+              />
+            </View>
           </View>
 
           <View style={{marginTop: 10, paddingLeft: 10}}>
             <ContentBar 
               barTitle="Total Expenses" 
               barValue="500" 
-              status='good'
+              status={(this.state.color) ? 'neutral' : 'good'}
             />
             <ContentBar 
               barTitle="Total Profit" 
               barValue="500" 
-              status='bad'
+              status={(this.state.color) ? 'neutral' : 'good'}
             />
             <ContentBar 
               barTitle="Net Profit" 
               barValue="500" 
-              status='neutral'
+              status={(this.state.color) ? 'neutral' : 'good'}
             />
             <ContentBar 
               barTitle="Gross Profit" 
               barValue="500" 
-              status='good'
+              status={(this.state.color) ? 'neutral' : 'good'}
             />
             <ContentBar 
               barTitle="Total Goods Sold" 
               barValue="500" 
-              status='bad'
+              status={(this.state.color) ? 'neutral' : 'good'}
             />
           </View>
         </ScrollView>
