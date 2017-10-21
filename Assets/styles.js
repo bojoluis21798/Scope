@@ -65,7 +65,6 @@ export const styles = StyleSheet.create({
   },
   body: {
     flex:1,
-    paddingTop: 5,
     backgroundColor: '#E7E7E7',
   },
   contentBar: {
@@ -73,6 +72,7 @@ export const styles = StyleSheet.create({
     borderColor: '#D5D5D5',
     backgroundColor: 'white',
     width: 360,
-    marginBottom: 10,
+    marginBottom: 20,
+    justifyContent: 'center',
   }
 });

@@ -87,18 +87,22 @@ export class Home extends Component{
           </Text>
         </View>
         <ScrollView style={styles.body}>
-          <Picker
-            onValueChange={
-              (itemValue, itemIndex) => 
-                this.setState({timePeriod: itemValue})
-            }
-            selectedValue={this.state.timePeriod}
-            style={{width: 150}}
-          >
-            <Picker.Item label="Week" value="Week" />
-            <Picker.Item label="Month" value="Month" />
-            <Picker.Item label="Year" value="Year" />
-          </Picker>
+          <View style={[styles.contentBar,
+            {height: 50}
+          ]}>
+            <Picker
+              onValueChange={
+                (itemValue, itemIndex) => 
+                  this.setState({timePeriod: itemValue})
+              }
+              selectedValue={this.state.timePeriod}
+              style={{width: 150}}
+            >
+              <Picker.Item label="Week" value="Week" />
+              <Picker.Item label="Month" value="Month" />
+              <Picker.Item label="Year" value="Year" />
+            </Picker>
+          </View>
 
           <View style={{marginTop: 10}}>
             <ContentBar barTitle="Total Expenses" barValue="500" />
