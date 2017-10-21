@@ -18,12 +18,17 @@ class ContentBar extends Component {
   render(){
     return(
       <View style={styles.contentBar}>
-        <Text style={[styles.standardText, {fontFamily: font}]}> 
-          {this.props.barTitle}
-        </Text>
-        <Text style={[styles.smallerText, {fontFamily: font}]}> 
-          ₱ {this.props.barValue}
-        </Text>
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+          <Text style={[styles.standardText, {fontFamily: font}]}> 
+            {this.props.barTitle}
+          </Text>
+          <Text style={[styles.standardText, {fontFamily: font}]}> 
+            ₱ {this.props.barValue}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -80,7 +85,7 @@ export class Home extends Component{
             {
               fontFamily: font, 
               fontSize: 24, 
-              color: 'white'
+              color: 'white',
             }]
           }>
             Summary Report 
