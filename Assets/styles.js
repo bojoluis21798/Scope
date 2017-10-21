@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     borderColor: '#D5D5D5',
     backgroundColor: 'white',
     width: 360,
-    height: 100,
+    height: 120,
     marginBottom: 15,
     justifyContent: 'center',
   }

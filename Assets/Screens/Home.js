@@ -13,24 +13,21 @@ import {Font} from 'expo';
 
 var font = "";
 var image = {};
+var arrow = {};
 
 class ContentBar extends Component {
   render(){
-    let fontColor = "";
     let background = "";
 
     switch(this.props.status){
       case 'good':
-        background = '#55B838';
-        fontColor = 'white';
+        background = '#55B838';      
         break;
       case 'bad': 
         background = '#BB3D3D';
-        fontColor = 'white';
         break;
       case 'neutral':
-        background='white';
-        fontColor='black';
+        background='#D6D826';
         break;
     }
 
@@ -48,16 +45,33 @@ class ContentBar extends Component {
         }}>
           <Text style={[styles.standardText, {
             fontFamily: font,
-            color: fontColor,
+            color: 'white',
           }]}> 
             {this.props.barTitle}
           </Text>
           <Text style={[styles.standardText, {
             fontFamily: font,
-            color: fontColor,
+            color: 'white',
           }]}> 
             ₱ {this.props.barValue}
           </Text>
+        </View>
+        <View style={{
+          marginTop: 5,
+          borderWidth: 1,
+          borderColor: 'white',
+          width: 310,
+        }}>
+        </View>
+        <View style={{
+          alignItems: 'center',
+          marginTop: 10,
+          borderWidth: 1,
+          borderColor: 'white',
+          width: 310,
+          height: 30,
+        }}>
+        <Image source= {arrow}/>
         </View>
       </View>
     );
@@ -92,6 +106,7 @@ export class Home extends Component{
 
     if(this.state.imageLoaded){
       image = require('../Images/menu.png');
+      arrow = require('../Images/arrow.png');
     }
 
     if(this.state.fontLoaded){
