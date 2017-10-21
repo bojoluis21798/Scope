@@ -12,7 +12,7 @@ import {LogIn} from './Assets/Screens/LogIn.js';
 import {Home} from './Assets/Screens/Home.js';
 
 const FinanceApp = StackNavigator({
-  //LogIn: {screen: LogIn},
+  LogIn: {screen: LogIn},
   Home: {screen: Home},
 }, {headerMode: 'screen'});
 

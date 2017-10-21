@@ -191,28 +191,28 @@ export class Home extends Component{
           <View style={{marginTop: 10, paddingLeft: 10}}>
             <ContentBar 
               barTitle="Total Expenses" 
-              barValue="500" 
-              status={(this.state.color) ? 'neutral' : 'good'}
+              barValue="0.00" 
+              status={(this.state.color) ? 'good' : 'good'}
             />
             <ContentBar 
               barTitle="Total Profit" 
-              barValue="500" 
-              status={(this.state.color) ? 'neutral' : 'good'}
+              barValue="0.00" 
+              status={(this.state.color) ? 'bad' : 'good'}
             />
             <ContentBar 
               barTitle="Net Profit" 
-              barValue="500" 
+              barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
             />
             <ContentBar 
               barTitle="Gross Profit" 
-              barValue="500" 
+              barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
             />
             <ContentBar 
               barTitle="Total Goods Sold" 
-              barValue="500" 
-              status={(this.state.color) ? 'neutral' : 'good'}
+              barValue="0.00" 
+              status={(this.state.color) ? 'good' : 'good'}
             />
           </View>
         </ScrollView>
