@@ -17,18 +17,27 @@ var font = "";
 var image = {};
 var arrow = {};
 
-class ContentBar extends Component {
-  renderStatistics(){
-    return(
-      <View style={{flex: 1, backgroundColor: 'white'}}>
-        <Text>HELLO</Text>
-      </View>
-    );
+class RenderStatistics extends Component {
+  render(){
+    if(this.props.isRendered){
+      return(
+        <View style={{padding: 10, flex: 1, backgroundColor: 'white'}}>
+          <Text>HELLO</Text>
+        </View>
+      );
+    }
+    else{
+      return(
+        <View />
+      );
+    }
   }
+}
 
+class ContentBar extends Component {
   render(){
     let background = "";
-
+    console.log(this.props.parentState);
     switch(this.props.status){
       case 'good':
         background = '#55B838';    
@@ -69,6 +78,7 @@ class ContentBar extends Component {
               ₱ {this.props.barValue}
             </Text>
           </View>
+          <RenderStatistics isRendered={this.props.parentState.rendered} />
           <TouchableNativeFeedback>
             <View style={{
               alignItems: 'center',
@@ -103,7 +113,7 @@ export class Home extends Component{
       timePeriod: "",
       dateRange: "", 
       color: false,
-      folded: true,
+      rendered: false,
     };
 
     this.handleParent = this.handleParent.bind(this);

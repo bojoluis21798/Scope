@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statusBar: {
-    flex: 0.067,
     flexDirection: 'row',
     backgroundColor: 'black',
   },
