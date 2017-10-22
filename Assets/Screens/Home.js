@@ -18,8 +18,15 @@ var image = {};
 var arrow = {};
 
 class ContentBar extends Component {
+  renderStatistics(){
+    return(
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        <Text>HELLO</Text>
+      </View>
+    );
+  }
+
   render(){
-    let [state, handler] = this.props.parent;
     let background = "";
 
     switch(this.props.status){
@@ -36,48 +43,52 @@ class ContentBar extends Component {
     return(
       <View style={[styles.contentBar, 
         {
-          width: 340,
+          marginLeft: 10,
+          marginRight: 10,
           borderRadius: 5,
           backgroundColor: background,
           justifyContent: 'space-between',
         }
       ]}>
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          margin: 10,
-          marginBottom: 0,
-        }}>
-          <Text style={[styles.standardText, {
-            fontFamily: font,
-            color: 'white',
-          }]}> 
-            {this.props.barTitle}
-          </Text>
-          <Text style={[styles.standardText, {
-            fontFamily: font,
-            color: 'white',
-          }]}> 
-            ₱ {this.props.barValue}
-          </Text>
-        </View>
-        <TouchableNativeFeedback>
+      <View style={{flex: 1}}>
           <View style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderTopWidth: 5,
-            borderTopColor: '#E7E7E7',
-            marginTop: 10,
-            width: 340,
-            height: 30,
+            margin: 8,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
           }}>
-          <Image 
-            source= {arrow}
-            style={{height: 12, width: 20}}
-          />
+            <Text style={[styles.standardText, {
+              fontFamily: font,
+              color: 'white',
+            }]}> 
+              {this.props.barTitle}
+            </Text>
+            <Text style={[styles.standardText, {
+              fontFamily: font,
+              color: 'white',
+            }]}> 
+              ₱ {this.props.barValue}
+            </Text>
           </View>
-        </TouchableNativeFeedback>
+          <TouchableNativeFeedback>
+            <View style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderTopWidth: 5,
+              borderTopColor: '#E7E7E7',
+            }}>
+            <Image 
+              source= {arrow}
+              style={{
+                marginBottom: 6,
+                marginTop: 6,
+                height: 12, 
+                width: 20,
+              }}
+            />
+            </View>
+          </TouchableNativeFeedback>
       </View>
+    </View>
     );
   }
 }
@@ -156,11 +167,11 @@ export class Home extends Component{
         <ScrollView style={styles.body}>
           <View style={[styles.contentBar,
             {
-              height: 100,
-              padding: 10,
+              padding: 5,
             }
           ]}>
             <View style={{
+              flex: 1,
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
@@ -203,36 +214,41 @@ export class Home extends Component{
             </View>
           </View>
 
-          <View style={{marginTop: 10, paddingLeft: 10}}>
+          <View style={{marginTop: 10}}>
             <ContentBar 
               barTitle="Total Expenses" 
               barValue="0.00" 
               status={(this.state.color) ? 'good' : 'good'}
-              parent={[this.state, this.handleParent]}
+              parentState={this.state}
+              parentSet={this.handleParent}
             />
             <ContentBar 
               barTitle="Total Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'bad' : 'good'}
-              parent={[this.state, this.handleParent]}
+              parentState={this.state}
+              parentSet={this.handleParent}
             />
             <ContentBar 
               barTitle="Net Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
-              parent={[this.state, this.handleParent]}
+              parentState={this.state}
+              parentSet={this.handleParent}
             />
             <ContentBar 
               barTitle="Gross Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
-              parent={[this.state, this.handleParent]}
+              parentState={this.state}
+              parentSet={this.handleParent}
             />
             <ContentBar 
               barTitle="Total Goods Sold" 
               barValue="0.00" 
               status={(this.state.color) ? 'good' : 'good'}
-              parent={[this.state, this.handleParent]}
+              parentState={this.state}
+              parentSet={this.handleParent}
             />
           </View>
         </ScrollView>
