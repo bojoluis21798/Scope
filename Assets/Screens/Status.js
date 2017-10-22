@@ -5,7 +5,9 @@ import {styles} from '../styles.js';
 export class Status extends Component{
   render(){
     return(
-      <View style={styles.statusBar}></View>
+      <View style={styles.statusBar}>
+      	<View style={{flex: 1}} />
+      </View>
     );
   }
 }
