@@ -45,16 +45,13 @@ export const styles = StyleSheet.create({
   },
   topBar: {
     flexDirection: 'row',
-    width: 440,
     backgroundColor: '#24D101',
-    height: 70,
+
     padding: 10,
-    borderWidth: 1,
   },
   menuIcon: {
     height: 34,
     width: 34,
-    marginRight: 15,
   },
   standardText: {
     fontSize: 25,

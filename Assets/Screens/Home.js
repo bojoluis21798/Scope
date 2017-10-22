@@ -133,23 +133,26 @@ export class Home extends Component{
       <View style={styles.container}>
         <Status/>
         <View style={styles.topBar}>
-          <TouchableWithoutFeedback>
-            <Image 
-              source={image}
-              style={styles.menuIcon}
-            />
-          </TouchableWithoutFeedback>  
-          <Text style={
-            [styles.standardText,
-            {
-              fontFamily: font, 
-              fontSize: 24, 
-              color: 'white',
-            }]
-          }>
-            Summary Report 
-          </Text>
-        </View>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <TouchableWithoutFeedback>
+              <Image 
+                source={image}
+                style={styles.menuIcon}
+              />
+            </TouchableWithoutFeedback>  
+            <Text style={
+              [styles.standardText,
+              {
+                fontFamily: font, 
+                fontSize: 24, 
+                color: 'white',
+                marginLeft: 10,
+              }]
+            }>
+              Summary Report 
+            </Text>
+          </View>
+        </View>  
         <ScrollView style={styles.body}>
           <View style={[styles.contentBar,
             {
