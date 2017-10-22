@@ -94,9 +94,9 @@ export class LogIn extends Component {
           </Text>
           <Image 
             source={image} 
-            style={{height: 150, width: 100, marginTop: 10}}
+            style={{height: 120, width: 80}}
           />
-          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm, fontSize: 15}]}>
+          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm, fontSize: 14}]}>
             Scan Fingerprint
           </Text>
         </View>

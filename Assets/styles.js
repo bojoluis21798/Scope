@@ -12,12 +12,11 @@ export const styles = StyleSheet.create({
   },
   statusBar: {
     height: statHeight,
-    width: 400,
+    width: 600,
     backgroundColor: 'black',
   },
   title: {
-    height: 190,
-    width: 370,
+    flex: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#24D101',
@@ -25,21 +24,24 @@ export const styles = StyleSheet.create({
   titleText: {
     fontSize: 90,
     color: '#E2FFDD',
+    marginLeft: 42.3,
+    marginRight: 42.3,
   },
   passCodeForm:{
     flex: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
+    // borderWidth: 1,
     marginTop: 5,
+    padding: 30,
+    paddingTop: 0,
   },
   passCodeText:{
-    fontSize: 25,
-    marginTop: 10,
+    fontSize: 23,
   },
   passCodeTextField:{
     width: 200,
     height: 70,
-    padding: 5,
-    paddingTop: 0,
     fontSize: 20,
   },
   topBar: {
