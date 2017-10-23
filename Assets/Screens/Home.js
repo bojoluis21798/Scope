@@ -128,6 +128,7 @@ export class Home extends Component{
     this.setRendered_3 = this.setRendered_3.bind(this);
     this.setRendered_4 = this.setRendered_4.bind(this);
     this.setRendered_5 = this.setRendered_5.bind(this);
+    this.setAllRendered = this.setAllRendered.bind(this);
     this.setState = this.setState.bind(this);
   }
 
@@ -158,6 +159,15 @@ export class Home extends Component{
   }
   setRendered_5(){
     this.setState({rendered_5: !this.state.rendered_5});
+  }
+  setAllRendered(){
+    this.setState({
+      rendered_1: true,
+      rendered_2: true,
+      rendered_3: true,
+      rendered_4: true,
+      rendered_5: true,
+    });
   }
 
   render(){
@@ -253,22 +263,24 @@ export class Home extends Component{
                 }}
                 onClick={() => this.setState({color: !this.state.color})}
               />
-              <CheckBox
-                leftText="Open all stat"
-                leftTextStyle={{fontFamily: font}}
-                style={{
-                  width: 125, 
-                  margin: 10,
-                  justifyContent: 'flex-end',          
-                }}
-                onClick={() => this.setState({
-                  rendered_1: !this.state.rendered_1,
-                  rendered_2: !this.state.rendered_2,
-                  rendered_3: !this.state.rendered_3,
-                  rendered_4: !this.state.rendered_4,
-                  rendered_5: !this.state.rendered_5,
-                })}
-              />
+              <TouchableNativeFeedback
+                onPress={this.setAllRendered}
+              >
+                <Text
+                  style={{
+                    width: 140,
+                    margin: 10,
+                    justifyContent: 'flex-end',  
+                    fontSize: 17, 
+                    fontFamily: font,
+                    color: 'white',
+                    backgroundColor: '#24D101',
+                    textAlign: 'center'       
+                  }}
+                >
+                  Show All Statistics
+                </Text>
+              </TouchableNativeFeedback>
             </View>
           </View>
 
