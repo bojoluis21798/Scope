@@ -78,8 +78,10 @@ class ContentBar extends Component {
               ₱ {this.props.barValue}
             </Text>
           </View>
-          <RenderStatistics isRendered={this.props.parentState.rendered} />
-          <TouchableNativeFeedback>
+          <RenderStatistics isRendered={this.props.renderedStat} />
+          <TouchableNativeFeedback
+            onPress={this.props.parentSet}
+          >
             <View style={{
               alignItems: 'center',
               justifyContent: 'center',
@@ -113,10 +115,18 @@ export class Home extends Component{
       timePeriod: "",
       dateRange: "", 
       color: false,
-      rendered: false,
+      rendered_1: false,
+      rendered_2: false,
+      rendered_3: false,
+      rendered_4: false,
+      rendered_5: false,
     };
 
-    this.handleParent = this.handleParent.bind(this);
+    this.setRendered_1 = this.setRendered_1.bind(this);
+    this.setRendered_2 = this.setRendered_2.bind(this);
+    this.setRendered_3 = this.setRendered_3.bind(this);
+    this.setRendered_4 = this.setRendered_4.bind(this);
+    this.setRendered_5 = this.setRendered_5.bind(this);
     this.setState = this.setState.bind(this);
   }
 
@@ -133,8 +143,20 @@ export class Home extends Component{
     drawerLabel: 'Home',
   };
 
-  handleParent(obj){
-    this.setState(obj);
+  setRendered_1(){
+    this.setState({rendered_1: !this.state.rendered_1});
+  }
+  setRendered_2(){
+    this.setState({rendered_2: !this.state.rendered_2});
+  }
+  setRendered_3(){
+    this.setState({rendered_3: !this.state.rendered_3});
+  }
+  setRendered_4(){
+    this.setState({rendered_4: !this.state.rendered_4});
+  }
+  setRendered_5(){
+    this.setState({rendered_5: !this.state.rendered_5});
   }
 
   render(){
@@ -229,36 +251,36 @@ export class Home extends Component{
               barTitle="Total Expenses" 
               barValue="0.00" 
               status={(this.state.color) ? 'good' : 'good'}
-              parentState={this.state}
-              parentSet={this.handleParent}
+              renderedStat={this.state.rendered_1}
+              parentSet={this.setRendered_1}
             />
             <ContentBar 
               barTitle="Total Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'bad' : 'good'}
-              parentState={this.state}
-              parentSet={this.handleParent}
+              renderedStat={this.state.rendered_2}
+              parentSet={this.setRendered_2}
             />
             <ContentBar 
               barTitle="Net Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
-              parentState={this.state}
-              parentSet={this.handleParent}
+              renderedStat={this.state.rendered_3}
+              parentSet={this.setRendered_3}
             />
             <ContentBar 
               barTitle="Gross Profit" 
               barValue="0.00" 
               status={(this.state.color) ? 'neutral' : 'good'}
-              parentState={this.state}
-              parentSet={this.handleParent}
+              renderedStat={this.state.rendered_4}
+              parentSet={this.setRendered_4}
             />
             <ContentBar 
               barTitle="Total Goods Sold" 
               barValue="0.00" 
               status={(this.state.color) ? 'good' : 'good'}
-              parentState={this.state}
-              parentSet={this.handleParent}
+              renderedStat={this.state.rendered_5}
+              parentSet={this.setRendered_5}
             />
           </View>
         </ScrollView>
