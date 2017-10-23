@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E7E7E7',
   },
   contentBar: {
-    flex: 0.5,
+    flex: 1,
     paddingBottom: 0,
     backgroundColor: 'white',
     marginBottom: 15,

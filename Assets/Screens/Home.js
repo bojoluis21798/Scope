@@ -21,7 +21,7 @@ class RenderStatistics extends Component {
   render(){
     if(this.props.isRendered){
       return(
-        <View style={{padding: 10, flex: 1, backgroundColor: 'white'}}>
+        <View style={{padding: 20, flex: 1, backgroundColor: 'white'}}>
           <Text>HELLO</Text>
         </View>
       );
@@ -61,6 +61,7 @@ class ContentBar extends Component {
       ]}>
       <View style={{flex: 1}}>
           <View style={{
+            flex: 1,
             margin: 8,
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -176,7 +177,9 @@ export class Home extends Component{
       <View style={styles.container}>
         <Status/>
         <View style={styles.topBar}>
-          <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={{
+            flex: 1, 
+            flexDirection: 'row',}}>
             <TouchableWithoutFeedback>
               <Image 
                 source={image}
@@ -214,6 +217,7 @@ export class Home extends Component{
                 }
                 selectedValue={this.state.timePeriod}
                 style={{width: 150}}
+                mode='dropdown'
               >
                 <Picker.Item label="Weekly" value="Weekly" />
                 <Picker.Item label="Monthly" value="Monthly" />
@@ -226,13 +230,19 @@ export class Home extends Component{
                 }
                 selectedValue={this.state.timePeriod}
                 style={{width: 200}}
+                mode='dropdown'
               >
                 <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
                 <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
                 <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
               </Picker>
             </View>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{
+              flexDirection: 'row', 
+              justifyContent: 'space-between',
+              paddingLeft: 10,
+              paddingRight: 10,
+            }}>
               <CheckBox
                 leftText="Status Colors"
                 leftTextStyle={{fontFamily: font}}
@@ -242,6 +252,22 @@ export class Home extends Component{
                   justifyContent: 'flex-end',          
                 }}
                 onClick={() => this.setState({color: !this.state.color})}
+              />
+              <CheckBox
+                leftText="Open all stat"
+                leftTextStyle={{fontFamily: font}}
+                style={{
+                  width: 125, 
+                  margin: 10,
+                  justifyContent: 'flex-end',          
+                }}
+                onClick={() => this.setState({
+                  rendered_1: !this.state.rendered_1,
+                  rendered_2: !this.state.rendered_2,
+                  rendered_3: !this.state.rendered_3,
+                  rendered_4: !this.state.rendered_4,
+                  rendered_5: !this.state.rendered_5,
+                })}
               />
             </View>
           </View>
