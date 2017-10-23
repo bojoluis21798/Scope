@@ -37,7 +37,6 @@ class RenderStatistics extends Component {
 class ContentBar extends Component {
   render(){
     let background = "";
-    console.log(this.props.parentState);
     switch(this.props.status){
       case 'good':
         background = '#55B838';    
