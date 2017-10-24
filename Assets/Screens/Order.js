@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {
+import ReactNative, {
 	View,
 	TouchableWithoutFeedback,
 	Image,
@@ -8,8 +8,8 @@ import {
 	TouchableNativeFeedback,
 	Slider,
 	Picker,
+	KeyboardAvoidingView
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
@@ -79,114 +79,118 @@ export class Order extends Component {
 		            </Text>
 		          </View>
 		        </View>
-		        <View style={[styles.body, {
-		        	backgroundColor: 'white',
-		        	flexDirection: 'row',
-		        	marginTop: 20,
-					margin: 0,
-		        }]}>
-		        	<View style={{
-		        		alignItems: 'center',
-		        	}}>
-		        		<View style={{
-		        			alignItems: 'center',
-		        			justifyContent:'center',
-		        		}}>
-		        			<View style={{margin: 10}}>
-			        			<Text style={[styles.standardText,
-			        				{
-			        					fontFamily: font,
-			        					borderBottomWidth: 2,
-			        				}
-			        			]}>
-			        				Product Name
-			        			</Text>
-			        		</View>
-			        		<View style={{margin: 10, alignItems: 'center'}}>
-			        			<Picker
-					                onValueChange={
-					                  (itemValue, itemIndex) => 
-					                    this.setState({productName: itemValue})
-					                }
-					                selectedValue={this.state.productName}
-					                style={{
-					                	width: 250,
+		        
+			        <View style={[styles.body, {
+			        	backgroundColor: 'white',
+			        	flexDirection: 'row',
+			        	paddingTop: 20,
+						margin: 0,
+			        }]}>
+			        	<KeyboardAvoidingView
+				        	behavior='position'
+				        	keyboardVerticalOffset={100}
+				        >
+			        	<View style={{
+			        		alignItems: 'center',
+			        	}}>
+			        		<View style={{
+			        			alignItems: 'center',
+			        			justifyContent:'center',
+			        		}}>
+			        			<View style={{margin: 10}}>
+				        			<Text style={[styles.standardText,
+				        				{
+				        					fontFamily: font,
+				        					borderBottomWidth: 2,
+				        				}
+				        			]}>
+				        				Product Name
+				        			</Text>
+				        		</View>
+				        		<View style={{margin: 10, alignItems: 'center'}}>
+				        			<Picker
+						                onValueChange={
+						                  (itemValue, itemIndex) => 
+						                    this.setState({productName: itemValue})
+						                }
+						                selectedValue={this.state.productName}
+						                style={{
+						                	width: 250,
+					        				height: 60,
+					        				padding: 5,
+						                }}
+						                mode='dropdown'
+					              	>
+					              	<Picker.Item label="Choose Product Name..." value="" />
+					                <Picker.Item label="Hotdogs" value="Hotdogs" />
+					                <Picker.Item label="Spaghetti" value="Spaghetti" />
+					                <Picker.Item label="Weiners" value="Weiners" />
+					              </Picker>
+				        		</View>
+				        		<View style={{margin: 10}}>
+				        			<Text style={[styles.standardText,
+				        				{
+				        					fontFamily: font,
+				        					borderBottomWidth: 2,
+				        				}
+				        			]}>
+				        				Product Quantity
+				        			</Text>
+				        		</View>
+				        		<View style={{margin: 10, flexDirection: 'row'}}>
+				        			<Text
+				        			style={[styles.smallerText, {
+				        				padding: 10,
+				        				fontSize: 20,
+				        				textAlign: 'center',
+				        			}]}
+				        			>
+				        				{this.state.productQuantity}
+				        			</Text>
+				        			<Slider 
+				        				minimumValue={0}
+				        				maximumValue={15}
+				        				style={{
+				        					height: 60,
+				        					width: 230,
+				        				}}
+				        				step={1}
+				        				onValueChange={(val) => this.setState({productQuantity: val})}
+				        			/>
+				        		</View>
+				        		<View style={{margin: 10}}>
+				        			<Text style={[styles.standardText,
+				        				{
+				        					fontFamily: font,
+				        					borderBottomWidth: 2,
+				        				}
+				        			]}>
+				        				Product Price
+				        			</Text>
+				        		</View>
+				        		<View style={{margin: 10}}>
+				        			<TextInput 
+				        			style={{
+				        				width: 150,
 				        				height: 60,
-				        				padding: 5,
-					                }}
-					                mode='dropdown'
-				              	>
-				              	<Picker.Item label="Choose Product Name..." value="" />
-				                <Picker.Item label="Hotdogs" value="Hotdogs" />
-				                <Picker.Item label="Spaghetti" value="Spaghetti" />
-				                <Picker.Item label="Weiners" value="Weiners" />
-				              </Picker>
+				        				padding: 10,
+				        				fontFamily: font,
+				        				fontSize: 17,
+				        			}}
+				        			placeholder="Enter Price"
+				        			onChangeText={(text) => this.state.productPrice}
+				        			keyboardType="numeric"
+				        			textAlign='center'
+				        			/>
+				        		</View>		        		
 			        		</View>
-			        		<View style={{margin: 10}}>
-			        			<Text style={[styles.standardText,
-			        				{
-			        					fontFamily: font,
-			        					borderBottomWidth: 2,
-			        				}
-			        			]}>
-			        				Product Quantity
-			        			</Text>
-			        		</View>
-			        		<View style={{margin: 10, flexDirection: 'row'}}>
-			        			<Text
-			        			style={[styles.smallerText, {
-			        				padding: 10,
-			        				fontSize: 20,
-			        				textAlign: 'center',
-			        			}]}
-			        			>
-			        				{this.state.productQuantity}
-			        			</Text>
-			        			<Slider 
-			        				minimumValue={0}
-			        				maximumValue={15}
-			        				style={{
-			        					height: 60,
-			        					width: 230,
-			        				}}
-			        				step={1}
-			        				onValueChange={(val) => this.setState({productQuantity: val})}
-			        			/>
-			        		</View>
-			        		<View style={{margin: 10}}>
-			        			<Text style={[styles.standardText,
-			        				{
-			        					fontFamily: font,
-			        					borderBottomWidth: 2,
-			        				}
-			        			]}>
-			        				Product Price
-			        			</Text>
-			        		</View>
-			        		<View style={{margin: 10}}>
-			        			<TextInput 
-			        			style={{
-			        				width: 150,
-			        				height: 60,
-			        				padding: 5,
-			        				fontFamily: font,
-			        				fontSize: 17,
-			        			}}
-			        			placeholder="₱"
-			        			onChangeText={(text) => this.state.productPrice}
-			        			keyboardType="numeric"
-			        			/>
-			        		</View>
-			        		<TouchableNativeFeedback>
-			        			<View style={{margin: 5}}>
-
-			        			</View>
-			        		</TouchableNativeFeedback>			        		
-		        		</View>
-		        	</View>
-		        </View> 
+			        	</View>
+			        	</KeyboardAvoidingView>
+			        </View> 
+			    
 		        <TouchableNativeFeedback>
 			        			<View style={{flexDirection: 'row',
+			        			 alignItems: 'flex-end',
 			        			 backgroundColor:'#26A900',
 			        			 padding: 15,
 			        			}}>
