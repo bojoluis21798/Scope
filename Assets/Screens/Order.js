@@ -92,40 +92,47 @@ export class Order extends Component {
 		        			alignItems: 'center',
 		        			justifyContent:'center',
 		        		}}>
-		        			<View>
+		        			<View style={{margin: 10}}>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: font}
+			        				{
+			        					fontFamily: font,
+			        					borderBottomWidth: 2,
+			        				}
 			        			]}>
 			        				Product Name
 			        			</Text>
 			        		</View>
-			        		<View style={{margin: 5, alignItems: 'center'}}>
+			        		<View style={{margin: 10, alignItems: 'center'}}>
 			        			<Picker
 					                onValueChange={
 					                  (itemValue, itemIndex) => 
 					                    this.setState({productName: itemValue})
 					                }
-					                selectedValue="Weiners"
+					                selectedValue={this.state.productName}
 					                style={{
-					                	width: 180,
+					                	width: 250,
 				        				height: 60,
 				        				padding: 5,
 					                }}
 					                mode='dropdown'
 				              	>
+				              	<Picker.Item label="Choose Product Name..." value="" />
 				                <Picker.Item label="Hotdogs" value="Hotdogs" />
 				                <Picker.Item label="Spaghetti" value="Spaghetti" />
 				                <Picker.Item label="Weiners" value="Weiners" />
 				              </Picker>
 			        		</View>
-			        		<View style={{margin: 5}}>
+			        		<View style={{margin: 10}}>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: font}
+			        				{
+			        					fontFamily: font,
+			        					borderBottomWidth: 2,
+			        				}
 			        			]}>
 			        				Product Quantity
 			        			</Text>
 			        		</View>
-			        		<View style={{margin: 5, flexDirection: 'row'}}>
+			        		<View style={{margin: 10, flexDirection: 'row'}}>
 			        			<Text
 			        			style={[styles.smallerText, {
 			        				padding: 10,
@@ -140,20 +147,23 @@ export class Order extends Component {
 			        				maximumValue={15}
 			        				style={{
 			        					height: 60,
-			        					width: 200,
+			        					width: 230,
 			        				}}
 			        				step={1}
 			        				onValueChange={(val) => this.setState({productQuantity: val})}
 			        			/>
 			        		</View>
-			        		<View style={{margin: 5}}>
+			        		<View style={{margin: 10}}>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: font}
+			        				{
+			        					fontFamily: font,
+			        					borderBottomWidth: 2,
+			        				}
 			        			]}>
 			        				Product Price
 			        			</Text>
 			        		</View>
-			        		<View style={{margin: 5}}>
+			        		<View style={{margin: 10}}>
 			        			<TextInput 
 			        			style={{
 			        				width: 150,
