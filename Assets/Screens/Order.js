@@ -13,8 +13,6 @@ import {Font} from 'expo';
 
 var image = {};
 var font = "";
-var fontBold = "";
-
 export class Order extends Component {
 	constructor(props){
 		super(props);
@@ -22,13 +20,16 @@ export class Order extends Component {
 		this.state = {
 			imageLoaded : false,
 			fontLoaded: false,
+			productName: "",
+			productQuantity: "",
+			productPrice: "",
+			transactionNo: "",
 		}
 	}
 
 	async componentDidMount(){
 	    await Font.loadAsync({
 	      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-	      'montserrat-bold': require('../Fonts/Montserrat-Bold.ttf'),
 	    });
 
 	    this.setState({imageLoaded: true, fontLoaded: true});
@@ -45,7 +46,6 @@ export class Order extends Component {
  		}
  		if(this.state.fontLoaded){
  			font = 'montserrat-reg';
- 			fontBold = 'montserrat-bold';
  		}else{
  			font = 'sans-serif';
  		}
@@ -89,7 +89,7 @@ export class Order extends Component {
 		        		}}>
 		        			<View>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: fontBold}
+			        				{fontFamily: font}
 			        			]}>
 			        				Product Name
 			        			</Text>
@@ -100,15 +100,18 @@ export class Order extends Component {
 			        				width: 300,
 			        				height: 60,
 			        				padding: 5,
+			        				fontFamily: font,
+			        				fontSize: 17,
 			        			}}
 			        			placeholder="Enter Product Name"
+			        			onChangeText={(text) => this.state.productName}
 			        			/>
 			        		</View>
 			        		<View>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: fontBold}
+			        				{fontFamily: font}
 			        			]}>
-			        				Product Name
+			        				Product Quantity
 			        			</Text>
 			        		</View>
 			        		<View style={{flex: 1}}>
@@ -117,15 +120,19 @@ export class Order extends Component {
 			        				width: 300,
 			        				height: 60,
 			        				padding: 5,
+			        				fontFamily: font,
+			        				fontSize: 17,
 			        			}}
-			        			placeholder="Enter Product Name"
+			        			placeholder="Enter Product Quantity"
+			        			onChangeText={(text) => this.state.productQuantity}
+			        			keyboardType="numeric"
 			        			/>
 			        		</View>
 			        		<View>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: fontBold}
+			        				{fontFamily: font}
 			        			]}>
-			        				Product Name
+			        				Product Price
 			        			</Text>
 			        		</View>
 			        		<View style={{flex: 1}}>
@@ -134,15 +141,19 @@ export class Order extends Component {
 			        				width: 300,
 			        				height: 60,
 			        				padding: 5,
+			        				fontFamily: font,
+			        				fontSize: 17,
 			        			}}
-			        			placeholder="Enter Product Name"
+			        			placeholder="Enter Product Price"
+			        			onChangeText={(text) => this.state.productPrice}
+			        			keyboardType="numeric"
 			        			/>
 			        		</View>
 			        		<View>
 			        			<Text style={[styles.standardText,
-			        				{fontFamily: fontBold}
+			        				{fontFamily: font}
 			        			]}>
-			        				Product Name
+			        				Transaction Number
 			        			</Text>
 			        		</View>
 			        		<View style={{flex: 1}}>
@@ -151,8 +162,12 @@ export class Order extends Component {
 			        				width: 300,
 			        				height: 60,
 			        				padding: 5,
+			        				fontFamily: font,
+			        				fontSize: 17,
 			        			}}
-			        			placeholder="Enter Product Name"
+			        			placeholder="Enter Transaction Number"
+			        			onChangeText={(text) => this.state.transactionNo}
+			        			keyboardType="numeric"
 			        			/>
 			        		</View>
 			        		<TouchableNativeFeedback>
