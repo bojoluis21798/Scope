@@ -7,6 +7,7 @@ import {
 	TextInput,
 	TouchableNativeFeedback,
 	Slider,
+	Picker,
 } from 'react-native';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
@@ -105,11 +106,9 @@ export class Order extends Component {
 					                }
 					                selectedValue={this.state.productName}
 					                style={{
-					                	width: 300,
+					                	width: 180,
 				        				height: 60,
 				        				padding: 5,
-				        				fontFamily: font,
-				        				fontSize: 17,
 					                }}
 					                mode='dropdown'
 				              	>
@@ -156,13 +155,13 @@ export class Order extends Component {
 			        		<View style={{margin: 5}}>
 			        			<TextInput 
 			        			style={{
-			        				width: 300,
+			        				width: 150,
 			        				height: 60,
 			        				padding: 5,
 			        				fontFamily: font,
 			        				fontSize: 17,
 			        			}}
-			        			placeholder="Enter Product Price"
+			        			placeholder="₱"
 			        			onChangeText={(text) => this.state.productPrice}
 			        			keyboardType="numeric"
 			        			/>
@@ -190,7 +189,7 @@ export class Order extends Component {
 			        						fontSize: 25,
 			        						color: 'white',
 			        					}}>
-			        						Submit
+			        						Add
 			        					</Text>
 			        				</View>
 			        			</View>
