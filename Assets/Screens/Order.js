@@ -9,6 +9,7 @@ import {
 	Slider,
 	Picker,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
@@ -104,7 +105,7 @@ export class Order extends Component {
 					                  (itemValue, itemIndex) => 
 					                    this.setState({productName: itemValue})
 					                }
-					                selectedValue={this.state.productName}
+					                selectedValue="Weiners"
 					                style={{
 					                	width: 180,
 				        				height: 60,
