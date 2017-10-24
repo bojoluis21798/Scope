@@ -162,7 +162,7 @@ export class Home extends Component{
       fontLoaded: false,
       timePeriod: "",
       dateRange: "", 
-      color: false,
+      color: true,
       rendered_1: false,
       rendered_2: false,
       rendered_3: false,
@@ -318,6 +318,7 @@ export class Home extends Component{
                   margin: 10,
                   justifyContent: 'flex-end',          
                 }}
+                isChecked={this.state.color}
                 onClick={() => this.setState({color: !this.state.color})}
               />
               <ShoworHideAll 

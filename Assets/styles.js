@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#24D101',
+    backgroundColor: '#26A900',
   },
   titleText: {
     flex: 1,
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
   },
   topBar: {
     flexDirection: 'row',
-    backgroundColor: '#24D101',
+    backgroundColor: '#26A900',
 
     padding: 10,
   },
