@@ -17,6 +17,54 @@ var font = "";
 var image = {};
 var arrow = {};
 
+class ShoworHideAll extends Component {
+  render(){
+    if(this.props.render){
+      return(
+        <TouchableNativeFeedback
+                onPress={this.props.show}
+        >
+          <Text
+            style={{
+              width: 140,
+              margin: 10,
+              justifyContent: 'flex-end',  
+              fontSize: 17, 
+              fontFamily: font,
+              color: 'white',
+              backgroundColor: '#24D101',
+              textAlign: 'center'       
+            }}
+          >
+            Show All Statistics
+          </Text>
+        </TouchableNativeFeedback>
+      );
+    }else{
+      return(
+        <TouchableNativeFeedback
+                onPress={this.props.hide}
+        >
+          <Text
+            style={{
+              width: 140,
+              margin: 10,
+              justifyContent: 'flex-end',  
+              fontSize: 17, 
+              fontFamily: font,
+              color: 'white',
+              backgroundColor: '#24D101',
+              textAlign: 'center'       
+            }}
+          >
+            Hide All Statistics
+          </Text>
+        </TouchableNativeFeedback>
+      );
+    }
+  }
+}
+
 class RenderStatistics extends Component {
   render(){
     if(this.props.isRendered){
@@ -128,6 +176,7 @@ export class Home extends Component{
     this.setRendered_4 = this.setRendered_4.bind(this);
     this.setRendered_5 = this.setRendered_5.bind(this);
     this.setAllRendered = this.setAllRendered.bind(this);
+    this.setHideRendered = this.setHideRendered.bind(this);
     this.setState = this.setState.bind(this);
   }
 
@@ -166,6 +215,15 @@ export class Home extends Component{
       rendered_3: true,
       rendered_4: true,
       rendered_5: true,
+    });
+  }
+  setHideRendered(){
+    this.setState({
+      rendered_1: false,
+      rendered_2: false,
+      rendered_3: false,
+      rendered_4: false,
+      rendered_5: false,
     });
   }
 
@@ -262,24 +320,17 @@ export class Home extends Component{
                 }}
                 onClick={() => this.setState({color: !this.state.color})}
               />
-              <TouchableNativeFeedback
-                onPress={this.setAllRendered}
-              >
-                <Text
-                  style={{
-                    width: 140,
-                    margin: 10,
-                    justifyContent: 'flex-end',  
-                    fontSize: 17, 
-                    fontFamily: font,
-                    color: 'white',
-                    backgroundColor: '#24D101',
-                    textAlign: 'center'       
-                  }}
-                >
-                  Show All Statistics
-                </Text>
-              </TouchableNativeFeedback>
+              <ShoworHideAll 
+              render={(
+                !this.state.rendered_1 &&
+                !this.state.rendered_2 &&
+                !this.state.rendered_3 &&
+                !this.state.rendered_4 &&
+                !this.state.rendered_5 
+              )}
+              show={this.setAllRendered}
+              hide={this.setHideRendered}
+              />
             </View>
           </View>
 
