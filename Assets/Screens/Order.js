@@ -6,6 +6,7 @@ import {
 	Text,
 	TextInput,
 	TouchableNativeFeedback,
+	Slider,
 } from 'react-native';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
@@ -21,7 +22,7 @@ export class Order extends Component {
 			imageLoaded : false,
 			fontLoaded: false,
 			productName: "",
-			productQuantity: "",
+			productQuantity: 0,
 			productPrice: "",
 			transactionNo: "",
 		}
@@ -80,12 +81,14 @@ export class Order extends Component {
 		        	backgroundColor: 'white',
 		        	flexDirection: 'row',
 		        	marginTop: 20,
+					margin: 0,
 		        }]}>
 		        	<View style={{
-		        		flex: 1, alignItems: 'center', justifyContent: 'center',
+		        		alignItems: 'center',
 		        	}}>
 		        		<View style={{
-		        			flex: 1, alignItems: 'center', justifyContent:'center',
+		        			alignItems: 'center',
+		        			justifyContent:'center',
 		        		}}>
 		        			<View>
 			        			<Text style={[styles.standardText,
@@ -94,48 +97,63 @@ export class Order extends Component {
 			        				Product Name
 			        			</Text>
 			        		</View>
-			        		<View style={{flex: 1, alignItems: 'center'}}>
-			        			<TextInput 
-			        			style={{
-			        				width: 300,
-			        				height: 60,
-			        				padding: 5,
-			        				fontFamily: font,
-			        				fontSize: 17,
-			        			}}
-			        			placeholder="Enter Product Name"
-			        			onChangeText={(text) => this.state.productName}
-			        			/>
+			        		<View style={{margin: 5, alignItems: 'center'}}>
+			        			<Picker
+					                onValueChange={
+					                  (itemValue, itemIndex) => 
+					                    this.setState({productName: itemValue})
+					                }
+					                selectedValue={this.state.productName}
+					                style={{
+					                	width: 300,
+				        				height: 60,
+				        				padding: 5,
+				        				fontFamily: font,
+				        				fontSize: 17,
+					                }}
+					                mode='dropdown'
+				              	>
+				                <Picker.Item label="Hotdogs" value="Hotdogs" />
+				                <Picker.Item label="Spaghetti" value="Spaghetti" />
+				                <Picker.Item label="Weiners" value="Weiners" />
+				              </Picker>
 			        		</View>
-			        		<View>
+			        		<View style={{margin: 5}}>
 			        			<Text style={[styles.standardText,
 			        				{fontFamily: font}
 			        			]}>
 			        				Product Quantity
 			        			</Text>
 			        		</View>
-			        		<View style={{flex: 1}}>
-			        			<TextInput 
-			        			style={{
-			        				width: 300,
-			        				height: 60,
-			        				padding: 5,
-			        				fontFamily: font,
-			        				fontSize: 17,
-			        			}}
-			        			placeholder="Enter Product Quantity"
-			        			onChangeText={(text) => this.state.productQuantity}
-			        			keyboardType="numeric"
+			        		<View style={{margin: 5, flexDirection: 'row'}}>
+			        			<Text
+			        			style={[styles.smallerText, {
+			        				padding: 10,
+			        				fontSize: 20,
+			        				textAlign: 'center',
+			        			}]}
+			        			>
+			        				{this.state.productQuantity}
+			        			</Text>
+			        			<Slider 
+			        				minimumValue={0}
+			        				maximumValue={15}
+			        				style={{
+			        					height: 60,
+			        					width: 200,
+			        				}}
+			        				step={1}
+			        				onValueChange={(val) => this.setState({productQuantity: val})}
 			        			/>
 			        		</View>
-			        		<View>
+			        		<View style={{margin: 5}}>
 			        			<Text style={[styles.standardText,
 			        				{fontFamily: font}
 			        			]}>
 			        				Product Price
 			        			</Text>
 			        		</View>
-			        		<View style={{flex: 1}}>
+			        		<View style={{margin: 5}}>
 			        			<TextInput 
 			        			style={{
 			        				width: 300,
@@ -150,12 +168,22 @@ export class Order extends Component {
 			        			/>
 			        		</View>
 			        		<TouchableNativeFeedback>
-			        			<View style={{flex: 0.5, flexDirection: 'row',
-			        			 backgroundColor:'#26A900'}}>
+			        			<View style={{margin: 5}}>
+
+			        			</View>
+			        		</TouchableNativeFeedback>			        		
+		        		</View>
+		        	</View>
+		        </View> 
+		        <TouchableNativeFeedback>
+			        			<View style={{flexDirection: 'row',
+			        			 backgroundColor:'#26A900',
+			        			 padding: 15,
+			        			}}>
 			        				<View style={{
 			        					flex: 1, 
 			        					alignItems: 'center', 
-			        					justifyContent:'center'
+			        					justifyContent:'center',
 			        				}}>
 			        					<Text style={{
 			        						fontFamily: font,
@@ -166,11 +194,7 @@ export class Order extends Component {
 			        					</Text>
 			        				</View>
 			        			</View>
-			        		</TouchableNativeFeedback>
-		        		</View>
-		        	</View>
-		        	
-		        </View>  
+			    </TouchableNativeFeedback> 
  			</View>
  		);
  	}
