@@ -79,13 +79,13 @@ export class Order extends Component {
 		        <View style={[styles.body, {
 		        	backgroundColor: 'white',
 		        	flexDirection: 'row',
+		        	marginTop: 20,
 		        }]}>
 		        	<View style={{
 		        		flex: 1, alignItems: 'center', justifyContent: 'center',
 		        	}}>
 		        		<View style={{
-		        			flex: 1, alignItems: 'center',
-		        			paddingTop: 10,
+		        			flex: 1, alignItems: 'center', justifyContent:'center',
 		        		}}>
 		        			<View>
 			        			<Text style={[styles.standardText,
@@ -149,29 +149,8 @@ export class Order extends Component {
 			        			keyboardType="numeric"
 			        			/>
 			        		</View>
-			        		<View>
-			        			<Text style={[styles.standardText,
-			        				{fontFamily: font}
-			        			]}>
-			        				Transaction Number
-			        			</Text>
-			        		</View>
-			        		<View style={{flex: 1}}>
-			        			<TextInput 
-			        			style={{
-			        				width: 300,
-			        				height: 60,
-			        				padding: 5,
-			        				fontFamily: font,
-			        				fontSize: 17,
-			        			}}
-			        			placeholder="Enter Transaction Number"
-			        			onChangeText={(text) => this.state.transactionNo}
-			        			keyboardType="numeric"
-			        			/>
-			        		</View>
 			        		<TouchableNativeFeedback>
-			        			<View style={{flex: 0.7, flexDirection: 'row',
+			        			<View style={{flex: 0.5, flexDirection: 'row',
 			        			 backgroundColor:'#26A900'}}>
 			        				<View style={{
 			        					flex: 1, 
