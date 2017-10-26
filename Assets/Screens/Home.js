@@ -11,6 +11,7 @@ import {
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
+import {TopBar} from './TopBar.js';
 import CheckBox from 'react-native-check-box';
 
 var font = "";
@@ -246,29 +247,7 @@ export class Home extends Component{
     return(
       <View style={styles.container}>
         <Status/>
-        <View style={styles.topBar}>
-          <View style={{
-            flex: 1, 
-            flexDirection: 'row',}}>
-            <TouchableWithoutFeedback>
-              <Image 
-                source={image}
-                style={styles.menuIcon}
-              />
-            </TouchableWithoutFeedback>  
-            <Text style={
-              [styles.standardText,
-              {
-                fontFamily: font, 
-                fontSize: 24, 
-                color: 'white',
-                marginLeft: 10,
-              }]
-            }>
-              Summary Report 
-            </Text>
-          </View>
-        </View>  
+        <TopBar title="Summary Report" />
         <ScrollView style={styles.body}>
           <View style={[styles.contentBar,
             {
