@@ -185,6 +185,7 @@ export class Home extends Component{
   async componentDidMount(){
     await Font.loadAsync({
       'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
+      'montserrat-thin': require('../Fonts/Montserrat-Thin.ttf'),
     });
 
     this.setState({imageLoaded: true, fontLoaded: true});

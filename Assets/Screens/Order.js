@@ -16,6 +16,7 @@ import {Font} from 'expo';
 
 var image = {};
 var font = "";
+var fontLight = "";
 export class Order extends Component {
 	constructor(props){
 		super(props);
@@ -33,6 +34,7 @@ export class Order extends Component {
 	async componentDidMount(){
 	    await Font.loadAsync({
 	      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
+	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
 	    });
 
 	    this.setState({imageLoaded: true, fontLoaded: true});
@@ -49,6 +51,7 @@ export class Order extends Component {
  		}
  		if(this.state.fontLoaded){
  			font = 'montserrat-reg';
+ 			fontLight = 'montserrat-light';
  		}else{
  			font = 'sans-serif';
  		}
@@ -93,22 +96,24 @@ export class Order extends Component {
 			        	<View style={{
 			        		alignItems: 'center',
 			        		justifyContent: 'center',
+			        		margin: 50,
+			        		marginTop: 10,
 			        	}}>
 			        		<View style={{
 			        			alignItems: 'center',
 			        			justifyContent:'center',
 			        		}}>
-			        			<View style={{margin: 10}}>
+			        			<View style={{margin: 20}}>
 				        			<Text style={[styles.standardText,
 				        				{
-				        					fontFamily: font,
+				        					fontFamily: fontLight,
 				        					borderBottomWidth: 2,
 				        				}
 				        			]}>
 				        				Product Name
 				        			</Text>
 				        		</View>
-				        		<View style={{margin: 10, alignItems: 'center'}}>
+				        		<View style={{margin: 20, alignItems: 'center'}}>
 				        			<Picker
 						                onValueChange={
 						                  (itemValue, itemIndex) => 
@@ -128,17 +133,17 @@ export class Order extends Component {
 					                <Picker.Item label="Weiners" value="Weiners" />
 					              </Picker>
 				        		</View>
-				        		<View style={{margin: 10}}>
+				        		<View style={{margin: 20}}>
 				        			<Text style={[styles.standardText,
 				        				{
-				        					fontFamily: font,
+				        					fontFamily: fontLight,
 				        					borderBottomWidth: 2,
 				        				}
 				        			]}>
 				        				Product Quantity
 				        			</Text>
 				        		</View>
-				        		<View style={{margin: 10, flexDirection: 'row'}}>
+				        		<View style={{margin: 20, flexDirection: 'row'}}>
 				        			<Text
 				        			style={[styles.smallerText, {
 				        				padding: 10,
@@ -159,17 +164,17 @@ export class Order extends Component {
 				        				onValueChange={(val) => this.setState({productQuantity: val})}
 				        			/>
 				        		</View>
-				        		<View style={{margin: 10}}>
+				        		<View style={{margin: 20}}>
 				        			<Text style={[styles.standardText,
 				        				{
-				        					fontFamily: font,
+				        					fontFamily: fontLight,
 				        					borderBottomWidth: 2,
 				        				}
 				        			]}>
 				        				Product Price
 				        			</Text>
 				        		</View>
-				        		<View style={{margin: 10, flexDirection: 'row'}}>
+				        		<View style={{margin: 20, flexDirection: 'row'}}>
 				        			<Text style={[styles.standardText, {textAlign: 'center',
 				        				paddingTop: 15,
 				        			}]}>
@@ -180,7 +185,7 @@ export class Order extends Component {
 				        				width: 150,
 				        				height: 60,
 				        				padding: 10,
-				        				fontFamily: font,
+				        				fontFamily: fontLight,
 				        				fontSize: 17,
 				        			}}
 				        			placeholder="Enter Price"

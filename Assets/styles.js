@@ -64,7 +64,6 @@ export const styles = StyleSheet.create({
     flex:1,
   },
   contentBar: {
-    flex: 1,
     paddingBottom: 0,
     backgroundColor: 'white',
     marginBottom: 15,
