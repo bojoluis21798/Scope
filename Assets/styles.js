@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     // borderWidth: 1,
-    margin: 15,
+    margin: 30,
   },
   passCodeText:{
     fontSize: 23,
@@ -62,7 +62,6 @@ export const styles = StyleSheet.create({
   },
   body: {
     flex:1,
-    backgroundColor: '#E7E7E7',
   },
   contentBar: {
     flex: 1,

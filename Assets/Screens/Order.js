@@ -88,10 +88,11 @@ export class Order extends Component {
 			        }]}>
 			        	<KeyboardAvoidingView
 				        	behavior='position'
-				        	keyboardVerticalOffset={100}
+				        	keyboardVerticalOffset={5}
 				        >
 			        	<View style={{
 			        		alignItems: 'center',
+			        		justifyContent: 'center',
 			        	}}>
 			        		<View style={{
 			        			alignItems: 'center',
@@ -168,7 +169,12 @@ export class Order extends Component {
 				        				Product Price
 				        			</Text>
 				        		</View>
-				        		<View style={{margin: 10}}>
+				        		<View style={{margin: 10, flexDirection: 'row'}}>
+				        			<Text style={[styles.standardText, {textAlign: 'center',
+				        				paddingTop: 15,
+				        			}]}>
+				        				₱
+				        			</Text>
 				        			<TextInput 
 				        			style={{
 				        				width: 150,
@@ -181,6 +187,7 @@ export class Order extends Component {
 				        			onChangeText={(text) => this.state.productPrice}
 				        			keyboardType="numeric"
 				        			textAlign='center'
+				        			defaultValue="0.00"
 				        			/>
 				        		</View>		        		
 			        		</View>

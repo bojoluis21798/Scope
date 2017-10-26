@@ -69,7 +69,9 @@ class RenderStatistics extends Component {
   render(){
     if(this.props.isRendered){
       return(
-        <View style={{padding: 20, flex: 1, backgroundColor: 'white'}}>
+        <View style={{
+          padding: 20, flex: 1, backgroundColor: '#E7e7e7',
+      }}>
           <Text>HELLO</Text>
         </View>
       );
@@ -134,7 +136,7 @@ class ContentBar extends Component {
               alignItems: 'center',
               justifyContent: 'center',
               borderTopWidth: 5,
-              borderTopColor: '#E7E7E7',
+              borderTopColor: '#E7e7e7',
             }}>
             <Image 
               source= {arrow}
@@ -269,7 +271,7 @@ export class Home extends Component{
         <ScrollView style={styles.body}>
           <View style={[styles.contentBar,
             {
-              padding: 5,
+              padding: 10,
             }
           ]}>
             <View style={{
@@ -335,7 +337,7 @@ export class Home extends Component{
             </View>
           </View>
 
-          <View style={{marginTop: 10}}>
+          <View style={{marginTop: 20}}>
             <ContentBar 
               barTitle="Total Expenses" 
               barValue="0.00" 
