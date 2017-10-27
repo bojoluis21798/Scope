@@ -55,8 +55,21 @@ export class NewTransaction extends Component {
 			<View style={styles.container}>
 				<Status />
 				<TopBar title="New Transaction" />
-				<View style={styles.body}>
-					
+				<View style={[styles.body, {
+					borderWidth: 1,
+					flexDirection: 'row',
+				}]}>
+					<View style={{flex: 1}}>
+						<View style={{
+							flex: 0.1,		//
+							borderWidth: 1,
+							flexDirection: 'row',
+						}}>
+							<Text>
+								Total Price:
+							</Text>
+						</View>
+					</View>
 				</View>
 			</View>
 		);
