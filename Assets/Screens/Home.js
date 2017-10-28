@@ -71,7 +71,7 @@ class RenderStatistics extends Component {
     if(this.props.isRendered){
       return(
         <View style={{
-          padding: 20, flex: 1, backgroundColor: '#E7e7e7',
+          padding: 20, flex: 1, backgroundColor: 'white',
       }}>
           <Text>HELLO</Text>
         </View>
@@ -137,7 +137,7 @@ class ContentBar extends Component {
               alignItems: 'center',
               justifyContent: 'center',
               borderTopWidth: 5,
-              borderTopColor: '#E7e7e7',
+              borderTopColor: 'white',
             }}>
             <Image 
               source= {arrow}
@@ -248,113 +248,122 @@ export class Home extends Component{
       <View style={styles.container}>
         <Status/>
         <TopBar title="Summary Report" />
-        <ScrollView style={styles.body}>
-          <View style={[styles.contentBar,
-            {
-              padding: 10,
-            }
-          ]}>
-            <View style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-              <Picker
-                onValueChange={
-                  (itemValue, itemIndex) => 
-                    this.setState({timePeriod: itemValue})
+        
+          <View style={[styles.body,{
+            backgroundColor: '#E7e7e7',
+            flexDirection: 'row',
+          }]}>
+            <View style={{flex: 1}}>
+              <View style={[styles.contentBar,
+                {
+                  padding: 10,
+                  
+                  marginBottom: 0,
                 }
-                selectedValue={this.state.timePeriod}
-                style={{width: 150}}
-                mode='dropdown'
-              >
-                <Picker.Item label="Weekly" value="Weekly" />
-                <Picker.Item label="Monthly" value="Monthly" />
-                <Picker.Item label="Yearly" value="Yearly" />
-              </Picker>
-              <Picker
-                onValueChange={
-                  (itemValue, itemIndex) => 
-                    this.setState({timePeriod: itemValue})
-                }
-                selectedValue={this.state.timePeriod}
-                style={{width: 200}}
-                mode='dropdown'
-              >
-                <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
-                <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
-                <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
-              </Picker>
-            </View>
-            <View style={{
-              flexDirection: 'row', 
-              justifyContent: 'space-between',
-              paddingLeft: 10,
-              paddingRight: 10,
-            }}>
-              <CheckBox
-                leftText="Status Colors"
-                leftTextStyle={{fontFamily: font}}
-                style={{
-                  width: 125, 
-                  margin: 10,
-                  justifyContent: 'flex-end',          
-                }}
-                isChecked={this.state.color}
-                onClick={() => this.setState({color: !this.state.color})}
-              />
-              <ShoworHideAll 
-              render={(
-                !this.state.rendered_1 &&
-                !this.state.rendered_2 &&
-                !this.state.rendered_3 &&
-                !this.state.rendered_4 &&
-                !this.state.rendered_5 
-              )}
-              show={this.setAllRendered}
-              hide={this.setHideRendered}
-              />
+              ]}>
+                <View style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                  <Picker
+                    onValueChange={
+                      (itemValue, itemIndex) => 
+                        this.setState({timePeriod: itemValue})
+                    }
+                    selectedValue={this.state.timePeriod}
+                    style={{width: 150}}
+                    mode='dropdown'
+                  >
+                    <Picker.Item label="Weekly" value="Weekly" />
+                    <Picker.Item label="Monthly" value="Monthly" />
+                    <Picker.Item label="Yearly" value="Yearly" />
+                  </Picker>
+                  <Picker
+                    onValueChange={
+                      (itemValue, itemIndex) => 
+                        this.setState({timePeriod: itemValue})
+                    }
+                    selectedValue={this.state.timePeriod}
+                    style={{width: 200}}
+                    mode='dropdown'
+                  >
+                    <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
+                    <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
+                    <Picker.Item label="Feb 1 - Feb 7" value="02/01/17" />
+                  </Picker>
+                </View>
+                <View style={{
+                  flexDirection: 'row', 
+                  justifyContent: 'space-between',
+                  paddingLeft: 10,
+                  paddingRight: 10,
+                }}>
+                  <CheckBox
+                    leftText="Status Colors"
+                    leftTextStyle={{fontFamily: font}}
+                    style={{
+                      width: 125, 
+                      margin: 10,
+                      justifyContent: 'flex-end',          
+                    }}
+                    isChecked={this.state.color}
+                    onClick={() => this.setState({color: !this.state.color})}
+                  />
+                  <ShoworHideAll 
+                  render={(
+                    !this.state.rendered_1 &&
+                    !this.state.rendered_2 &&
+                    !this.state.rendered_3 &&
+                    !this.state.rendered_4 &&
+                    !this.state.rendered_5 
+                  )}
+                  show={this.setAllRendered}
+                  hide={this.setHideRendered}
+                  />
+                </View>
+              </View>
+              <ScrollView>
+                <View style={{paddingTop: 20}}>
+                  <ContentBar 
+                    barTitle="Total Expenses" 
+                    barValue="0.00" 
+                    status={(this.state.color) ? 'good' : 'good'}
+                    renderedStat={this.state.rendered_1}
+                    parentSet={this.setRendered_1}
+                  />
+                  <ContentBar 
+                    barTitle="Total Profit" 
+                    barValue="0.00" 
+                    status={(this.state.color) ? 'bad' : 'good'}
+                    renderedStat={this.state.rendered_2}
+                    parentSet={this.setRendered_2}
+                  />
+                  <ContentBar 
+                    barTitle="Net Profit" 
+                    barValue="0.00" 
+                    status={(this.state.color) ? 'neutral' : 'good'}
+                    renderedStat={this.state.rendered_3}
+                    parentSet={this.setRendered_3}
+                  />
+                  <ContentBar 
+                    barTitle="Gross Profit" 
+                    barValue="0.00" 
+                    status={(this.state.color) ? 'neutral' : 'good'}
+                    renderedStat={this.state.rendered_4}
+                    parentSet={this.setRendered_4}
+                  />
+                  <ContentBar 
+                    barTitle="Total Goods Sold" 
+                    barValue="0.00" 
+                    status={(this.state.color) ? 'good' : 'good'}
+                    renderedStat={this.state.rendered_5}
+                    parentSet={this.setRendered_5}
+                  />
+                </View>
+              </ScrollView>
             </View>
           </View>
-
-          <View style={{marginTop: 20}}>
-            <ContentBar 
-              barTitle="Total Expenses" 
-              barValue="0.00" 
-              status={(this.state.color) ? 'good' : 'good'}
-              renderedStat={this.state.rendered_1}
-              parentSet={this.setRendered_1}
-            />
-            <ContentBar 
-              barTitle="Total Profit" 
-              barValue="0.00" 
-              status={(this.state.color) ? 'bad' : 'good'}
-              renderedStat={this.state.rendered_2}
-              parentSet={this.setRendered_2}
-            />
-            <ContentBar 
-              barTitle="Net Profit" 
-              barValue="0.00" 
-              status={(this.state.color) ? 'neutral' : 'good'}
-              renderedStat={this.state.rendered_3}
-              parentSet={this.setRendered_3}
-            />
-            <ContentBar 
-              barTitle="Gross Profit" 
-              barValue="0.00" 
-              status={(this.state.color) ? 'neutral' : 'good'}
-              renderedStat={this.state.rendered_4}
-              parentSet={this.setRendered_4}
-            />
-            <ContentBar 
-              barTitle="Total Goods Sold" 
-              barValue="0.00" 
-              status={(this.state.color) ? 'good' : 'good'}
-              renderedStat={this.state.rendered_5}
-              parentSet={this.setRendered_5}
-            />
-          </View>
-        </ScrollView>
       </View>
     );
   }

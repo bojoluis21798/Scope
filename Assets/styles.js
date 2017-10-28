@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     flex:1,
   },
   contentBar: {
-    paddingBottom: 0,
+    flex: 0.2,
     backgroundColor: 'white',
     marginBottom: 15,
     justifyContent: 'center',
