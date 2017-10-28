@@ -7,6 +7,8 @@ import ReactNative, {
 	TextInput,
 	TouchableNativeFeedback,
 	Picker,
+	ScrollView,
+	StyleSheet,
 } from 'react-native';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
@@ -25,6 +27,7 @@ export class NewTransaction extends Component {
 		this.state = {
 			fontLoaded: false,
 			imageLoaded: false,
+			orderCount: 0,
 		};
 	}
 
@@ -56,18 +59,13 @@ export class NewTransaction extends Component {
 				<Status />
 				<TopBar title="New Transaction" />
 				<View style={[styles.body, {
-					borderWidth: 1,
+					backgroundColor: "#E7E7E7",
 					flexDirection: 'row',
 				}]}>
 					<View style={{flex: 1}}>
-						<View style={{
-							flex: 0.1,		//
-							borderWidth: 1,
-							flexDirection: 'row',
-							alignItems: 'center',
-							padding: 10,
-							justifyContent: 'space-between',
-						}}>
+						<View style={[local.priceBar,{
+							backgroundColor: 'white',
+						}]}>
 							<Text style={[styles.standardText,{
 								color: '#1C7B00',
 								fontFamily: font.reg,
@@ -80,10 +78,81 @@ export class NewTransaction extends Component {
 								fontFamily: font.reg,
 								fontSize: 25,
 							}]}>
-								₱
+								₱ 0.00
 							</Text> 
 						</View>
+						<ScrollView>
+							<View style={{
+								flex: 1, 
+								padding: 20,
+							}}>
+								<View style={{
+										flex: 1,
+										flexDirection: 'row',
+										borderWidth: 0.4,
+										backgroundColor: 'white',
+										marginBottom: 20,
+										borderRadius: 5,
+									}}>
+										<View style={{
+											flex: 1,
+											flexDirection: 'row',
+											alignItems: 'center',
+											justifyContent: 'space-between',
+											padding: 20,
+											
+										}}>
+											<View style={{
+												flexDirection: 'row',
+											}}>
+												<Text style={[styles.standardText,{
+													fontSize: 30,
+													fontFamily: font.reg,
+													color: "black",
+												}]}> 
+													0 x Hotdog
+												</Text>
+											</View>
+											<View>
+												<Text style={[styles.standardText,{
+													fontSize: 30,
+													fontFamily: font.reg,
+													color: "black",
+												}]}> 
+													₱ 0.00
+												</Text>
+											</View>
+										</View>
+								</View>
+								<TouchableNativeFeedback
+									onPress={()=> this.setState({orderCount: this.state.orderCount++})}
+								>
+									<View style={{
+										flex: 1,
+										flexDirection: 'row',
+										backgroundColor: '#2CC100',
+										borderRadius: 20,
+									}}>
+										<View style={{
+											flex: 1,
+											alignItems: 'center',
+											justifyContent: 'center',
+											padding: 10,
+										}}>
+											<Text style={[styles.standardText,{
+												fontFamily: font.reg,
+												color: "white",
+											}]}> 
+												Add Order
+											</Text>
+										</View>
+									</View>
+								</TouchableNativeFeedback>
+							</View>
+						</ScrollView>
 					</View>
+					
+
 				</View>
 			<TouchableNativeFeedback>
 		        			<View style={{flexDirection: 'row',
@@ -110,3 +179,15 @@ export class NewTransaction extends Component {
 		);
 	}
 }
+
+const local = StyleSheet.create({
+	priceBar: {
+		flex: 0.1,		//
+		borderBottomWidth: 0.5,
+		borderBottomColor: 'black',
+		flexDirection: 'row',
+		alignItems: 'center',
+		padding: 10,
+		justifyContent: 'space-between',
+	},
+});
