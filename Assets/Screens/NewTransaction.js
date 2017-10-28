@@ -64,10 +64,24 @@ export class NewTransaction extends Component {
 							flex: 0.1,		//
 							borderWidth: 1,
 							flexDirection: 'row',
+							alignItems: 'center',
+							padding: 10,
+							justifyContent: 'space-between',
 						}}>
-							<Text>
+							<Text style={[styles.standardText,{
+								color: '#1C7B00',
+								fontFamily: font.reg,
+								fontSize: 25,
+							}]}>
 								Total Price:
 							</Text>
+							<Text style={[styles.standardText,{
+								color: '#1C7B00',
+								fontFamily: font.reg,
+								fontSize: 25,
+							}]}>
+								₱
+							</Text> 
 						</View>
 					</View>
 				</View>
