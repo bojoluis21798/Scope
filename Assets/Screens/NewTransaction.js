@@ -85,6 +85,27 @@ export class NewTransaction extends Component {
 						</View>
 					</View>
 				</View>
+			<TouchableNativeFeedback>
+		        			<View style={{flexDirection: 'row',
+		        			 alignItems: 'flex-end',
+		        			 backgroundColor:'#26A900',
+		        			 padding: 15,
+		        			}}>
+		        				<View style={{
+		        					flex: 1, 
+		        					alignItems: 'center', 
+		        					justifyContent:'center',
+		        				}}>
+		        					<Text style={{
+		        						fontFamily: font.reg,
+		        						fontSize: 25,
+		        						color: 'white',
+		        					}}>
+		        						Submit
+		        					</Text>
+		        				</View>
+		        			</View>
+		    </TouchableNativeFeedback> 
 			</View>
 		);
 	}

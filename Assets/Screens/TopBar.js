@@ -29,7 +29,7 @@ export class TopBar extends Component {
 			'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
 	      	'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
 		});
-		this.setState({imageLoaded: true});
+		this.setState({imageLoaded: true, fontLoaded: true});
 	}
 
 	render(){
