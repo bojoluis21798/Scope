@@ -20,6 +20,91 @@ var font = {
 	light: "",
 }
 
+var image = {
+	trash: {},
+	pencil: {},
+}
+
+var order = ["A", "B", "C", "D"];
+var ctr = 0;
+
+class OrderBar extends Component {
+	render(){
+
+		let quantity = this.props.quantity;
+		let name = this.props.name;
+		let price = this.props.price;
+		return(
+			<View style={{
+				flex: 1,
+				flexDirection: 'row',
+				borderWidth: 0.4,
+				backgroundColor: 'white',
+				marginBottom: 20,
+				borderRadius: 5,
+			}}>
+				<View style={{
+					flex: 1,
+					flexDirection: 'row',
+					alignItems: 'center',
+					justifyContent: 'space-between',
+					margin: 20,
+				}}>
+					<View style={{
+						flexDirection: 'row',
+					}}>
+						<Text style={[styles.standardText,{
+							fontSize: 25,
+							fontFamily: font.reg,
+							color: "black",
+						}]}> 
+							{quantity + " x " + name}
+						</Text>
+					</View>
+					<View style={{flexDirection: 'row'}}>
+						<Text style={[styles.standardText,{
+							fontSize: 25,
+							fontFamily: font.reg,
+							color: "black",
+						}]}> 
+							{"₱ " + price}
+						</Text>
+					</View>
+				</View>
+			<TouchableNativeFeedback>	
+				<View style={[local.imageBar, {
+					borderTopRightRadius: 0,
+					backgroundColor: '#C8A018',
+					borderColor: '#C8A018',
+					borderBottomRightRadius: 0,
+				}]}>
+					<Image 
+						source={image.pencil} 
+						style={{
+							height: 35,
+							width: 30,
+						}}
+					/>
+				</View>
+			</TouchableNativeFeedback>
+			<TouchableNativeFeedback
+				onPress={()=> this.props.deleteBar(this.props.id)}
+			>
+				<View style={local.imageBar}>
+					<Image 
+						source={image.trash} 
+						style={{
+							height: 35,
+							width: 30,
+						}}
+					/>
+				</View>
+			</TouchableNativeFeedback>
+		</View>
+		);			
+	}
+}
+
 export class NewTransaction extends Component {
 	constructor(props){
 		super(props);
@@ -27,8 +112,11 @@ export class NewTransaction extends Component {
 		this.state = {
 			fontLoaded: false,
 			imageLoaded: false,
+			order: [],
 			orderCount: 0,
 		};
+		this.addOrder = this.addOrder.bind(this);
+		this.deleteOrder = this.deleteOrder.bind(this);
 	}
 
 	async componentDidMount(){
@@ -37,6 +125,7 @@ export class NewTransaction extends Component {
 	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
 	    });
 
+		ctr = 0;
 		this.setState({fontLoaded: true, imageLoaded: true});
 	}
 
@@ -45,13 +134,63 @@ export class NewTransaction extends Component {
 	    drawerLabel: 'New Transaction',
  	};
 
+ 	addOrder(){
+ 		this.setState(prevState => ({
+ 			order: [...prevState.order, {
+ 				id: this.state.orderCount++,
+ 				name: order[(ctr++)%4],
+ 				price: "0.00",
+ 				quantity: "0",
+ 			}],
+ 		}));
+ 	}
+
+ 	deleteOrder(id){
+ 		for(var i = 0; i < this.state.order.length; i++){
+ 			if(this.state.order[i].id == id) break
+ 		}
+
+ 		let newOrder = this.state.order;
+
+ 		newOrder.splice(i, 1);
+
+ 		this.setState(prevState => ({
+ 			order: newOrder,
+ 		}));
+ 	}
+
 	render(){
+		let max = this.state.order.length;	
+		let orderBar = [];
+
+		console.log("Max: " + max);
+		if(max != 0)
+		console.log("Latest State id: " + this.state.order[max-1].id);
+
+		if(max != 0){
+			for(let i = 0; i < max; i++){
+				orderBar[i] = 
+				<OrderBar 
+					id={this.state.order[i].id}
+					name={this.state.order[i].name}
+					price={this.state.order[i].price}
+					quantity={this.state.order[i].id}
+					deleteBar={this.deleteOrder}
+				/>
+			}
+		}
+
 		if(this.state.fontLoaded){
 			font.reg = 'montserrat-reg';
 			font.light = 'montserrat-light';
 		}else{
 			font.reg = '';
 			font.light = '';
+		}
+
+		if(this.state.imageLoaded){
+			image.trash = require('../Images/trashcan.png');
+			image.pencil = require('../Images/pencil.png');
 		}
 
 		return(
@@ -86,46 +225,9 @@ export class NewTransaction extends Component {
 								flex: 1, 
 								padding: 20,
 							}}>
-								<View style={{
-										flex: 1,
-										flexDirection: 'row',
-										borderWidth: 0.4,
-										backgroundColor: 'white',
-										marginBottom: 20,
-										borderRadius: 5,
-									}}>
-										<View style={{
-											flex: 1,
-											flexDirection: 'row',
-											alignItems: 'center',
-											justifyContent: 'space-between',
-											padding: 20,
-											
-										}}>
-											<View style={{
-												flexDirection: 'row',
-											}}>
-												<Text style={[styles.standardText,{
-													fontSize: 30,
-													fontFamily: font.reg,
-													color: "black",
-												}]}> 
-													0 x Hotdog
-												</Text>
-											</View>
-											<View>
-												<Text style={[styles.standardText,{
-													fontSize: 30,
-													fontFamily: font.reg,
-													color: "black",
-												}]}> 
-													₱ 0.00
-												</Text>
-											</View>
-										</View>
-								</View>
+								{orderBar}
 								<TouchableNativeFeedback
-									onPress={()=> this.setState({orderCount: this.state.orderCount++})}
+									onPress={this.addOrder}
 								>
 									<View style={{
 										flex: 1,
@@ -183,11 +285,21 @@ export class NewTransaction extends Component {
 const local = StyleSheet.create({
 	priceBar: {
 		flex: 0.1,		//
-		borderBottomWidth: 0.5,
+		borderBottomWidth: 0.2,
 		borderBottomColor: 'black',
 		flexDirection: 'row',
 		alignItems: 'center',
 		padding: 10,
 		justifyContent: 'space-between',
+	},
+	imageBar: {
+		flex: 0.2,
+		backgroundColor: '#EA3636',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderTopRightRadius: 5,
+		borderBottomRightRadius: 5,
+		borderWidth: 0.4,
+		borderColor: '#EA3636',
 	},
 });
