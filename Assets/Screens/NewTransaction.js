@@ -153,6 +153,7 @@ export class NewTransaction extends Component {
  		let newOrder = this.state.order;
 
  		newOrder.splice(i, 1);
+ 		console.log("Deleted ID: " + id);
 
  		this.setState(prevState => ({
  			order: newOrder,
@@ -163,9 +164,7 @@ export class NewTransaction extends Component {
 		let max = this.state.order.length;	
 		let orderBar = [];
 
-		console.log("Max: " + max);
-		if(max != 0)
-		console.log("Latest State id: " + this.state.order[max-1].id);
+		console.log("Length: " + max);
 
 		if(max != 0){
 			for(let i = 0; i < max; i++){

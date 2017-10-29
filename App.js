@@ -15,7 +15,7 @@ import {NewTransaction} from './Assets/Screens/NewTransaction.js';
 
 const FinanceApp = StackNavigator({
   //LogIn: {screen: LogIn},
-  //ome: {screen: Home},
+  //Home: {screen: Home},
   //Order: {screen: Order},
   NewTransaction: {screen: NewTransaction},
 }, {headerMode: 'screen'});
