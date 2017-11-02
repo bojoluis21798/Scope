@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
 	View,
+	StyleSheet,
 } from 'react-native';
 import {Font} from 'expo';
 import {styles} from '../styles.js';
@@ -18,17 +19,26 @@ export class TransactionLog extends Component{
 			<View style={styles.container}>
 				<Status />
 				<TopBar title="Transaction Log" />
-				<View style={[styles.body, {
-					flexDirection: 'row',
-					borderWidth: 2,
-				}]}>
+				<View style={[styles.body, local.body]}>
 					<View style={{
 						flex: 1,
 					}}>
-						
+						<View style={local.status}>
+							
+						</View>
 					</View>
 				</View>
 			</View>
 		);
 	}
 }
+
+const local = StyleSheet.create({
+	body: {
+		flexDirection: 'row',
+		borderWidth: 2,
+	},
+	status: {
+
+	},
+});
