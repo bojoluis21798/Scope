@@ -88,7 +88,7 @@ class OrderBar extends Component {
 				</View>
 			</TouchableNativeFeedback>
 			<TouchableNativeFeedback
-				onPress={()=> this.props.deleteBar(this.props.id)}
+				onPress={()=> this.props.deleteBar(this.props.key)}
 			>
 				<View style={local.imageBar}>
 					<Image 
@@ -170,7 +170,7 @@ export class NewTransaction extends Component {
 			for(let i = 0; i < max; i++){
 				orderBar[i] = 
 				<OrderBar 
-					id={this.state.order[i].id}
+					key={this.state.order[i].id}
 					name={this.state.order[i].name}
 					price={this.state.order[i].price}
 					quantity={this.state.order[i].id}
@@ -266,11 +266,11 @@ export class NewTransaction extends Component {
 		        					alignItems: 'center', 
 		        					justifyContent:'center',
 		        				}}>
-		        					<Text style={{
+		        					<Text style={[styles.standardText, {
 		        						fontFamily: font.reg,
 		        						fontSize: 25,
 		        						color: 'white',
-		        					}}>
+		        					}]}>
 		        						Submit
 		        					</Text>
 		        				</View>

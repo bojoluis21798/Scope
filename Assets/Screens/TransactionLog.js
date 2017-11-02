@@ -2,19 +2,103 @@ import React, {Component} from 'react';
 import {
 	View,
 	StyleSheet,
+	TouchableNativeFeedback,
+	Text,
+	Dimensions,
 } from 'react-native';
 import {Font} from 'expo';
 import {styles} from '../styles.js';
 import {Status} from './Status.js';
 import {TopBar} from './TopBar.js';
 
+var font = {
+	reg: "",
+	light: "",
+};
+
+class TransactionBar extends Component {
+	render(){
+		return(
+			<View style={{
+				marginTop: 20,
+				flexDirection: 'row',
+				backgroundColor: 'white',
+			}}>
+				<View style={{
+					flex: 1,
+				}}>
+					<View style={{
+						flexDirection: 'row',
+						justifyContent: 'space-between',
+						borderBottomWidth: 0.5,
+						padding: 15,
+					}}>
+						<Text style={[
+							styles.standardText, 
+							local.standardText, 
+							{
+								color: '#1C7B00',
+								fontSize: 20,
+								fontFamily: font.reg,
+							},
+						]}>
+							January 1, 2017
+						</Text>
+						<Text style={[
+							styles.standardText, 
+							local.standardText, 
+							{
+								color: '#1C7B00',
+								fontSize: 20,
+								fontFamily: font.reg,
+							},
+						]}>
+							ID #3107
+						</Text>
+					</View>
+				</View>
+			</View>
+		);
+	}
+}
+
 export class TransactionLog extends Component{
+	constructor(props){
+		super(props);
+
+		this.state = {
+			fontLoaded: false,
+			imageLoaded: false,
+		};
+	}
+
+	async componentDidMount(){
+		await Font.loadAsync({
+		  'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
+	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
+		});
+
+		this.setState({
+			fontLoaded: true,
+			imageLoaded: true,
+		});
+	}
 	static navigationOptions = {
 		header: null,
 		drawerLabel: "Transaction Log",
 	}
 
 	render(){
+		console.log(Dimensions.get('window'))
+
+		if(this.state.fontLoaded){
+			font.reg = 'montserrat-reg';
+			font.light = 'montserrat-light';
+		}else{
+			font.reg = 'sans-serif';
+			font.light = 'sans-serif';
+		}
+
 		return(
 			<View style={styles.container}>
 				<Status />
@@ -24,21 +108,120 @@ export class TransactionLog extends Component{
 						flex: 1,
 					}}>
 						<View style={local.status}>
-							
+							<View style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+							}}>
+								<Text style={[
+									styles.standardText,
+									local.standardText,
+									{
+										color: '#1C7B00', 
+										fontSize: 27,
+										fontFamily: font.reg,
+									},
+								]}>
+									Total Revenue: 
+								</Text>
+								<Text style={[
+									styles.standardText,
+									local.standardText,
+									{
+										color: '#1C7B00',
+										fontSize: 27,
+										fontFamily: font.reg,
+									},
+								]}>
+									₱ 0.00 
+								</Text>
+							</View>
+							<View style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+							}}>
+								<Text style={[
+									styles.standardText,
+									local.standardText,
+									{
+										color: '#1C7B00', 
+										fontSize: 27,
+										fontFamily: font.reg,
+									},
+								]}>
+									Total Tax: 
+								</Text>
+								<Text style={[
+									styles.standardText,
+									local.standardText,
+									{
+										color: '#1C7B00',
+										fontSize: 27,
+										fontFamily: font.reg,
+									},
+								]}>
+									₱ 0.00 
+								</Text>
+							</View>
 						</View>
+						<TransactionBar />
 					</View>
 				</View>
+				<TouchableNativeFeedback>	
+					<View style={local.addButton}>
+						<Text
+							style={[
+								styles.standardText,
+								local.standardText, 
+								{fontSize: 40},
+							]}
+						>
+							+
+						</Text>
+					</View>
+				</TouchableNativeFeedback>
 			</View>
 		);
 	}
 }
 
+var {height, width} = Dimensions.get('window');
+
 const local = StyleSheet.create({
 	body: {
 		flexDirection: 'row',
-		borderWidth: 2,
+		backgroundColor: '#E7E7E7',
+	},
+	standardFormat: {
+		flex: 1, 
+		alignItems: 'center', 
+		justifyContent:'center',
+	},
+	standardText: {
+		fontFamily: font.reg,
+		fontSize: 25,
+		color: 'white',
+	},
+	addButton: {
+		height: 80,
+		width: 80,
+		position: 'absolute',
+		left: width - 105,
+		top: height - 105,
+		borderRadius: 40,
+		backgroundColor: '#3EA90C',
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 	status: {
-
+		flex: 0.11,
+		padding: 10,
+		backgroundColor: 'white',
+		justifyContent: 'space-between',
 	},
-});
+	buttonViewOuter: {
+		flexDirection: 'row',
+		alignItems: 'flex-end',
+		backgroundColor:'#26A900',
+		padding: 15,
+	},
+});	

@@ -189,11 +189,11 @@ export class Order extends Component {
 		        					alignItems: 'center', 
 		        					justifyContent:'center',
 		        				}}>
-		        					<Text style={{
+		        					<Text style={[styles.standardText, {
 		        						fontFamily: font,
 		        						fontSize: 25,
 		        						color: 'white',
-		        					}}>
+		        					}]}>
 		        						Add
 		        					</Text>
 		        				</View>
