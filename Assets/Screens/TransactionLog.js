@@ -216,19 +216,23 @@ export class TransactionLog extends Component{
 						<TransactionBar />
 					</View>
 				</View>
-				<TouchableNativeFeedback>	
-					<View style={local.addButton}>
-						<Text
-							style={[
-								styles.standardText,
-								local.standardText, 
-								{fontSize: 40},
-							]}
-						>
-							+
-						</Text>
-					</View>
-				</TouchableNativeFeedback>
+				<View style={local.addButton}>
+					<TouchableNativeFeedback
+						background={
+							TouchableNativeFeedback.Ripple('#FFFF', true)
+						}
+					>
+							<Text
+								style={[
+									styles.standardText,
+									local.standardText, 
+									{fontSize: 40},
+								]}
+							>
+								+
+							</Text>
+					</TouchableNativeFeedback>
+				</View>
 			</View>
 		);
 	}
@@ -257,13 +261,13 @@ const local = StyleSheet.create({
 		color: 'white',
 	},
 	addButton: {
-		height: 80,
-		width: 80,
 		position: 'absolute',
 		left: width - 105,
 		top: height - 105,
 		borderRadius: 40,
-		backgroundColor: '#3EA90C',
+		backgroundColor: '#3EA90C',			
+		height: 80,
+		width: 80,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
