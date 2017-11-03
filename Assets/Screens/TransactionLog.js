@@ -11,53 +11,103 @@ import {styles} from '../styles.js';
 import {Status} from './Status.js';
 import {TopBar} from './TopBar.js';
 
-var font = {
-	reg: "",
-	light: "",
-};
 
 class TransactionBar extends Component {
 	render(){
 		return(
-			<View style={{
-				marginTop: 20,
-				flexDirection: 'row',
-				backgroundColor: 'white',
-			}}>
+			<TouchableNativeFeedback>
 				<View style={{
-					flex: 1,
+					marginTop: 20,
+					flexDirection: 'row',
+					backgroundColor: 'white',
 				}}>
 					<View style={{
-						flexDirection: 'row',
-						justifyContent: 'space-between',
-						borderBottomWidth: 0.5,
-						padding: 15,
+						flex: 1,
 					}}>
-						<Text style={[
-							styles.standardText, 
-							local.standardText, 
-							{
-								color: '#1C7B00',
-								fontSize: 20,
-								fontFamily: font.reg,
-							},
-						]}>
-							January 1, 2017
-						</Text>
-						<Text style={[
-							styles.standardText, 
-							local.standardText, 
-							{
-								color: '#1C7B00',
-								fontSize: 20,
-								fontFamily: font.reg,
-							},
-						]}>
-							ID #3107
-						</Text>
+						<View style={{
+							flexDirection: 'row',
+							justifyContent: 'space-between',
+							borderBottomWidth: 0.5,
+							padding: 15,
+						}}>
+							<Text style={[
+								styles.standardText, 
+								local.standardText, 
+								{
+									color: '#1C7B00',
+									fontSize: 20,
+									fontFamily: font.reg,
+								},
+							]}>
+								January 1, 2017
+							</Text>
+						</View>
+						<View style={{
+							padding: 10,
+						}}>
+							<Text style={[
+								styles.standardText, 
+								local.standardText, 
+								{
+									color: '#1C7B00',
+									fontSize: 20,
+									fontFamily: font.reg,
+									margin: 5,
+								},
+							]}>
+								ID #3107
+							</Text>
+							<View style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+							}}>
+								<Text style={[
+									styles.standardText, 
+									local.standardText, 
+									{
+										color: '#1C7B00',
+										fontSize: 25,
+										fontFamily: font.reg,
+										margin: 5,
+									},
+								]}>
+									Total Price
+								</Text>
+								<Text style={[
+									styles.standardText, 
+									local.standardText, 
+									{
+										color: '#1C7B00',
+										fontSize: 25,
+										fontFamily: font.reg,
+										margin: 5,
+									},
+								]}>
+									₱ 0.00
+								</Text>
+							</View>
+						</View>
+						<View style={{
+							flexDirection: 'row',
+							padding: 5,
+							paddingTop: 10,
+							justifyContent: 'center',
+						}}>
+							<Text style={[
+									styles.standardText, 
+									local.standardText, 
+									{
+										color: '#1C7B00',
+										fontSize: 17,
+										fontFamily: font.reg,
+									},
+								]}>
+									Tap for more details
+							</Text>
+						</View>
 					</View>
 				</View>
-			</View>
+			</TouchableNativeFeedback>
 		);
 	}
 }
@@ -184,6 +234,11 @@ export class TransactionLog extends Component{
 	}
 }
 
+var font = {
+	reg: "",
+	light: "",
+};
+
 var {height, width} = Dimensions.get('window');
 
 const local = StyleSheet.create({
@@ -213,7 +268,6 @@ const local = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	status: {
-		flex: 0.11,
 		padding: 10,
 		backgroundColor: 'white',
 		justifyContent: 'space-between',
