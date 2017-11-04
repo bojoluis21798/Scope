@@ -219,9 +219,11 @@ export class TransactionLog extends Component{
 				<View style={local.addButton}>
 					<TouchableNativeFeedback
 						background={
-							TouchableNativeFeedback.Ripple('#FFFF', true)
+							TouchableNativeFeedback.Ripple('#E7E7E7', true)
 						}
+						useForeground={false}
 					>
+						<View style={local.buttonTextContainer}>
 							<Text
 								style={[
 									styles.standardText,
@@ -231,6 +233,7 @@ export class TransactionLog extends Component{
 							>
 								+
 							</Text>
+						</View>
 					</TouchableNativeFeedback>
 				</View>
 			</View>
@@ -265,11 +268,14 @@ const local = StyleSheet.create({
 		left: width - 105,
 		top: height - 105,
 		borderRadius: 40,
-		backgroundColor: '#3EA90C',			
+	},
+	buttonTextContainer: {
 		height: 80,
 		width: 80,
+		backgroundColor: '#3EA90C',			
 		alignItems: 'center',
 		justifyContent: 'center',
+		borderRadius: 40,
 	},
 	status: {
 		padding: 10,
