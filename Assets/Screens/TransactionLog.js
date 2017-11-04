@@ -11,23 +11,10 @@ import {styles} from '../styles.js';
 import {Status} from './Status.js';
 import {TopBar} from './TopBar.js';
 
-/*class Date extends Component {
-	render(){
-		return(
-			
-		);
-	}
-}*/
-
-class TransactionBar extends Component {
+class Date extends Component {
 	render(){
 		return(
 			<View style={{
-				marginTop: 20,
-				flexDirection: 'row',
-				backgroundColor: 'white',
-			}}>
-				<View style={{
 					flex: 1,
 				}}>
 					<View style={{
@@ -46,7 +33,20 @@ class TransactionBar extends Component {
 						]}>
 							January 1, 2017
 						</Text>
-					</View>
+			</View>				
+		);
+	}
+}
+
+class TransactionBar extends Component {
+	render(){
+		return(
+			<View style={{
+				marginTop: 20,
+				flexDirection: 'row',
+				backgroundColor: 'white',
+			}}>
+				<Date />
 					<TouchableNativeFeedback>
 						<View style={{borderTopWidth: 0.5}}>
 							<View style={{
