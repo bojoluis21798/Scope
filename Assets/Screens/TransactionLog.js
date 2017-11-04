@@ -15,99 +15,101 @@ import {TopBar} from './TopBar.js';
 class TransactionBar extends Component {
 	render(){
 		return(
-			<TouchableNativeFeedback>
+			<View style={{
+				marginTop: 20,
+				flexDirection: 'row',
+				backgroundColor: 'white',
+			}}>
 				<View style={{
-					marginTop: 20,
-					flexDirection: 'row',
-					backgroundColor: 'white',
+					flex: 1,
 				}}>
 					<View style={{
-						flex: 1,
+						flexDirection: 'row',
+						justifyContent: 'space-between',
+						borderBottomWidth: 0.5,
+						padding: 15,
 					}}>
-						<View style={{
-							flexDirection: 'row',
-							justifyContent: 'space-between',
-							borderBottomWidth: 0.5,
-							padding: 15,
-						}}>
-							<Text style={[
-								styles.standardText, 
-								local.standardText, 
-								{
-									color: '#1C7B00',
-									fontSize: 20,
-									fontFamily: font.reg,
-								},
-							]}>
-								January 1, 2017
-							</Text>
-						</View>
-						<View style={{
-							padding: 10,
-						}}>
-							<Text style={[
-								styles.standardText, 
-								local.standardText, 
-								{
-									color: '#1C7B00',
-									fontSize: 20,
-									fontFamily: font.reg,
-									margin: 5,
-								},
-							]}>
-								ID #3107
-							</Text>
+						<Text style={[
+							styles.standardText, 
+							local.standardText, 
+							{
+								color: '#1C7B00',
+								fontSize: 20,
+								fontFamily: font.reg,
+							},
+						]}>
+							January 1, 2017
+						</Text>
+					</View>
+					<TouchableNativeFeedback>
+						<View>
 							<View style={{
-								flexDirection: 'row',
-								justifyContent: 'space-between',
+								padding: 10,
 							}}>
 								<Text style={[
 									styles.standardText, 
 									local.standardText, 
 									{
 										color: '#1C7B00',
-										fontSize: 25,
+										fontSize: 20,
 										fontFamily: font.reg,
 										margin: 5,
 									},
 								]}>
-									Total Price
+									ID #3107
 								</Text>
+								<View style={{
+									flexDirection: 'row',
+									justifyContent: 'space-between',
+								}}>
+									<Text style={[
+										styles.standardText, 
+										local.standardText, 
+										{
+											color: '#1C7B00',
+											fontSize: 25,
+											fontFamily: font.reg,
+											margin: 5,
+										},
+									]}>
+										Total Price
+									</Text>
+									<Text style={[
+										styles.standardText, 
+										local.standardText, 
+										{
+											color: '#1C7B00',
+											fontSize: 25,
+											fontFamily: font.reg,
+											margin: 5,
+										},
+									]}>
+										₱ 0.00
+									</Text>
+								</View>
+							</View>
+							<View style={{
+								flexDirection: 'row',
+								padding: 5,
+								paddingTop: 10,
+								justifyContent: 'center',
+							}}>
 								<Text style={[
-									styles.standardText, 
-									local.standardText, 
-									{
-										color: '#1C7B00',
-										fontSize: 25,
-										fontFamily: font.reg,
-										margin: 5,
-									},
-								]}>
-									₱ 0.00
+										styles.standardText, 
+										local.standardText, 
+										{
+											color: '#1C7B00',
+											fontSize: 17,
+											fontFamily: font.reg,
+										},
+									]}>
+										Tap for more details
 								</Text>
 							</View>
 						</View>
-						<View style={{
-							flexDirection: 'row',
-							padding: 5,
-							paddingTop: 10,
-							justifyContent: 'center',
-						}}>
-							<Text style={[
-									styles.standardText, 
-									local.standardText, 
-									{
-										color: '#1C7B00',
-										fontSize: 17,
-										fontFamily: font.reg,
-									},
-								]}>
-									Tap for more details
-							</Text>
-						</View>
-					</View>
+					</TouchableNativeFeedback>
 				</View>
-			</TouchableNativeFeedback>
+			</View>
 		);
 	}
 }
