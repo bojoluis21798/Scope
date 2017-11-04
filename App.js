@@ -13,10 +13,11 @@ import {Home} from './Assets/Screens/Home.js';
 import {Order} from './Assets/Screens/Order.js';
 import {NewTransaction} from './Assets/Screens/NewTransaction.js';
 import {TransactionLog} from './Assets/Screens/TransactionLog.js';
+import {Drawer} from './Assets/drawer.js';
 
 const FinanceApp = StackNavigator({
   LogIn: {screen: LogIn},
-  Home: {screen: Home},
+  Home: {screen: Drawer},
   //Order: {screen: Order},
   //NewTransaction: {screen: NewTransaction},
   //TransactionLog: {screen: TransactionLog},

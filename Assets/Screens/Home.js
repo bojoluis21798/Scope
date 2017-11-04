@@ -194,7 +194,6 @@ export class Home extends Component{
 
   static navigationOptions = {
     header: null,
-    drawerLabel: 'Home',
   };
 
   setRendered_1(){
