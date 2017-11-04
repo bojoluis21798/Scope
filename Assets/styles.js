@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   title: {
-    flex: 0.6,
+    flex: 0.65,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -45,8 +45,8 @@ export const styles = StyleSheet.create({
   topBar: {
     flexDirection: 'row',
     backgroundColor: '#26A900',
-
     padding: 10,
+    paddingTop: statHeight + 10,
   },
   menuIcon: {
     height: 34,

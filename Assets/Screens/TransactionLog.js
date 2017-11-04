@@ -159,7 +159,6 @@ export class TransactionLog extends Component{
 
 		return(
 			<View style={styles.container}>
-				<Status />
 				<TopBar title="Transaction Log" />
 				<View style={[styles.body, local.body]}>
 					<View style={{

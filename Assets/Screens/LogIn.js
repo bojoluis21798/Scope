@@ -57,7 +57,6 @@ export class LogIn extends Component {
     }
     return(
       <View style={styles.container}>
-        <Status />
         <View style={styles.title}>
           <Text style={[styles.titleText, {fontFamily: font_fam.title}]}>
             Scope

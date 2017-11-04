@@ -50,7 +50,9 @@ export class TopBar extends Component {
 	          <View style={{
 	            flex: 1, 
 	            flexDirection: 'row',}}>
-	            <TouchableWithoutFeedback>
+	            <TouchableWithoutFeedback
+	            	onPress={()=> this.props.drawer()}
+	            >
 	              <Image 
 	                source={image}
 	                style={styles.menuIcon}

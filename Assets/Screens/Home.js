@@ -6,8 +6,10 @@ import {
   Image,
   Text,
   Picker,
+  Button,
   ScrollView,
 } from 'react-native';
+import {DrawerNavigator} from 'react-navigation';
 import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
@@ -180,6 +182,7 @@ export class Home extends Component{
     this.setRendered_5 = this.setRendered_5.bind(this);
     this.setAllRendered = this.setAllRendered.bind(this);
     this.setHideRendered = this.setHideRendered.bind(this);
+    this.openDrawer = this.openDrawer.bind(this);
     this.setState = this.setState.bind(this);
   }
 
@@ -194,6 +197,7 @@ export class Home extends Component{
 
   static navigationOptions = {
     header: null,
+    drawerLabel: 'Home',
   };
 
   setRendered_1(){
@@ -220,6 +224,7 @@ export class Home extends Component{
       rendered_5: true,
     });
   }
+
   setHideRendered(){
     this.setState({
       rendered_1: false,
@@ -228,6 +233,10 @@ export class Home extends Component{
       rendered_4: false,
       rendered_5: false,
     });
+  }
+
+  openDrawer(){
+    this.props.navigation.navigate('DrawerOpen');
   }
 
   render(){
@@ -245,9 +254,7 @@ export class Home extends Component{
 
     return(
       <View style={styles.container}>
-        <Status/>
-        <TopBar title="Summary Report" />
-        
+        <TopBar title="Summary Report" drawer={this.openDrawer}/>
           <View style={[styles.body,{
             backgroundColor: '#E7e7e7',
             flexDirection: 'row',

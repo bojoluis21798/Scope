@@ -194,7 +194,6 @@ export class NewTransaction extends Component {
 
 		return(
 			<View style={styles.container}>
-				<Status />
 				<TopBar title="New Transaction" />
 				<View style={[styles.body, {
 					backgroundColor: "#E7E7E7",

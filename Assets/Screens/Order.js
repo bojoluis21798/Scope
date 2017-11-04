@@ -59,7 +59,6 @@ export class Order extends Component {
 
  		return(
  			<View style={styles.container}>
- 				<Status />
  				<TopBar title="Order" />
 		        <View style={[styles.body, {
 		        	backgroundColor: 'white',
