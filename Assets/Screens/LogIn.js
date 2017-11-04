@@ -4,8 +4,8 @@ import {
   Image,
   Text,
   TextInput,
+  StatusBar,
 } from 'react-native';
-import {Status} from './Status.js';
 import {Font} from 'expo';
 import {StackNavigator} from 'react-navigation';
 import {styles} from '../styles.js'
@@ -57,6 +57,12 @@ export class LogIn extends Component {
     }
     return(
       <View style={styles.container}>
+        <StatusBar 
+          translucent={true} 
+          barStyle="default"
+          animated={true}
+          backgroundColor="#26A900"
+        />
         <View style={styles.title}>
           <Text style={[styles.titleText, {fontFamily: font_fam.title}]}>
             Scope

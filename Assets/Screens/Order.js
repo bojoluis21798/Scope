@@ -8,9 +8,9 @@ import ReactNative, {
 	TouchableNativeFeedback,
 	Slider,
 	Picker,
+	StatusBar,
 	KeyboardAvoidingView
 } from 'react-native';
-import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
@@ -30,6 +30,7 @@ export class Order extends Component {
 			productPrice: "",
 			transactionNo: "",
 		}
+		this.openDrawer = this.openDrawer.bind(this);
 	}
 
 	async componentDidMount(){
@@ -46,6 +47,10 @@ export class Order extends Component {
 	    drawerLabel: 'Order',
  	};
 
+ 	openDrawer(){
+    	this.props.navigation.navigate('DrawerOpen');
+  	}
+
  	render(){
  		if(this.state.imageLoaded){
  			image = require('../Images/menu.png');
@@ -59,7 +64,16 @@ export class Order extends Component {
 
  		return(
  			<View style={styles.container}>
- 				<TopBar title="Order" />
+ 				 <StatusBar 
+		          translucent={true} 
+		          barStyle="default"
+		          animated={true}
+		          backgroundColor="#26A900"
+		        />
+ 				<TopBar
+ 					title="Order" 
+ 					drawer={this.openDrawer}
+ 				/>
 		        <View style={[styles.body, {
 		        	backgroundColor: 'white',
 		        	flexDirection: 'row',

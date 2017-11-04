@@ -8,9 +8,9 @@ import {
   Picker,
   Button,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
-import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
@@ -254,6 +254,12 @@ export class Home extends Component{
 
     return(
       <View style={styles.container}>
+         <StatusBar 
+          translucent={true} 
+          barStyle="default"
+          animated={true}
+          backgroundColor="#26A900"
+        />
         <TopBar title="Summary Report" drawer={this.openDrawer}/>
           <View style={[styles.body,{
             backgroundColor: '#E7e7e7',

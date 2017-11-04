@@ -4,11 +4,11 @@ import {
 	StyleSheet,
 	TouchableNativeFeedback,
 	Text,
+	StatusBar,
 	Dimensions,
 } from 'react-native';
 import {Font} from 'expo';
 import {styles} from '../styles.js';
-import {Status} from './Status.js';
 import {TopBar} from './TopBar.js';
 
 class Date extends Component {
@@ -128,6 +128,8 @@ export class TransactionLog extends Component{
 			fontLoaded: false,
 			imageLoaded: false,
 		};
+
+		this.openDrawer = this.openDrawer.bind(this);
 	}
 
 	async componentDidMount(){
@@ -146,6 +148,10 @@ export class TransactionLog extends Component{
 		drawerLabel: "Transaction Log",
 	}
 
+	openDrawer(){
+    	this.props.navigation.navigate('DrawerOpen');
+  	}
+
 	render(){
 		console.log(Dimensions.get('window'))
 
@@ -159,7 +165,16 @@ export class TransactionLog extends Component{
 
 		return(
 			<View style={styles.container}>
-				<TopBar title="Transaction Log" />
+			    <StatusBar 
+		          translucent={true} 
+		          barStyle="default"
+		          animated={true}
+		          backgroundColor="#26A900"
+		        />
+				<TopBar 
+					title="Transaction Log" 
+					drawer={this.openDrawer}
+				/>
 				<View style={[styles.body, local.body]}>
 					<View style={{
 						flex: 1,

@@ -8,9 +8,9 @@ import ReactNative, {
 	TouchableNativeFeedback,
 	Picker,
 	ScrollView,
+	StatusBar,
 	StyleSheet,
 } from 'react-native';
-import {Status} from './Status.js';
 import {styles} from '../styles.js';
 import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
@@ -117,6 +117,7 @@ export class NewTransaction extends Component {
 		};
 		this.addOrder = this.addOrder.bind(this);
 		this.deleteOrder = this.deleteOrder.bind(this);
+		this.openDrawer = this.openDrawer.bind(this);
 	}
 
 	async componentDidMount(){
@@ -160,6 +161,10 @@ export class NewTransaction extends Component {
  		}));
  	}
 
+ 	openDrawer(){
+    this.props.navigation.navigate('DrawerOpen');
+  	}
+
 	render(){
 		let max = this.state.order.length;	
 		let orderBar = [];
@@ -194,7 +199,16 @@ export class NewTransaction extends Component {
 
 		return(
 			<View style={styles.container}>
-				<TopBar title="New Transaction" />
+				<StatusBar 
+		          translucent={true} 
+		          barStyle="default"
+		          animated={true}
+		          backgroundColor="#26A900"
+		        />
+				<TopBar 
+					title="New Transaction" 
+					drawer={this.openDrawer}
+				/>
 				<View style={[styles.body, {
 					backgroundColor: "#E7E7E7",
 					flexDirection: 'row',
