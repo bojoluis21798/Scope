@@ -15,24 +15,21 @@ class Date extends Component {
 	render(){
 		return(
 			<View style={{
-					flex: 1,
-				}}>
-					<View style={{
-						flexDirection: 'row',
-						justifyContent: 'space-between',
-						padding: 15,
-					}}>
-						<Text style={[
-							styles.standardText, 
-							local.standardText, 
-							{
-								color: '#1C7B00',
-								fontSize: 20,
-								fontFamily: font.reg,
-							},
-						]}>
-							January 1, 2017
-						</Text>
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+				padding: 15,
+			}}>
+				<Text style={[
+					styles.standardText, 
+					local.standardText, 
+					{
+						color: '#1C7B00',
+						fontSize: 20,
+						fontFamily: font.reg,
+					},
+				]}>
+					January 1, 2017
+				</Text>
 			</View>				
 		);
 	}
@@ -46,7 +43,10 @@ class TransactionBar extends Component {
 				flexDirection: 'row',
 				backgroundColor: 'white',
 			}}>
-				<Date />
+				<View style={{
+					flex: 1,
+				}}>
+					<Date />
 					<TouchableNativeFeedback>
 						<View style={{borderTopWidth: 0.5}}>
 							<View style={{
