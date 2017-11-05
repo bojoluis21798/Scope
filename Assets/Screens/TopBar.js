@@ -57,7 +57,7 @@ export class TopBar extends Component {
 	            flex: 1, 
 	            flexDirection: 'row',}}>
 	            <TouchableWithoutFeedback
-	            	onPress={() => (backButton) ? this.props.drawer(): this.props.backNavigate()}
+	            	onPress={this.props.navigate}
 	            >
 	              <Image 
 	                source={image}

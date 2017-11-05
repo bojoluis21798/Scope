@@ -260,7 +260,7 @@ export class Home extends Component{
           animated={true}
           backgroundColor="#26A900"
         />
-        <TopBar title="Summary Report" drawer={this.openDrawer}/>
+        <TopBar title="Summary Report" navigate={this.openDrawer}/>
           <View style={[styles.body,{
             backgroundColor: '#E7e7e7',
             flexDirection: 'row',

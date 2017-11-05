@@ -72,7 +72,7 @@ export class Order extends Component {
 		        />
  				<TopBar
  					title="Order" 
- 					drawer={this.openDrawer}
+ 					navigate={this.openDrawer}
  				/>
 		        <View style={[styles.body, {
 		        	backgroundColor: 'white',

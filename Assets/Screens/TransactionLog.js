@@ -182,7 +182,7 @@ export class TransactionLog extends Component{
 		        />
 				<TopBar 
 					title="Transaction Log" 
-					drawer={this.openDrawer}
+					navigate={this.openDrawer}
 				/>
 				<View style={[styles.body, local.body]}>
 					<View style={{

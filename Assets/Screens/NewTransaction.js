@@ -209,7 +209,8 @@ export class NewTransaction extends Component {
 		        />
 				<TopBar 
 					title="New Transaction" 
-					backNavigate={this.backNavigate}
+					navigate={this.backNavigate}
+					backButton={true}
 				/>
 				<View style={[styles.body, {
 					backgroundColor: "#E7E7E7",
