@@ -1,6 +1,7 @@
 import React from 'react';
 import {Home} from './Screens/Home.js';
 import {TransactionLog} from './Screens/TransactionLog.js';
+import {NewTransaction} from './Screens/NewTransaction.js';
 import {LogIn} from './Screens/LogIn.js';
 import {DrawerNavigator} from 'react-navigation';
 

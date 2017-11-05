@@ -10,6 +10,7 @@ import {
 import {Font} from 'expo';
 import {styles} from '../styles.js';
 import {TopBar} from './TopBar.js';
+import {NewTransaction} from './NewTransaction.js';
 
 class Date extends Component {
 	render(){
@@ -37,6 +38,7 @@ class Date extends Component {
 
 class TransactionBar extends Component {
 	render(){
+
 		return(
 			<View style={{
 				marginTop: 20,
@@ -47,8 +49,10 @@ class TransactionBar extends Component {
 					flex: 1,
 				}}>
 					<Date />
-					<TouchableNativeFeedback>
-						<View style={{borderTopWidth: 0.5}}>
+					<TouchableNativeFeedback
+						onPress={this.props.navigate}
+					>
+						<View style={{borderTopWidth: 2, borderColor: '#E7E7E7'}}>
 							<View style={{
 								padding: 10,
 							}}>
@@ -130,6 +134,7 @@ export class TransactionLog extends Component{
 		};
 
 		this.openDrawer = this.openDrawer.bind(this);
+		this.navigateToNew = this.navigateToNew.bind(this);
 	}
 
 	async componentDidMount(){
@@ -150,6 +155,10 @@ export class TransactionLog extends Component{
 
 	openDrawer(){
     	this.props.navigation.navigate('DrawerOpen');
+  	}
+
+  	navigateToNew(){
+  		this.props.navigation.navigate('NewTransaction');
   	}
 
 	render(){
@@ -235,7 +244,7 @@ export class TransactionLog extends Component{
 								</Text>
 							</View>
 						</View>
-						<TransactionBar />
+						<TransactionBar navigate={this.navigateToNew}/>
 					</View>
 				</View>
 				<View style={local.addButton}>

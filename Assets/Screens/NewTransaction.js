@@ -12,6 +12,7 @@ import ReactNative, {
 	StyleSheet,
 } from 'react-native';
 import {styles} from '../styles.js';
+import {TransactionLog} from './TransactionLog.js';
 import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
 
@@ -88,7 +89,7 @@ class OrderBar extends Component {
 				</View>
 			</TouchableNativeFeedback>
 			<TouchableNativeFeedback
-				onPress={()=> this.props.deleteBar(this.props.key)}
+				onPress={()=> this.props.deleteBar(this.props.id)}
 			>
 				<View style={local.imageBar}>
 					<Image 
@@ -117,7 +118,7 @@ export class NewTransaction extends Component {
 		};
 		this.addOrder = this.addOrder.bind(this);
 		this.deleteOrder = this.deleteOrder.bind(this);
-		this.openDrawer = this.openDrawer.bind(this);
+		this.backNavigate = this.backNavigate.bind(this);
 	}
 
 	async componentDidMount(){
@@ -161,8 +162,8 @@ export class NewTransaction extends Component {
  		}));
  	}
 
- 	openDrawer(){
-    this.props.navigation.navigate('DrawerOpen');
+ 	backNavigate(){
+    	this.props.navigation.navigate('TransactionLog');
   	}
 
 	render(){
@@ -176,6 +177,7 @@ export class NewTransaction extends Component {
 				orderBar[i] = 
 				<OrderBar 
 					key={this.state.order[i].id}
+					id={this.state.order[i].id}
 					name={this.state.order[i].name}
 					price={this.state.order[i].price}
 					quantity={this.state.order[i].id}
@@ -207,7 +209,7 @@ export class NewTransaction extends Component {
 		        />
 				<TopBar 
 					title="New Transaction" 
-					drawer={this.openDrawer}
+					backNavigate={this.backNavigate}
 				/>
 				<View style={[styles.body, {
 					backgroundColor: "#E7E7E7",

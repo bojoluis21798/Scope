@@ -33,8 +33,14 @@ export class TopBar extends Component {
 	}
 
 	render(){
+		let backButton = false; 
 		if(this.state.imageLoaded){
-			image = require('../Images/menu.png');
+			if(typeof this.props.backButton == 'undefined' || this.props.backButton == false){
+				image = require('../Images/menu.png');
+			}else{
+				backButton = true;
+				image = require('../Images/back.png');
+			}
 		}
 
 		if(this.state.fontLoaded){
@@ -51,7 +57,7 @@ export class TopBar extends Component {
 	            flex: 1, 
 	            flexDirection: 'row',}}>
 	            <TouchableWithoutFeedback
-	            	onPress={()=> this.props.drawer()}
+	            	onPress={() => (backButton) ? this.props.drawer(): this.props.backNavigate()}
 	            >
 	              <Image 
 	                source={image}
