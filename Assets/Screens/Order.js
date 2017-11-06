@@ -30,7 +30,7 @@ export class Order extends Component {
 			productPrice: "",
 			transactionNo: "",
 		}
-		this.openDrawer = this.openDrawer.bind(this);
+		this.backToNew = this.backToNew.bind(this);
 	}
 
 	async componentDidMount(){
@@ -47,8 +47,8 @@ export class Order extends Component {
 	    drawerLabel: 'Order',
  	};
 
- 	openDrawer(){
-    	this.props.navigation.navigate('DrawerOpen');
+ 	backToNew(){
+    	this.props.navigation.navigate('New');
   	}
 
  	render(){
@@ -72,7 +72,8 @@ export class Order extends Component {
 		        />
  				<TopBar
  					title="Order" 
- 					navigate={this.openDrawer}
+ 					navigate={this.backToNew}
+ 					backButton={true}
  				/>
 		        <View style={[styles.body, {
 		        	backgroundColor: 'white',
@@ -191,7 +192,9 @@ export class Order extends Component {
 		        	</KeyboardAvoidingView>
 		        </View> 
 		    
-	        <TouchableNativeFeedback>
+	        <TouchableNativeFeedback
+	        	onPress={() => this.props.navigation.navigate('New')}
+	        >
 		        			<View style={{flexDirection: 'row',
 		        			 alignItems: 'flex-end',
 		        			 backgroundColor:'#26A900',

@@ -18,9 +18,6 @@ import {Drawer} from './Assets/drawer.js';
 const FinanceApp = StackNavigator({
   LogIn: {screen: LogIn},
   Home: {screen: Drawer},
-  Order: {screen: Order},
-  NewTransaction: {screen: NewTransaction},
-  TransactionLog: {screen: TransactionLog},
 }, {headerMode: 'none'});
 
 export default class App extends Component {

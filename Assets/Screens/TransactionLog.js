@@ -158,7 +158,7 @@ export class TransactionLog extends Component{
   	}
 
   	navigateToNew(){
-  		this.props.navigation.navigate('NewTransaction');
+  		this.props.navigation.navigate('New');
   	}
 
 	render(){
@@ -253,6 +253,7 @@ export class TransactionLog extends Component{
 							TouchableNativeFeedback.Ripple('#E7E7E7', true)
 						}
 						useForeground={false}
+						onPress={()=> this.props.navigation.navigate('New')}
 					>
 						<View style={local.buttonTextContainer}>
 							<Text

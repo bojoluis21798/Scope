@@ -131,12 +131,8 @@ export class NewTransaction extends Component {
 		this.setState({fontLoaded: true, imageLoaded: true});
 	}
 
-	static navigationOptions = {
-	    header: null,
-	    drawerLabel: 'New Transaction',
- 	};
-
  	addOrder(){
+ 		this.props.navigation.navigate('Order');
  		this.setState(prevState => ({
  			order: [...prevState.order, {
  				id: this.state.orderCount++,
@@ -163,7 +159,7 @@ export class NewTransaction extends Component {
  	}
 
  	backNavigate(){
-    	this.props.navigation.navigate('TransactionLog');
+    	this.props.navigation.navigate('Log');
   	}
 
 	render(){
@@ -271,7 +267,9 @@ export class NewTransaction extends Component {
 					
 
 				</View>
-			<TouchableNativeFeedback>
+			<TouchableNativeFeedback
+				onPress={() => this.props.navigation.navigate('Log')}
+			>
 		        			<View style={{flexDirection: 'row',
 		        			 alignItems: 'flex-end',
 		        			 backgroundColor:'#26A900',

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Home} from './Screens/Home.js';
-import {TransactionLog} from './Screens/TransactionLog.js';
-import {NewTransaction} from './Screens/NewTransaction.js';
+import {TransactionsStack} from './Screens/TransactionsStack.js';
 import {LogIn} from './Screens/LogIn.js';
 import {DrawerNavigator} from 'react-navigation';
 
@@ -12,8 +11,8 @@ export const Drawer = DrawerNavigator({
 				drawerLabel: 'Summary Report',
 			},
 		},
-		TransactionLog: {
-			screen: TransactionLog,
+		Transactions: {
+			screen: TransactionsStack,
 			navigationOptions: {
 				drawerLabel: 'Transaction Log',
 			},
