@@ -1,7 +1,6 @@
 import React from 'react';
 import {Home} from './Screens/Home.js';
 import {TransactionsStack} from './Screens/TransactionsStack.js';
-import {LogIn} from './Screens/LogIn.js';
 import {DrawerNavigator} from 'react-navigation';
 
 export const Drawer = DrawerNavigator({
@@ -17,14 +16,9 @@ export const Drawer = DrawerNavigator({
 				drawerLabel: 'Transaction Log',
 			},
 		},
-		LogOut: {
-			screen: LogIn,
-			navigationOptions: {
-				drawerLabel: 'Log Out',
-			},
-		},
 	},
 	{
+		initialRouteName: "Home",
 		drawerWidth: 300,
 		drawerBackgroundColor: '#F3F3F3',
 	},
@@ -32,10 +26,4 @@ export const Drawer = DrawerNavigator({
 
 Drawer.navigationOptions = {
 	header: null,
-
-	contentOptions: {
-		itemsContainerStyle: {
-	    marginVertical: 10,
-	  },
-	},
 }

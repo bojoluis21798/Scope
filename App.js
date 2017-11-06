@@ -15,10 +15,14 @@ import {NewTransaction} from './Assets/Screens/NewTransaction.js';
 import {TransactionLog} from './Assets/Screens/TransactionLog.js';
 import {Drawer} from './Assets/drawer.js';
 
-const FinanceApp = StackNavigator({
+export const FinanceApp = StackNavigator({
   LogIn: {screen: LogIn},
   Home: {screen: Drawer},
-}, {headerMode: 'none'});
+}, 
+{
+  headerMode: 'none',
+  initialRouteName: 'LogIn',
+});
 
 export default class App extends Component {
   render() {
