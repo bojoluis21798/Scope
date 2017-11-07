@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {LockStack, InitialStack} from './Assets/InitialStack.js';
+import {Product} from './Assets/Screens/Product.js';
 
 export default class App extends Component {
   render() {
     return (
-      <InitialStack />
+      <Product />
     );
   }
 }

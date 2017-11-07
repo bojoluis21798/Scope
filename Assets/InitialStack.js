@@ -9,7 +9,7 @@ import {LogIn} from './Screens/LogIn.js';
 import {
 	Drawer,
 	HomeDrawer,
-} from './Drawer.js';
+} from './drawer.js';
 
 export const InitialStack = StackNavigator({
   LogIn: {screen: LogIn},
