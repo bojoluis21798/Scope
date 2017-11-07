@@ -63,12 +63,6 @@ export const Drawer = DrawerNavigator({
 				drawerLabel: 'Transaction Log',
 			},
 		},
-		Lock: {
-			screen: LogIn,
-			navigationOptions:{
-				drawerLabel: "Lock",
-			},
-		},
 	},
 	{
 		initialRouteName: "Home",
@@ -98,7 +92,6 @@ class Custom extends Component{
 		);
 	}
 }
-
 
 Drawer.navigationOptions = {
 	header: null,

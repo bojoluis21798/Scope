@@ -19,36 +19,3 @@ export const InitialStack = StackNavigator({
   headerMode: 'none',
   initialRouteName: 'LogIn',
 });
-
-export class StackScreen extends Component {
-/*	componentDidMount(){
-		this.handleReset();
-	}
-
-	handleReset(){
-		const resetAction = NavigationActions.reset({
-		  index: 0,
-		  actions: [
-		    NavigationActions.navigate({ routeName: 'LogIn'}),
-		  ]
-		});
-		this.props.navigation.dispatch(resetAction);
-	}
-*/
-	static navigationOptions = {
-		header: null,
-		drawerLabel: 'Lock',
-	}
-
-	render(){
-		return(
-			<View style={{
-				flex: 1,
-				justifyContent: 'center',
-				alignItems: 'center',
-			}}>
-				<Text>TEST</Text>
-			</View>
-		);
-	}
-}

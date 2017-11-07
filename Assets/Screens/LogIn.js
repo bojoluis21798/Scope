@@ -32,24 +32,11 @@ export class LogIn extends Component {
       fontLoaded: true,
       imageLoaded: true,
     });
-
-    this.handleReset();
   }
 
   static navigationOptions = {
     header: null,
   };
-
-  handleReset(){
-    const resetAction = NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'LogIn'}),
-        NavigationActions.navigate({ routeName: 'Home'}),
-      ]
-    });
-    this.props.navigation.dispatch(resetAction);
-  }
 
   render(){
     let font_fam = {};
