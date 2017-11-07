@@ -7,7 +7,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {Font} from 'expo';
-import {StackNavigator} from 'react-navigation';
+import {StackNavigator, NavigationActions} from 'react-navigation';
 import {styles} from '../styles.js'
 
 export class LogIn extends Component {
@@ -32,11 +32,24 @@ export class LogIn extends Component {
       fontLoaded: true,
       imageLoaded: true,
     });
+
+    this.handleReset();
   }
 
   static navigationOptions = {
     header: null,
   };
+
+  handleReset(){
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'LogIn'}),
+        NavigationActions.navigate({ routeName: 'Home'}),
+      ]
+    });
+    this.props.navigation.dispatch(resetAction);
+  }
 
   render(){
     let font_fam = {};

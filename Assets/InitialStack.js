@@ -6,18 +6,21 @@ import {
 	DrawerNavigator,
 } from 'react-navigation';
 import {LogIn} from './Screens/LogIn.js';
-import {Drawer} from './Drawer.js';
+import {
+	Drawer,
+	HomeDrawer,
+} from './Drawer.js';
 
 export const InitialStack = StackNavigator({
   LogIn: {screen: LogIn},
-  Home: {screen: Drawer},
+  Home: {screen: HomeDrawer},
 }, 
 {
   headerMode: 'none',
   initialRouteName: 'LogIn',
 });
 
-export class LockStack extends Component {
+export class StackScreen extends Component {
 /*	componentDidMount(){
 		this.handleReset();
 	}
@@ -34,6 +37,7 @@ export class LockStack extends Component {
 */
 	static navigationOptions = {
 		header: null,
+		drawerLabel: 'Lock',
 	}
 
 	render(){
