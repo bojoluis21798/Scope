@@ -183,6 +183,7 @@ export class Home extends Component{
     this.setAllRendered = this.setAllRendered.bind(this);
     this.setHideRendered = this.setHideRendered.bind(this);
     this.openDrawer = this.openDrawer.bind(this);
+    this.navigateToLock = this.navigateToLock.bind(this);
     this.setState = this.setState.bind(this);
   }
 
@@ -233,6 +234,10 @@ export class Home extends Component{
       rendered_4: false,
       rendered_5: false,
     });
+  }
+
+  navigateToLock(){
+    this.props.navigation.navigate('LogIn');
   }
 
   openDrawer(){

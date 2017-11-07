@@ -110,4 +110,4 @@ export class LogIn extends Component {
   }
 }
 
-const tryPin = "12345678";
+const tryPin = "00000000";
