@@ -17,6 +17,27 @@ var font = {
 	light: "",
 }
 
+class FirstLetter extends Component {
+	render(){
+		return(
+			<View style={{
+				borderBottomWidth: 1,
+				borderColor: '#E7E7E7',
+				backgroundColor: '#E7E7E7',
+				padding: 10,
+				backgroundColor: 'white',
+			}}>
+				<Text style={{
+					fontSize: 25,
+					fontFamily: font.reg,
+				}}>
+					A
+				</Text>
+			</View>
+		);
+	}
+}
+
 export class Product extends Component {
 	constructor(props){
 		super(props);
@@ -25,6 +46,7 @@ export class Product extends Component {
 			imageLoaded: false,
 			fontLoaded: false,
 		}
+		this.openDrawer = this.openDrawer.bind(this);
 	}
 
 	async componentDidMount(){
@@ -62,12 +84,11 @@ export class Product extends Component {
 		        	<ScrollView>
 			        	<View style={{flex:1}}>
 			        		<View style={{
-			        			margin: 15,
+			        			margin: 20,
 			        			marginBottom: 20,
 			        			padding: 5,
 			        			backgroundColor: 'white',
 			        			flexDirection: 'row',
-			        			borderRadius: 10,
 			        		}}>
 			        			<TextInput 
 				        			style={{
@@ -97,18 +118,7 @@ export class Product extends Component {
 				        			</View>
 				        		</TouchableNativeFeedback>
 			        		</View>
-			        		<View style={{
-			        			borderBottomWidth: 1,
-			        			borderColor: '#E7E7E7',
-			        			backgroundColor: '#E7E7E7',
-			        			padding: 10,
-			        			backgroundColor: 'white',
-			        		}}>
-			        			<Text style={{
-			        				fontSize: 25,
-			        				fontFamily: font.reg,
-			        			}}>A</Text>
-			        		</View>
+			        		<FirstLetter />
 			        		<View style={{
 			        			padding: 15,
 			        			backgroundColor: 'white',
