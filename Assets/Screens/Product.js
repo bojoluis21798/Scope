@@ -7,6 +7,7 @@ import {
 	Text,
 	TextInput,
 	TouchableNativeFeedback,
+	Dimensions,
 } from 'react-native';
 import {TopBar} from './TopBar.js';
 import {styles} from '../styles.js';
@@ -15,6 +16,39 @@ import {Font} from 'expo';
 var font = {
 	reg: "",
 	light: "",
+}
+
+class ProductBar extends Component {
+	render(){
+		return(
+			<View>
+				<FirstLetter 
+					name={this.props.name}
+				/>
+				<TouchableNativeFeedback>
+					<View style={{
+		    			padding: 15,
+		    			backgroundColor: 'white',
+		    			flexDirection: 'row',
+		    			justifyContent: 'space-between',
+		    		}}>
+		    			<Text style={{
+		    				fontSize: 30,
+		    				fontFamily: font.reg,
+		    			}}>
+		    				{this.props.name}
+		    			</Text>
+		    			<Text style={{
+		    				fontSize: 30,
+		    				fontFamily: font.reg,
+		    			}}>
+		    				{"₱ " + this.props.price}
+		    			</Text>
+		    		</View>
+		    	</TouchableNativeFeedback>
+	    	</View>
+		);
+	}
 }
 
 class FirstLetter extends Component {
@@ -45,6 +79,7 @@ export class Product extends Component {
 		this.state = {
 			imageLoaded: false,
 			fontLoaded: false,
+			product: [],
 		}
 		this.openDrawer = this.openDrawer.bind(this);
 	}
@@ -91,12 +126,7 @@ export class Product extends Component {
 			        			flexDirection: 'row',
 			        		}}>
 			        			<TextInput 
-				        			style={{
-				        				height: 70,
-				        				width: 300,
-				        				padding: 10,
-				        				fontSize: 20,
-				        			}}
+				        			style={local.searchInput}
 				        			placeholder="Enter Product Name"
 				        		/>
 				        		<TouchableNativeFeedback>
@@ -118,39 +148,79 @@ export class Product extends Component {
 				        			</View>
 				        		</TouchableNativeFeedback>
 			        		</View>
-			        		<FirstLetter />
-			        		<View style={{
-			        			padding: 15,
-			        			backgroundColor: 'white',
-			        			flexDirection: 'row',
-			        			justifyContent: 'space-between',
-			        		}}>
-			        			<Text style={{
-			        				fontSize: 30,
-			        				fontFamily: font.reg,
-			        			}}>
-			        				Apple
-			        			</Text>
-			        			<Text style={{
-			        				fontSize: 30,
-			        				fontFamily: font.reg,
-			        			}}>
-			        				₱ 0.00
-			        			</Text>
-			        		</View>
+			        		<ProductBar 
+			        			name="Apple"
+			        			price="0.00"
+			        		/>
 			        	</View>
-		    		</ScrollView>
+		    		</ScrollView> 
 		        </View>
-		        
+		        <View style={local.addButton}>
+					<TouchableNativeFeedback
+						background={
+							TouchableNativeFeedback.Ripple('#E7E7E7', true)
+						}
+						useForeground={false}
+					>
+						<View style={local.buttonTextContainer}>
+							<Text
+								style={[
+									styles.standardText,
+									local.standardText, 
+									{fontSize: 40},
+								]}
+							>
+								+
+							</Text>
+						</View>
+					</TouchableNativeFeedback>
+				</View>
 			</View>
 		);
 	}
 }
+
+
+var examples = [
+	{name: "Apple", price: "0.00"}, 
+	{name: "Avocado", price: "0.00"}, 
+	{name: "Guacamole", price: "0.00"},
+];
+
+var {height, width} = Dimensions.get('window');
+
 
 const local = StyleSheet.create({
 	body: {
 		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: '#E7E7E7',
-	}
+	}, 
+	searchInput: {
+		height: 70,
+		width: 275,
+		padding: 10,
+		fontSize: 20,
+		marginLeft: 10,
+		marginRight: 10,
+	},
+	buttonTextContainer: {
+		height: 80,
+		width: 80,
+		backgroundColor: '#3EA90C',			
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 40,
+	},
+	addButton: {
+		position: 'absolute',
+		left: width - 105,
+		top: height - 105,
+		borderRadius: 40,
+	},
+	standardText: {
+		fontFamily: font.reg,
+		fontSize: 25,
+		color: 'white',
+	},
 });
