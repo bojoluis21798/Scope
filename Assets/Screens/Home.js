@@ -270,14 +270,16 @@ export class Home extends Component{
             backgroundColor: '#E7e7e7',
             flexDirection: 'row',
           }]}>
+            <ScrollView>
             <View style={{flex: 1}}>
               <View style={[styles.contentBar,
                 {
+                  flex: 0.35,
                   padding: 10,
-                  
                   marginBottom: 0,
                 }
               ]}>
+                
                 <View style={{
                   flex: 1,
                   flexDirection: 'row',
@@ -313,8 +315,6 @@ export class Home extends Component{
                 <View style={{
                   flexDirection: 'row', 
                   justifyContent: 'space-between',
-                  paddingLeft: 10,
-                  paddingRight: 10,
                 }}>
                   <CheckBox
                     leftText="Status Colors"
@@ -340,7 +340,6 @@ export class Home extends Component{
                   />
                 </View>
               </View>
-              <ScrollView>
                 <View style={{paddingTop: 20}}>
                   <ContentBar 
                     barTitle="Total Expenses" 
@@ -378,10 +377,12 @@ export class Home extends Component{
                     parentSet={this.setRendered_5}
                   />
                 </View>
-              </ScrollView>
             </View>
+            </ScrollView>
           </View>
       </View>
     );
   }
 }
+
+

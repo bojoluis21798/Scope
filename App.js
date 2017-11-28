@@ -5,7 +5,7 @@ import {NewProduct} from './Assets/Screens/ProductDetails.js'; //test
 export default class App extends Component {
   render() {
     return (
-      <NewProduct />
+      <InitialStack />
     );
   }
 }
