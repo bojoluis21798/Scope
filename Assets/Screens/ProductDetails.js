@@ -72,12 +72,15 @@ export class NewProduct extends Component {
 			        				alignSelf: 'center',
 			        			}}>
 			        				<Text style = {{
-			        					fontSize: 20,
+			        					fontSize: 30,
 			        					fontFamily: font.reg,
 			        				}}> 
 			        					Apple
 			        				</Text>
 			        			</View>
+			        		</View>
+			        		<View style = {local.detailsView}>
+			        			
 			        		</View>
 			        	</View>
 			        </ScrollView>
@@ -94,5 +97,9 @@ const local = StyleSheet.create({
 	imageView: {
 		height: height - 550,
 		width: width,
+	},
+	detailsView: {
+		borderWidth: 2,
+		padding: 10,
 	},
 });
