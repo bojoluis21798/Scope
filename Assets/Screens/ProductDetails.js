@@ -28,7 +28,6 @@ export class NewProduct extends Component {
 	async componentDidMount(){
 		
 	    this.setState({
-	    	fontLoaded: true,
 	    	imageLoaded: true,
 	    });
 	}
@@ -65,14 +64,14 @@ export class NewProduct extends Component {
 			        			}}>
 			        				<Text style = {{
 			        					fontSize: 30,
-			        					fontFamily: font.reg,
+			        					fontFamily: 'Montserrat-Light',
 			        				}}> 
 			        					Apple
 			        				</Text>
 			        			</View>
 			        		</View>
 			        		<View style = {local.detailsView}>
-			        			
+			        					
 			        		</View>
 			        	</View>
 			        </ScrollView>
@@ -93,5 +92,6 @@ const local = StyleSheet.create({
 	detailsView: {
 		borderWidth: 2,
 		padding: 10,
+		borderWidth: 1,
 	},
 });

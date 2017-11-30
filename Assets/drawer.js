@@ -16,12 +16,7 @@ import {
 } from 'react-navigation';
 
 export class HomeDrawer extends Component {
-	constructor(props){
-		super(props);
-
-	}
-
-
+	
 	render(){
 		return(
 			<Drawer />
@@ -42,6 +37,7 @@ export const Drawer = DrawerNavigator({
 				drawerLabel: 'Transaction Log',
 			},
 		},
+		
 	},
 	{
 		initialRouteName: "Home",
