@@ -8,7 +8,6 @@ import {
 	Text,
 } from 'react-native';
 
-import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
 import {styles} from '../styles.js';
 
@@ -27,11 +26,7 @@ export class NewProduct extends Component {
 	}
 
 	async componentDidMount(){
-		await Font.loadAsync({
-	      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
-	    });
-
+		
 	    this.setState({
 	    	fontLoaded: true,
 	    	imageLoaded: true,
@@ -39,17 +34,14 @@ export class NewProduct extends Component {
 	}
 
 	render(){
-		if(this.state.fontLoaded){
-			font.reg = 'montserrat-reg';
-		}
 
 		return(
 			<View style = {styles.container}>
 				<StatusBar 
-		          translucent={true} 
-		          barStyle="default"
+		          translucent={false} 
+		          barStyle="light-content"
 		          animated={true}
-		          backgroundColor="#26A900"
+		          backgroundColor="black"
 		        />
 		        <TopBar 
 		        	title = "Product Details"

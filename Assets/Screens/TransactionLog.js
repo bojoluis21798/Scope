@@ -7,7 +7,6 @@ import {
 	StatusBar,
 	Dimensions,
 } from 'react-native';
-import {Font} from 'expo';
 import {styles} from '../styles.js';
 import {TopBar} from './TopBar.js';
 import {NewTransaction} from './NewTransaction.js';
@@ -138,10 +137,6 @@ export class TransactionLog extends Component{
 	}
 
 	async componentDidMount(){
-		await Font.loadAsync({
-		  'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
-		});
 
 		this.setState({
 			fontLoaded: true,
@@ -175,10 +170,10 @@ export class TransactionLog extends Component{
 		return(
 			<View style={styles.container}>
 			    <StatusBar 
-		          translucent={true} 
-		          barStyle="default"
+		          translucent={false} 
+		          barStyle="light-content"
 		          animated={true}
-		          backgroundColor="#26A900"
+		          backgroundColor="black"
 		        />
 				<TopBar 
 					title="Transaction Log" 

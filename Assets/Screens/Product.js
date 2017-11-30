@@ -110,10 +110,10 @@ export class Product extends Component {
 					navigate={this.openDrawer}
 				/>
 				<StatusBar 
-		          translucent={true} 
-		          barStyle="default"
+		          translucent={false} 
+		          barStyle="light-content"
 		          animated={true}
-		          backgroundColor="#26A900"
+		          backgroundColor="black"
 		        />
 		        <View style={[styles.body, local.body]}>
 		        	<ScrollView>

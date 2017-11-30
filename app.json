@@ -1,7 +1,4 @@
 {
-  "expo": {
-    "sdkVersion": "21.0.0"
-  },
-  "name": "FinanceGalang",
-  "displayName": "Scope"
+  "name": "financeGalang",
+  "displayName": "financeGalang"
 }

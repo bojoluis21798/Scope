@@ -13,7 +13,6 @@ import ReactNative, {
 } from 'react-native';
 import {styles} from '../styles.js';
 import {TransactionLog} from './TransactionLog.js';
-import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
 
 var font = {
@@ -122,10 +121,6 @@ export class NewTransaction extends Component {
 	}
 
 	async componentDidMount(){
-		await Font.loadAsync({
-	      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
-	    });
 
 		ctr = 0;
 		this.setState({fontLoaded: true, imageLoaded: true});
@@ -182,13 +177,6 @@ export class NewTransaction extends Component {
 			}
 		}
 
-		if(this.state.fontLoaded){
-			font.reg = 'montserrat-reg';
-			font.light = 'montserrat-light';
-		}else{
-			font.reg = '';
-			font.light = '';
-		}
 
 		if(this.state.imageLoaded){
 			image.trash = require('../Images/trashcan.png');
@@ -198,10 +186,10 @@ export class NewTransaction extends Component {
 		return(
 			<View style={styles.container}>
 				<StatusBar 
-		          translucent={true} 
-		          barStyle="default"
+		          translucent={false} 
+		          barStyle="light-content"
 		          animated={true}
-		          backgroundColor="#26A900"
+		          backgroundColor="black"
 		        />
 				<TopBar 
 					title="New Transaction" 

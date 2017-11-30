@@ -1,8 +1,5 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Constants} from 'expo';
-
-const statHeight = Constants.statusBarHeight;
 
 export const styles = StyleSheet.create({
   container: {
@@ -45,8 +42,7 @@ export const styles = StyleSheet.create({
   topBar: {
     flexDirection: 'row',
     backgroundColor: '#26A900',
-    padding: 10,
-    paddingTop: statHeight + 10,
+    padding: 10, //change to the height of the statusbar
   },
   menuIcon: {
     height: 34,

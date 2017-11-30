@@ -6,7 +6,6 @@ import {
   TextInput,
   StatusBar,
 } from 'react-native';
-import {Font} from 'expo';
 import {StackNavigator, NavigationActions} from 'react-navigation';
 import {styles} from '../styles.js'
 
@@ -23,10 +22,6 @@ export class LogIn extends Component {
     }
   }
   async componentDidMount(){
-    await Font.loadAsync({
-      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
-      'raleway-black': require('../Fonts/Raleway-Black.ttf'),
-    });
     
     this.setState({
       fontLoaded: true,
@@ -47,21 +42,13 @@ export class LogIn extends Component {
     if(this.state.imageLoaded){
       image = require('../Images/finger.png');
     }
-
-    if(this.state.fontLoaded){
-      font_fam.title = 'raleway-black';
-      font_fam.pinForm = 'montserrat-light';
-    }else{
-      font_fam.title = 'sans-serif';
-      font_fam.pinForm = 'sans-serif';
-    }
     return(
       <View style={styles.container}>
         <StatusBar 
-          translucent={true} 
-          barStyle="default"
+          translucent={false} 
+          barStyle="light-content"
           animated={true}
-          backgroundColor="#26A900"
+          backgroundColor="black"
         />
         <View style={styles.title}>
           <Text style={[styles.titleText, {fontFamily: font_fam.title}]}>

@@ -13,7 +13,6 @@ import ReactNative, {
 	KeyboardAvoidingView
 } from 'react-native';
 import {styles} from '../styles.js';
-import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
 
 var image = {};
@@ -35,10 +34,6 @@ export class Order extends Component {
 	}
 
 	async componentDidMount(){
-	    await Font.loadAsync({
-	      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-	      'montserrat-light': require('../Fonts/Montserrat-Light.ttf'),
-	    });
 
 	    this.setState({imageLoaded: true, fontLoaded: true});
   	}
@@ -56,20 +51,14 @@ export class Order extends Component {
  		if(this.state.imageLoaded){
  			image = require('../Images/menu.png');
  		}
- 		if(this.state.fontLoaded){
- 			font = 'montserrat-reg';
- 			fontLight = 'montserrat-light';
- 		}else{
- 			font = 'sans-serif';
- 		}
 
  		return(
  			<View style={styles.container}>
  				 <StatusBar 
-		          translucent={true} 
-		          barStyle="default"
+		          translucent={false} 
+		          barStyle="light-content"
 		          animated={true}
-		          backgroundColor="#26A900"
+		          backgroundColor="black"
 		        />
  				<TopBar
  					title="Order" 

@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
 import {styles} from '../styles.js';
-import {Font} from 'expo';
 import {TopBar} from './TopBar.js';
 import CheckBox from 'react-native-check-box';
 
@@ -188,10 +187,6 @@ export class Home extends Component{
   }
 
   async componentDidMount(){
-    await Font.loadAsync({
-      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-      'montserrat-thin': require('../Fonts/Montserrat-Thin.ttf'),
-    });
 
     this.setState({imageLoaded: true, fontLoaded: true});
   }
@@ -251,19 +246,13 @@ export class Home extends Component{
       arrow = require('../Images/arrow.png');
     }
 
-    if(this.state.fontLoaded){
-      font = 'montserrat-reg';
-    }else{
-      font = 'sans-serif';
-    }
-
     return(
       <View style={styles.container}>
          <StatusBar 
-          translucent={true} 
-          barStyle="default"
+          translucent={false} 
+          barStyle="light-content"
           animated={true}
-          backgroundColor="#26A900"
+          backgroundColor="black"
         />
         <TopBar title="Summary Report" navigate={this.openDrawer}/>
           <View style={[styles.body,{

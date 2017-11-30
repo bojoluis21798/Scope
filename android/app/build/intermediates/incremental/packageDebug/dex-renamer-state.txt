@@ -1,4 +1,4 @@
-#Wed Nov 29 10:27:52 SGT 2017
-base.0=C\:\\Users\\Bojo Alcisto\\Desktop\\Finance-Galang\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+#Thu Nov 30 16:56:43 SGT 2017
+base.0=C\:\\Users\\Bojo Alcisto\\Desktop\\financeGalang\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.0=C\:\\Users\\Bojo Alcisto\\Desktop\\Finance-Galang\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+file.0=C\:\\Users\\Bojo Alcisto\\Desktop\\financeGalang\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

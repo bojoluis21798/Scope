@@ -15,10 +15,6 @@ import {
 	NavigationActions,
 } from 'react-navigation';
 
-import {
-	Constants,
-	Font,
-} from 'expo';
 
 var font = {
 	reg: "",
@@ -100,7 +96,6 @@ Drawer.navigationOptions = {
 const local = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingTop: Constants.statusBarHeight,
 		justifyContent: 'space-between',
 	},
 });
