@@ -16,15 +16,12 @@ import {styles} from '../styles.js';
 import {TopBar} from './TopBar.js';
 
 var image = {};
-var font = "";
-var fontLight = "";
 export class Order extends Component {
 	constructor(props){
 		super(props);
 
 		this.state = {
 			imageLoaded : false,
-			fontLoaded: false,
 			productName: "",
 			productQuantity: 0,
 			productPrice: "",
@@ -35,7 +32,7 @@ export class Order extends Component {
 
 	async componentDidMount(){
 
-	    this.setState({imageLoaded: true, fontLoaded: true});
+	    this.setState({imageLoaded: true});
   	}
 
   	static navigationOptions = {
@@ -69,32 +66,21 @@ export class Order extends Component {
 		        <View style={[styles.body, {
 		        	backgroundColor: 'white',
 		        	flexDirection: 'row',
-		        	paddingTop: 20,
+		        	paddingTop: 10,
 					margin: 0,
-					borderWidth: 1,
 		        }]}>
 			    	<ScrollView>
-			        	<KeyboardAvoidingView
-				        	behavior='position'
-				        	keyboardVerticalOffset={5}
-				        >
+			        	<KeyboardAvoidingView>
 			        	<View style={{
 			        		alignItems: 'center',
 			        		justifyContent: 'center',
-			        		margin: 50,
-			        		marginTop: 10,
 			        	}}>
 			        		<View style={{
 			        			alignItems: 'center',
 			        			justifyContent:'center',
 			        		}}>
 			        			<View style={{margin: 20}}>
-				        			<Text style={[styles.standardText,
-				        				{
-				        					fontFamily: fontLight,
-				        					borderBottomWidth: 2,
-				        				}
-				        			]}>
+				        			<Text style={styles.standardText}>
 				        				Product Name
 				        			</Text>
 				        		</View>
@@ -121,7 +107,6 @@ export class Order extends Component {
 				        		<View style={{margin: 20}}>
 				        			<Text style={[styles.standardText,
 				        				{
-				        					fontFamily: fontLight,
 				        					borderBottomWidth: 2,
 				        				}
 				        			]}>
@@ -152,7 +137,6 @@ export class Order extends Component {
 				        		<View style={{margin: 20}}>
 				        			<Text style={[styles.standardText,
 				        				{
-				        					fontFamily: fontLight,
 				        					borderBottomWidth: 2,
 				        				}
 				        			]}>
@@ -170,7 +154,7 @@ export class Order extends Component {
 				        				width: 150,
 				        				height: 60,
 				        				padding: 10,
-				        				fontFamily: fontLight,
+				        				fontFamily: 'Montserrat-Regular',
 				        				fontSize: 17,
 				        			}}
 				        			placeholder="Enter Price"
@@ -182,33 +166,32 @@ export class Order extends Component {
 				        		</View>		        		
 			        		</View>
 			        	</View>
+			        	 
 			        	</KeyboardAvoidingView>
 					</ScrollView>	 
-		        </View> 
-		    	
-	        <TouchableNativeFeedback
-	        	onPress={() => this.props.navigation.navigate('New')}
-	        >
-		        			<View style={{flexDirection: 'row',
-		        			 alignItems: 'flex-end',
-		        			 backgroundColor:'#26A900',
-		        			 padding: 15,
-		        			}}>
-		        				<View style={{
-		        					flex: 1, 
-		        					alignItems: 'center', 
-		        					justifyContent:'center',
-		        				}}>
-		        					<Text style={[styles.standardText, {
-		        						fontFamily: font,
-		        						fontSize: 25,
-		        						color: 'white',
-		        					}]}>
-		        						Add
-		        					</Text>
-		        				</View>
-		        			</View>
-		    </TouchableNativeFeedback> 
+		        </View>
+		        <TouchableNativeFeedback
+		        	onPress={() => this.props.navigation.navigate('New')}
+		        >
+        			<View style={{flexDirection: 'row',
+        			 alignItems: 'flex-end',
+        			 backgroundColor:'#26A900',
+        			 padding: 15,
+        			}}>
+        				<View style={{
+        					flex: 1, 
+        					alignItems: 'center', 
+        					justifyContent:'center',
+        				}}>
+        					<Text style={[styles.standardText, {
+        						fontSize: 25,
+        						color: 'white',
+        					}]}>
+        						Add
+        					</Text>
+        				</View>
+        			</View>
+    			</TouchableNativeFeedback>
 			</View>
  		);
  	}

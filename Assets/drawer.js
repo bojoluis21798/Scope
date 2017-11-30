@@ -15,31 +15,14 @@ import {
 	NavigationActions,
 } from 'react-navigation';
 
-
-var font = {
-	reg: "",
-}
-
 export class HomeDrawer extends Component {
 	constructor(props){
 		super(props);
 
-		this.state = {
-			fontLoaded: false,
-		}
 	}
 
-	async componentDidMount(){
-		await Font.loadAsync({
-			'montserrat-reg': require('./Fonts/Montserrat-Regular.ttf'),
-		});
-		this.setState({fontLoaded: true});
-	}
 
 	render(){
-		if(this.state.fontLoaded){
-			font.reg = 'montserrat-reg';
-		}
 		return(
 			<Drawer />
 		);
@@ -67,7 +50,7 @@ export const Drawer = DrawerNavigator({
 		contentOptions: {
 			labelStyle: {
 				fontSize: 20,
-				fontFamily: font.reg,
+				fontFamily: 'Montserrat-Regular',
 			},
 			inactiveTintColor: 'white',
 			activeBackgroundColor: 'white',

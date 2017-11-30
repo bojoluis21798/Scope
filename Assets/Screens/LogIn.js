@@ -14,7 +14,6 @@ export class LogIn extends Component {
     super(props);
 
     this.state = {
-      fontLoaded: false,
       imageLoaded: false,
       pin: "",
       error: false,
@@ -24,7 +23,6 @@ export class LogIn extends Component {
   async componentDidMount(){
     
     this.setState({
-      fontLoaded: true,
       imageLoaded: true,
     });
   }
@@ -34,7 +32,6 @@ export class LogIn extends Component {
   };
 
   render(){
-    let font_fam = {};
     let image = {};
     const {navigate} = this.props.navigation;
     let errorLine = (!this.state.error) ? "#24D101" : "red";
@@ -51,12 +48,12 @@ export class LogIn extends Component {
           backgroundColor="black"
         />
         <View style={styles.title}>
-          <Text style={[styles.titleText, {fontFamily: font_fam.title}]}>
+          <Text style={styles.titleText}>
             Scope
           </Text>
         </View>
         <View style={styles.passCodeForm}>
-          <Text style={[styles.passCodeText, {fontSize: 20,fontFamily: font_fam.pinForm, color: 'red'}]}>
+          <Text style={[styles.passCodeText, {fontSize: 20, color: 'red'}]}>
             {(this.state.error)?"Wrong Pin":""}
           </Text>
           <TextInput 
@@ -81,14 +78,14 @@ export class LogIn extends Component {
               }
             } 
           />
-          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm}]}>
+          <Text style={styles.passCodeText}>
             or
           </Text>
           <Image 
             source={image} 
             style={{height: 120, width: 80}}
           />
-          <Text style={[styles.passCodeText, {fontFamily: font_fam.pinForm, fontSize: 14}]}>
+          <Text style={[styles.passCodeText, {fontSize: 14}]}>
             Scan Fingerprint
           </Text>
         </View>

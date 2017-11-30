@@ -25,7 +25,7 @@ var image = {
 	pencil: {},
 }
 
-var order = ["A", "B", "C", "D"];
+var order = ["Apple", "B", "C", "D"];
 var ctr = 0;
 
 class OrderBar extends Component {
@@ -38,7 +38,6 @@ class OrderBar extends Component {
 			<View style={{
 				flex: 1,
 				flexDirection: 'row',
-				borderWidth: 0.4,
 				backgroundColor: 'white',
 				marginBottom: 20,
 				borderRadius: 5,
@@ -48,13 +47,13 @@ class OrderBar extends Component {
 					flexDirection: 'row',
 					alignItems: 'center',
 					justifyContent: 'space-between',
-					margin: 20,
+					margin: 10,
 				}}>
 					<View style={{
 						flexDirection: 'row',
 					}}>
 						<Text style={[styles.standardText,{
-							fontSize: 25,
+							fontSize: 20,
 							fontFamily: font.reg,
 							color: "black",
 						}]}> 
@@ -63,7 +62,7 @@ class OrderBar extends Component {
 					</View>
 					<View style={{flexDirection: 'row'}}>
 						<Text style={[styles.standardText,{
-							fontSize: 25,
+							fontSize: 20,
 							fontFamily: font.reg,
 							color: "black",
 						}]}> 
@@ -81,7 +80,7 @@ class OrderBar extends Component {
 					<Image 
 						source={image.pencil} 
 						style={{
-							height: 35,
+							height: 30,
 							width: 30,
 						}}
 					/>
@@ -94,7 +93,7 @@ class OrderBar extends Component {
 					<Image 
 						source={image.trash} 
 						style={{
-							height: 35,
+							height: 30,
 							width: 30,
 						}}
 					/>
@@ -222,7 +221,7 @@ export class NewTransaction extends Component {
 						<ScrollView>
 							<View style={{
 								flex: 1, 
-								padding: 20,
+								padding: 10,
 							}}>
 								{orderBar}
 								<TouchableNativeFeedback
@@ -294,7 +293,7 @@ const local = StyleSheet.create({
 		justifyContent: 'space-between',
 	},
 	imageBar: {
-		flex: 0.2,
+		flex: 0.15,
 		backgroundColor: '#EA3636',
 		alignItems: 'center',
 		justifyContent: 'center',

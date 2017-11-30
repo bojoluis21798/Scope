@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 90,
     color: '#E2FFDD',
+    fontFamily: 'Montserrat-Black',
   },
   passCodeForm:{
     flex: 1,
@@ -33,11 +34,13 @@ export const styles = StyleSheet.create({
   },
   passCodeText:{
     fontSize: 23,
+    fontFamily: 'Montserrat-Light',
   },
   passCodeTextField:{
     width: 200,
     height: 70,
     fontSize: 20,
+    fontFamily: 'Montserrat-Light',
   },
   topBar: {
     flexDirection: 'row',
@@ -51,6 +54,7 @@ export const styles = StyleSheet.create({
   standardText: {
     fontSize: 25,
     color: 'black',
+    fontFamily: 'Montserrat-Regular',
   },
   smallerText: {
     fontSize: 20,

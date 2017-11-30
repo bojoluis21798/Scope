@@ -19,12 +19,11 @@ export class TopBar extends Component {
 
 		this.state = {
 			imageLoaded: false,
-			fontLoaded: false,
 		};
 	}
 
 	async componentDidMount(){
-		this.setState({imageLoaded: true, fontLoaded: true});
+		this.setState({imageLoaded: true});
 	}
 
 	render(){
@@ -55,7 +54,6 @@ export class TopBar extends Component {
 	            <Text style={
 	              [styles.standardText,
 	              {
-	                fontFamily: font.reg, 
 	                fontSize: 24, 
 	                color: 'white',
 	                marginLeft: 10,

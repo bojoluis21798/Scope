@@ -25,7 +25,6 @@ class Date extends Component {
 					{
 						color: '#1C7B00',
 						fontSize: 20,
-						fontFamily: font.reg,
 					},
 				]}>
 					January 1, 2017
@@ -61,7 +60,6 @@ class TransactionBar extends Component {
 									{
 										color: '#1C7B00',
 										fontSize: 20,
-										fontFamily: font.reg,
 										margin: 5,
 									},
 								]}>
@@ -76,8 +74,7 @@ class TransactionBar extends Component {
 										local.standardText, 
 										{
 											color: '#1C7B00',
-											fontSize: 25,
-											fontFamily: font.reg,
+											fontSize: 22,
 											margin: 5,
 										},
 									]}>
@@ -88,8 +85,7 @@ class TransactionBar extends Component {
 										local.standardText, 
 										{
 											color: '#1C7B00',
-											fontSize: 25,
-											fontFamily: font.reg,
+											fontSize: 22,
 											margin: 5,
 										},
 									]}>
@@ -109,7 +105,6 @@ class TransactionBar extends Component {
 										{
 											color: '#1C7B00',
 											fontSize: 17,
-											fontFamily: font.reg,
 										},
 									]}>
 										Tap for more details
@@ -139,7 +134,6 @@ export class TransactionLog extends Component{
 	async componentDidMount(){
 
 		this.setState({
-			fontLoaded: true,
 			imageLoaded: true,
 		});
 	}
@@ -159,13 +153,6 @@ export class TransactionLog extends Component{
 	render(){
 		console.log(Dimensions.get('window'))
 
-		if(this.state.fontLoaded){
-			font.reg = 'montserrat-reg';
-			font.light = 'montserrat-light';
-		}else{
-			font.reg = 'sans-serif';
-			font.light = 'sans-serif';
-		}
 
 		return(
 			<View style={styles.container}>
@@ -193,8 +180,7 @@ export class TransactionLog extends Component{
 									local.standardText,
 									{
 										color: '#1C7B00', 
-										fontSize: 27,
-										fontFamily: font.reg,
+										fontSize: 25,
 									},
 								]}>
 									Total Revenue: 
@@ -204,8 +190,7 @@ export class TransactionLog extends Component{
 									local.standardText,
 									{
 										color: '#1C7B00',
-										fontSize: 27,
-										fontFamily: font.reg,
+										fontSize: 25,
 									},
 								]}>
 									₱ 0.00 
@@ -220,8 +205,7 @@ export class TransactionLog extends Component{
 									local.standardText,
 									{
 										color: '#1C7B00', 
-										fontSize: 27,
-										fontFamily: font.reg,
+										fontSize: 25,
 									},
 								]}>
 									Total Tax: 
@@ -231,8 +215,7 @@ export class TransactionLog extends Component{
 									local.standardText,
 									{
 										color: '#1C7B00',
-										fontSize: 27,
-										fontFamily: font.reg,
+										fontSize: 25,
 									},
 								]}>
 									₱ 0.00 
@@ -267,12 +250,6 @@ export class TransactionLog extends Component{
 		);
 	}
 }
-
-var font = {
-	reg: "",
-	light: "",
-};
-
 var {height, width} = Dimensions.get('window');
 
 const local = StyleSheet.create({
@@ -286,19 +263,18 @@ const local = StyleSheet.create({
 		justifyContent:'center',
 	},
 	standardText: {
-		fontFamily: font.reg,
-		fontSize: 25,
+		fontSize: 20,
 		color: 'white',
 	},
 	addButton: {
 		position: 'absolute',
-		left: width - 105,
-		top: height - 105,
+		left: width - 80,
+		top: height - 100,
 		borderRadius: 40,
 	},
 	buttonTextContainer: {
-		height: 80,
-		width: 80,
+		height: 65,
+		width: 65,
 		backgroundColor: '#3EA90C',			
 		alignItems: 'center',
 		justifyContent: 'center',

@@ -15,7 +15,6 @@ import {styles} from '../styles.js';
 import {TopBar} from './TopBar.js';
 import CheckBox from 'react-native-check-box';
 
-var font = "";
 var image = {};
 var arrow = {};
 
@@ -32,7 +31,7 @@ class ShoworHideAll extends Component {
               margin: 10,
               justifyContent: 'flex-end',  
               fontSize: 17, 
-              fontFamily: font,
+              fontFamily: 'Montserrat-Light',
               color: 'white',
               backgroundColor: '#24D101',
               textAlign: 'center'       
@@ -53,7 +52,7 @@ class ShoworHideAll extends Component {
               margin: 10,
               justifyContent: 'flex-end',  
               fontSize: 17, 
-              fontFamily: font,
+              fontFamily: 'Montserrat-Light',
               color: 'white',
               backgroundColor: '#24D101',
               textAlign: 'center'       
@@ -118,13 +117,13 @@ class ContentBar extends Component {
             justifyContent: 'space-between',
           }}>
             <Text style={[styles.standardText, {
-              fontFamily: font,
+              fontFamily: 'Montserrat-Light',
               color: 'white',
             }]}> 
               {this.props.barTitle}
             </Text>
             <Text style={[styles.standardText, {
-              fontFamily: font,
+              fontFamily: 'Montserrat-Light',
               color: 'white',
             }]}> 
               ₱ {this.props.barValue}
@@ -163,7 +162,6 @@ export class Home extends Component{
 
     this.state = {
       imageLoaded: false,
-      fontLoaded: false,
       timePeriod: "",
       dateRange: "", 
       color: true,
@@ -187,8 +185,7 @@ export class Home extends Component{
   }
 
   async componentDidMount(){
-
-    this.setState({imageLoaded: true, fontLoaded: true});
+    this.setState({imageLoaded: true});
   }
 
   static navigationOptions = {
@@ -307,7 +304,7 @@ export class Home extends Component{
                 }}>
                   <CheckBox
                     leftText="Status Colors"
-                    leftTextStyle={{fontFamily: font}}
+                    leftTextStyle={{fontFamily:'Montserrat-Light'}}
                     style={{
                       width: 125, 
                       margin: 10,
