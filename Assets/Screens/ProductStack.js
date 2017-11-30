@@ -4,11 +4,11 @@ import {
 } from 'react-navigation';
 
 import {Product} from './Product.js';
-import {ProductDetails} from './Product.js';
+import {NewProduct} from './ProductDetails.js';
 
-export const ProductStack = StackNavigator.create({
+export const ProductStack = StackNavigator({
 		Product: {screen: Product},
-		Details: {screen: ProductDetails},
+		Details: {screen: NewProduct},
 	},
 	{
 		headerMode: 'none',

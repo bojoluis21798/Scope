@@ -11,12 +11,7 @@ import {
 } from 'react-native';
 import {TopBar} from './TopBar.js';
 import {styles} from '../styles.js';
-import {Font} from 'expo';
 
-var font = {
-	reg: "",
-	light: "",
-}
 
 class ProductBar extends Component {
 	render(){
@@ -34,13 +29,13 @@ class ProductBar extends Component {
 		    		}}>
 		    			<Text style={{
 		    				fontSize: 30,
-		    				fontFamily: font.reg,
+		    				fontFamily: 'Montserrat-Regular',
 		    			}}>
 		    				{this.props.name}
 		    			</Text>
 		    			<Text style={{
 		    				fontSize: 30,
-		    				fontFamily: font.reg,
+		    				fontFamily: 'Montserrat-Regular',
 		    			}}>
 		    				{"₱ " + this.props.price}
 		    			</Text>
@@ -63,7 +58,7 @@ class FirstLetter extends Component {
 			}}>
 				<Text style={{
 					fontSize: 25,
-					fontFamily: font.reg,
+					fontFamily: 'Montserrat-Regular',
 				}}>
 					A
 				</Text>
@@ -78,19 +73,14 @@ export class Product extends Component {
 
 		this.state = {
 			imageLoaded: false,
-			fontLoaded: false,
 			product: [],
 		}
 		this.openDrawer = this.openDrawer.bind(this);
 	}
 
 	async componentDidMount(){
-	    await Font.loadAsync({
-	      'montserrat-reg': require('../Fonts/Montserrat-Regular.ttf'),
-	      'montserrat-thin': require('../Fonts/Montserrat-Thin.ttf'),
-	    });
 
-	    this.setState({imageLoaded: true, fontLoaded: true});
+	    this.setState({imageLoaded: true});
 	}
 
 	openDrawer(){
@@ -98,10 +88,6 @@ export class Product extends Component {
 	}
 
 	render(){
-		if(this.state.fontLoaded){
-			font.reg = 'montserrat-reg';
-			font.light = 'montserrat-thin';
-		}
 
 		return(
 			<View style={styles.container}>
@@ -119,9 +105,9 @@ export class Product extends Component {
 		        	<ScrollView>
 			        	<View style={{flex:1}}>
 			        		<View style={{
-			        			margin: 20,
+			        			flex: 0.2,
+			        			margin: 10,
 			        			marginBottom: 20,
-			        			padding: 5,
 			        			backgroundColor: 'white',
 			        			flexDirection: 'row',
 			        		}}>
@@ -131,7 +117,7 @@ export class Product extends Component {
 				        		/>
 				        		<TouchableNativeFeedback>
 				        			<View style={{
-				        				flex: 1,
+				        				padding: 10,
 				        				backgroundColor: 'green',
 				        				margin: 10,
 				        				borderRadius: 10,
@@ -141,7 +127,7 @@ export class Product extends Component {
 				        				<Text style={{
 				        					fontSize: 20,
 				        					color: 'white',
-				        					fontFamily: font.reg,
+				        					fontFamily: 'Montserrat-Regular',
 				        				}}>
 				        					Search
 				        				</Text>
@@ -197,16 +183,15 @@ const local = StyleSheet.create({
 		backgroundColor: '#E7E7E7',
 	}, 
 	searchInput: {
-		height: 70,
-		width: 275,
+		flex: 1,
 		padding: 10,
 		fontSize: 20,
 		marginLeft: 10,
 		marginRight: 10,
 	},
 	buttonTextContainer: {
-		height: 80,
-		width: 80,
+		height: 65,
+		width: 65,
 		backgroundColor: '#3EA90C',			
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -214,12 +199,12 @@ const local = StyleSheet.create({
 	},
 	addButton: {
 		position: 'absolute',
-		left: width - 105,
-		top: height - 105,
+		left: width - 80,
+		top: height - 100,
 		borderRadius: 40,
 	},
 	standardText: {
-		fontFamily: font.reg,
+		fontFamily: 'Montserrat-Regular',
 		fontSize: 25,
 		color: 'white',
 	},

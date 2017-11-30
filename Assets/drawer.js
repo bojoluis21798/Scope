@@ -9,6 +9,7 @@ import {Home} from './Screens/Home.js';
 import {TransactionsStack} from './Screens/TransactionsStack.js';
 import {StackScreen} from './InitialStack.js';
 import {LogIn} from './Screens/LogIn.js';
+import {ProductStack} from './Screens/ProductStack.js';
 import {
 	DrawerNavigator, 
 	DrawerItems,
