@@ -37,7 +37,12 @@ export const Drawer = DrawerNavigator({
 				drawerLabel: 'Transaction Log',
 			},
 		},
-		
+		Products: {
+			screen: ProductStack,
+			navigationOptions: {
+				drawerLabel: 'Products',
+			},
+		},
 	},
 	{
 		initialRouteName: "Home",
