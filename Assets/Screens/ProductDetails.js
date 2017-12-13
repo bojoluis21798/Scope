@@ -58,6 +58,7 @@ export class NewProduct extends Component {
 			        			}}>
 			        				<Text style = {{
 			        					fontSize: 30,
+			        					color: 'black',
 			        					fontFamily: 'Montserrat-Light',
 			        				}}> 
 			        					Apple
@@ -65,7 +66,30 @@ export class NewProduct extends Component {
 			        			</View>
 			        		</View>
 			        		<View style = {local.detailsView}>
-			        					
+        						<View style = {local.detailsBar}>
+        							<Text style={styles.standardText}>
+        								Price
+        							</Text> 
+        							<Text style={styles.standardText}>
+        								₱ 0.00
+        							</Text>
+        						</View>
+        						<View style = {local.detailsBar}>
+        							<Text style={styles.standardText}>
+        								Cost
+        							</Text> 
+        							<Text style={styles.standardText}>
+        								₱ 0.00
+        							</Text>
+        						</View>
+        						<View style = {local.detailsBar}>
+        							<Text style={styles.standardText}>
+        								Stock
+        							</Text> 
+        							<Text style={styles.standardText}>
+        								₱ 0.00
+        							</Text>
+        						</View>
 			        		</View>
 			        	</ScrollView>
 		        	</View>
@@ -86,5 +110,11 @@ const local = StyleSheet.create({
 	detailsView: {
 		flex: 1,
 		padding: 10,
+	},
+	detailsBar: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		padding: 5,
 	},
 });

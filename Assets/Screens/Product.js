@@ -30,12 +30,14 @@ class ProductBar extends Component {
 		    			justifyContent: 'space-between',
 		    		}}>
 		    			<Text style={{
+		    				color: 'black',
 		    				fontSize: 30,
 		    				fontFamily: 'Montserrat-Regular',
 		    			}}>
 		    				{this.props.name}
 		    			</Text>
 		    			<Text style={{
+		    				color: 'black',
 		    				fontSize: 30,
 		    				fontFamily: 'Montserrat-Regular',
 		    			}}>
@@ -59,6 +61,7 @@ class FirstLetter extends Component {
 				backgroundColor: 'white',
 			}}>
 				<Text style={{
+					color: 'black',
 					fontSize: 25,
 					fontFamily: 'Montserrat-Regular',
 				}}>

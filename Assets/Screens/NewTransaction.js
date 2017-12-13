@@ -204,14 +204,14 @@ export class NewTransaction extends Component {
 							backgroundColor: 'white',
 						}]}>
 							<Text style={[styles.standardText,{
-								color: '#1C7B00',
+								color: 'black',
 								fontFamily: font.reg,
 								fontSize: 25,
 							}]}>
 								Total Price:
 							</Text>
 							<Text style={[styles.standardText,{
-								color: '#1C7B00',
+								color: 'black',
 								fontFamily: font.reg,
 								fontSize: 25,
 							}]}>

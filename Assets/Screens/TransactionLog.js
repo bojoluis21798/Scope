@@ -23,7 +23,7 @@ class Date extends Component {
 					styles.standardText, 
 					local.standardText, 
 					{
-						color: '#1C7B00',
+						color: 'black',
 						fontSize: 20,
 					},
 				]}>
@@ -58,7 +58,7 @@ class TransactionBar extends Component {
 									styles.standardText, 
 									local.standardText, 
 									{
-										color: '#1C7B00',
+										color: 'black',
 										fontSize: 20,
 										margin: 5,
 									},
@@ -73,7 +73,7 @@ class TransactionBar extends Component {
 										styles.standardText, 
 										local.standardText, 
 										{
-											color: '#1C7B00',
+											color: 'black',
 											fontSize: 22,
 											margin: 5,
 										},
@@ -84,7 +84,7 @@ class TransactionBar extends Component {
 										styles.standardText, 
 										local.standardText, 
 										{
-											color: '#1C7B00',
+											color: 'black',
 											fontSize: 22,
 											margin: 5,
 										},
@@ -103,8 +103,9 @@ class TransactionBar extends Component {
 										styles.standardText, 
 										local.standardText, 
 										{
-											color: '#1C7B00',
+											color: 'black',
 											fontSize: 17,
+											fontFamily: 'Montserrat-Light',
 										},
 									]}>
 										Tap for more details
@@ -179,7 +180,7 @@ export class TransactionLog extends Component{
 									styles.standardText,
 									local.standardText,
 									{
-										color: '#1C7B00', 
+										color: 'black', 
 										fontSize: 25,
 									},
 								]}>
@@ -189,7 +190,7 @@ export class TransactionLog extends Component{
 									styles.standardText,
 									local.standardText,
 									{
-										color: '#1C7B00',
+										color: 'black',
 										fontSize: 25,
 									},
 								]}>
@@ -204,7 +205,7 @@ export class TransactionLog extends Component{
 									styles.standardText,
 									local.standardText,
 									{
-										color: '#1C7B00', 
+										color: 'black', 
 										fontSize: 25,
 									},
 								]}>
@@ -214,7 +215,7 @@ export class TransactionLog extends Component{
 									styles.standardText,
 									local.standardText,
 									{
-										color: '#1C7B00',
+										color: 'black',
 										fontSize: 25,
 									},
 								]}>
