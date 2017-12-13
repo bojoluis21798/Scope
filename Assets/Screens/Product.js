@@ -20,7 +20,9 @@ class ProductBar extends Component {
 				<FirstLetter 
 					name={this.props.name}
 				/>
-				<TouchableNativeFeedback>
+				<TouchableNativeFeedback
+					onPress={this.props.navigate}
+				>
 					<View style={{
 		    			padding: 15,
 		    			backgroundColor: 'white',
@@ -76,6 +78,7 @@ export class Product extends Component {
 			product: [],
 		}
 		this.openDrawer = this.openDrawer.bind(this);
+		this.navigateToDetails = this.navigateToDetails.bind(this);
 	}
 
 	async componentDidMount(){
@@ -83,9 +86,18 @@ export class Product extends Component {
 	    this.setState({imageLoaded: true});
 	}
 
+	navigateToDetails(){
+		this.props.navigation.navigate('Details');
+	}
+
 	openDrawer(){
 		this.props.navigation.navigate('DrawerOpen');
 	}
+
+	static navigationOptions = {
+		header: null,
+		drawerLabel: "Transaction Log",
+	};
 
 	render(){
 
@@ -137,6 +149,7 @@ export class Product extends Component {
 			        		<ProductBar 
 			        			name="Apple"
 			        			price="0.00"
+			        			navigate={this.navigateToDetails}
 			        		/>
 			        	</View>
 		    		</ScrollView> 

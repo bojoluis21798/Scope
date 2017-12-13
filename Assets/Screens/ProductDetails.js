@@ -5,6 +5,7 @@ import {
 	ScrollView,
 	StyleSheet,
 	Dimensions,
+	Image,
 	Text,
 } from 'react-native';
 
@@ -19,21 +20,14 @@ export class NewProduct extends Component {
 	constructor(props){
 		super(props);
 
-		this.state = {
-			fontLoaded: false,
-			imageLoaded: false,
-		}
+		this.backNavigate = this.backNavigate.bind(this);
 	}
 
-	async componentDidMount(){
-		
-	    this.setState({
-	    	imageLoaded: true,
-	    });
-	}
+ 	backNavigate(){
+    	this.props.navigation.navigate('Product');
+  	}
 
 	render(){
-
 		return(
 			<View style = {styles.container}>
 				<StatusBar 
@@ -44,19 +38,19 @@ export class NewProduct extends Component {
 		        />
 		        <TopBar 
 		        	title = "Product Details"
+		        	navigate = {this.backNavigate}
 		        	backButton = {true}
 		        />
 		        <View style = {[styles.body, {
 		        	flexDirection: 'row',
 		        }]}>
-		        	<ScrollView>
-			        	<View style = {{flex: 1}}>
-			        		<View style = {local.imageView}>
+		        	<View style = {{flex: 1}}>
+			        	<ScrollView>	
+		        			<View style = {local.imageView}>
+			        			<Image style={local.imageView} source={require('../Images/Hydrangeas.jpg')}/> 
 			        		</View>
 			        		<View style = {{
-			        			flex: 1,
-			        			borderWidth: 1,
-			        			borderColor: 'red',
+			        			flex: 0.5,
 			        			padding: 20,
 			        		}}>
 			        			<View style = {{
@@ -73,8 +67,8 @@ export class NewProduct extends Component {
 			        		<View style = {local.detailsView}>
 			        					
 			        		</View>
-			        	</View>
-			        </ScrollView>
+			        	</ScrollView>
+		        	</View>
 		        </View>
 
 			</View>
@@ -86,12 +80,11 @@ var {width, height} = Dimensions.get('window');
 
 const local = StyleSheet.create({
 	imageView: {
-		height: height - 550,
+		height: height/3,
 		width: width,
 	},
 	detailsView: {
-		borderWidth: 2,
+		flex: 1,
 		padding: 10,
-		borderWidth: 1,
 	},
 });
