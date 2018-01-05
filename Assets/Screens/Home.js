@@ -335,11 +335,11 @@ export class Home extends Component{
                     parentSet={this.setRendered_1}
                   />
                   <ContentBar 
-                    barTitle="Total Profit" 
+                    barTitle="Gross Profit" 
                     barValue="0.00" 
-                    status={(this.state.color) ? 'bad' : 'good'}
-                    renderedStat={this.state.rendered_2}
-                    parentSet={this.setRendered_2}
+                    status={(this.state.color) ? 'neutral' : 'good'}
+                    renderedStat={this.state.rendered_4}
+                    parentSet={this.setRendered_4}
                   />
                   <ContentBar 
                     barTitle="Net Profit" 
@@ -347,13 +347,6 @@ export class Home extends Component{
                     status={(this.state.color) ? 'neutral' : 'good'}
                     renderedStat={this.state.rendered_3}
                     parentSet={this.setRendered_3}
-                  />
-                  <ContentBar 
-                    barTitle="Gross Profit" 
-                    barValue="0.00" 
-                    status={(this.state.color) ? 'neutral' : 'good'}
-                    renderedStat={this.state.rendered_4}
-                    parentSet={this.setRendered_4}
                   />
                   <ContentBar 
                     barTitle="Total Goods Sold" 

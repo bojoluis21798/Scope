@@ -46,6 +46,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#26A900',
     padding: 10, //change to the height of the statusbar
+    
   },
   menuIcon: {
     height: 34,

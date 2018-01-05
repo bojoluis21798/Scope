@@ -6,10 +6,10 @@ import {
 	Text,
 } from 'react-native';
 import {Home} from './Screens/Home.js';
-import {TransactionsStack} from './Screens/TransactionsStack.js';
 import {StackScreen} from './InitialStack.js';
 import {LogIn} from './Screens/LogIn.js';
-import {ProductStack} from './Screens/ProductStack.js';
+import {ProductStack} from './Screens/ProductStack'
+import {TransactionsStack} from './Screens/TransactionsStack'
 import {
 	DrawerNavigator, 
 	DrawerItems,
@@ -35,7 +35,7 @@ export const Drawer = DrawerNavigator({
 		Transactions: {
 			screen: TransactionsStack,
 			navigationOptions: {
-				drawerLabel: 'Transaction Log',
+				drawerLabel: 'Logs',
 			},
 		},
 		Products: {

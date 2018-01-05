@@ -1,11 +1,11 @@
 import {StackNavigator} from 'react-navigation';
-import {TransactionLog} from './TransactionLog.js';
+import {Logs} from './TransactionLog.js';
 import {NewTransaction} from './NewTransaction.js';
 import {Order} from './Order.js';
 
 export const TransactionsStack = StackNavigator({
 	Log: {
-		screen: TransactionLog,
+		screen: Logs,
 	},
 	New: {
 		screen: NewTransaction,

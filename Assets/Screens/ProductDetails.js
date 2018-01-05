@@ -45,19 +45,17 @@ export class NewProduct extends Component {
 		        	flexDirection: 'row',
 		        }]}>
 		        	<View style = {{flex: 1}}>
-			        	<ScrollView>	
-		        			<View style = {local.imageView}>
-			        			<Image style={local.imageView} source={require('../Images/Hydrangeas.jpg')}/> 
-			        		</View>
+			        	<ScrollView>
 			        		<View style = {{
 			        			flex: 0.5,
 			        			padding: 20,
 			        		}}>
 			        			<View style = {{
 			        				alignSelf: 'center',
+			        				padding: 20,
 			        			}}>
 			        				<Text style = {{
-			        					fontSize: 30,
+			        					fontSize: 40,
 			        					color: 'black',
 			        					fontFamily: 'Montserrat-Light',
 			        				}}> 
@@ -67,26 +65,18 @@ export class NewProduct extends Component {
 			        		</View>
 			        		<View style = {local.detailsView}>
         						<View style = {local.detailsBar}>
-        							<Text style={styles.standardText}>
+        							<Text style={[styles.standardText], {color: 'black', fontSize: 30, fontFamily: 'Montserrat-Light',}}>
         								Price
         							</Text> 
-        							<Text style={styles.standardText}>
+        							<Text style={[styles.standardText], {color: 'black', fontSize: 30, fontFamily: 'Montserrat-Light',}}>
         								₱ 0.00
         							</Text>
         						</View>
         						<View style = {local.detailsBar}>
-        							<Text style={styles.standardText}>
+        							<Text style={[styles.standardText], {color: 'black', fontSize: 30, fontFamily: 'Montserrat-Light',}}>
         								Cost
         							</Text> 
-        							<Text style={styles.standardText}>
-        								₱ 0.00
-        							</Text>
-        						</View>
-        						<View style = {local.detailsBar}>
-        							<Text style={styles.standardText}>
-        								Stock
-        							</Text> 
-        							<Text style={styles.standardText}>
+        							<Text style={[styles.standardText], {color: 'black', fontSize: 30, fontFamily: 'Montserrat-Light',}}>
         								₱ 0.00
         							</Text>
         						</View>

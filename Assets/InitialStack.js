@@ -11,10 +11,19 @@ import {
 } from './drawer.js';
 
 export const InitialStack = StackNavigator({
-  LogIn: {screen: LogIn},
-  Home: {screen: HomeDrawer},
+  LogIn: {
+  	screen: LogIn,
+  	navigationOptions: {
+  		header: null,
+  	}
+  },
+  Home: {
+  	screen: HomeDrawer,
+  	navigationOptions: {
+  		header: null,
+  	}
+  },
 }, 
 {
-  headerMode: 'none',
   initialRouteName: 'LogIn',
 });

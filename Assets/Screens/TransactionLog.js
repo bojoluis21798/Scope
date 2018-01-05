@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {TabNavigator} from 'react-navigation'
 import {
 	View,
 	StyleSheet,
@@ -119,33 +120,12 @@ class TransactionBar extends Component {
 	}
 }
 
-export class TransactionLog extends Component{
+class TransactionLog extends Component{
 	constructor(props){
 		super(props);
 
-		this.state = {
-			fontLoaded: false,
-			imageLoaded: false,
-		};
-
-		this.openDrawer = this.openDrawer.bind(this);
 		this.navigateToNew = this.navigateToNew.bind(this);
 	}
-
-	async componentDidMount(){
-
-		this.setState({
-			imageLoaded: true,
-		});
-	}
-	static navigationOptions = {
-		header: null,
-		drawerLabel: "Transaction Log",
-	}
-
-	openDrawer(){
-    	this.props.navigation.navigate('DrawerOpen');
-  	}
 
   	navigateToNew(){
   		this.props.navigation.navigate('New');
@@ -153,7 +133,6 @@ export class TransactionLog extends Component{
 
 	render(){
 		console.log(Dimensions.get('window'))
-
 
 		return(
 			<View style={styles.container}>
@@ -163,10 +142,6 @@ export class TransactionLog extends Component{
 		          animated={true}
 		          backgroundColor="black"
 		        />
-				<TopBar 
-					title="Transaction Log" 
-					navigate={this.openDrawer}
-				/>
 				<View style={[styles.body, local.body]}>
 					<View style={{
 						flex: 1,
@@ -185,31 +160,6 @@ export class TransactionLog extends Component{
 									},
 								]}>
 									Total Revenue: 
-								</Text>
-								<Text style={[
-									styles.standardText,
-									local.standardText,
-									{
-										color: 'black',
-										fontSize: 25,
-									},
-								]}>
-									₱ 0.00 
-								</Text>
-							</View>
-							<View style={{
-								flexDirection: 'row',
-								justifyContent: 'space-between',
-							}}>
-								<Text style={[
-									styles.standardText,
-									local.standardText,
-									{
-										color: 'black', 
-										fontSize: 25,
-									},
-								]}>
-									Total Tax: 
 								</Text>
 								<Text style={[
 									styles.standardText,
@@ -251,6 +201,38 @@ export class TransactionLog extends Component{
 		);
 	}
 }
+
+const LogsBar = TabNavigator({
+	Transaction: {
+		screen: TransactionLog
+	},
+	Expenses: {
+		screen: TransactionLog
+	},
+});
+
+export class Logs extends Component {
+	constructor(props){
+		super(props);
+
+		this.openDrawer = this.openDrawer.bind(this);
+	}
+
+	openDrawer(){
+    	this.props.navigation.navigate('DrawerOpen');
+  	}
+
+	render(){
+		return(
+			<LogsBar navigation={this.props.navigation}/>
+		);
+	}
+}
+
+Logs.router = LogsBar.router;
+
+
+
 var {height, width} = Dimensions.get('window');
 
 const local = StyleSheet.create({

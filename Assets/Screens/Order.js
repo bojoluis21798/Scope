@@ -80,7 +80,11 @@ export class Order extends Component {
 			        			justifyContent:'center',
 			        		}}>
 			        			<View style={{margin: 20}}>
-				        			<Text style={styles.standardText}>
+				        			<Text style={[styles.standardText,
+				        				{
+				        					borderBottomWidth: 2,
+				        				}
+				        			]}>
 				        				Product Name
 				        			</Text>
 				        		</View>

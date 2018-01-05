@@ -27,9 +27,6 @@ export class LogIn extends Component {
     });
   }
 
-  static navigationOptions = {
-    header: null,
-  };
 
   render(){
     let image = {};
